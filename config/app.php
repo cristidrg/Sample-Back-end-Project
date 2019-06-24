@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Spatie\UptimeMonitor\UptimeMonitorServiceProvider::class,
 
         /*
          * Application Service Providers...
