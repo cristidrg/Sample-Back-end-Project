@@ -14,11 +14,11 @@ class CreatePropsTable extends Migration
     public function up()
     {
         Schema::create('props', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->timestamps();
             $table->string('title');
             $table->string('description');
-            $table->string('url');
+            $table->string('url')->unique();
         });
     }
 
