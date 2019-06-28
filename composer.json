@@ -12,7 +12,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
-        "spatie/laravel-uptime-monitor": "^3.5"
+        "spatie/laravel-uptime-monitor": "^3.5",
+        "edmondscommerce/lighthouse": "dev-master"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

@@ -19,6 +19,11 @@ class CreatePropsTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->string('url')->unique();
+
+            $table->float('perfScore')->default('0');;
+            $table->float('a11yScore')->default('0');;
+            $table->float('seoScore')->default('0');;
+            $table->string('fetchTime')->default('0');;
         });
     }
 

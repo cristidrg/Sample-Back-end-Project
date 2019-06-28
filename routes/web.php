@@ -12,3 +12,4 @@
 */
 
 Route::get('/', 'PropsController@home');
+// Route::get('/test', 'PropsController@test');

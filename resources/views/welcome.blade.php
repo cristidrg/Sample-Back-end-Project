@@ -83,6 +83,8 @@
                             <td>{{ $prop-> description }}</td>
                             <td>{{ $prop-> url }}</td>
                             <td>{{ $prop->monitor->uptime_status }}</td>
+                            <td>{{ $prop->perfScore }}</td>
+                            <td>{{ $prop->seoScore }}</td>
                         </tr>
                     @endforeach
                 </table>

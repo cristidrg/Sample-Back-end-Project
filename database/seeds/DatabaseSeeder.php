@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         DB::table('props')->insert([
             'title' => Str::random(10),
             'description' => Str::random(10).'@gmail.com',
-            'url' => 'www.northeastern.edu',
+            'url' => 'https://www.northeastern.edu/',
         ]);
 
         $prop = Prop::find(1);
