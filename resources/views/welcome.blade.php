@@ -65,19 +65,12 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <div class="content">
+            <div class="">
                 <div class="title m-b-md">
                     NU Props, a humble start
                 </div>
-
-                <table>
-                    <tr>
-                        <th>Title</th>
-                        <th>Description</th>
-                        <th>URL</th>
-                        <th>Uptime</th>
-                    </tr>
                     @foreach ($props as $prop)
+                        <h3>{{$prop->title}}</h3>
                         <ul>
                             @foreach ($prop->getAttributes() as $key => $value)
                                 <li>{{ $key }}: {{ $value }}</li>
@@ -85,7 +78,6 @@
                             <li>{{ $prop->monitor->uptime_status }}</li>
                         </ul>
                     @endforeach
-                </table>
             </div>
         </div>
     </body>
