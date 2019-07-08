@@ -78,14 +78,12 @@
                         <th>Uptime</th>
                     </tr>
                     @foreach ($props as $prop)
-                        <tr>
-                            <td>{{ $prop-> title }}</td>
-                            <td>{{ $prop-> description }}</td>
-                            <td>{{ $prop-> url }}</td>
-                            <td>{{ $prop->monitor->uptime_status }}</td>
-                            <td>{{ $prop->perfScore }}</td>
-                            <td>{{ $prop->seoScore }}</td>
-                        </tr>
+                        <ul>
+                            @foreach ($prop->getAttributes() as $key => $value)
+                                <li>{{ $key }}: {{ $value }}</li>
+                            @endforeach
+                            <li>{{ $prop->monitor->uptime_status }}</li>
+                        </ul>
                     @endforeach
                 </table>
             </div>
