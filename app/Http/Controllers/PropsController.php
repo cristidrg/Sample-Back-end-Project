@@ -6,17 +6,5 @@ use App\Prop;
 
 class PropsController extends Controller
 {
-    public function home()
-    {
-        $props = Prop::all();
 
-        return view('welcome', [
-            'props' => $props,
-        ]);
-    }
-
-    public function test()
-    {
-        return view('test');
-    }
 }

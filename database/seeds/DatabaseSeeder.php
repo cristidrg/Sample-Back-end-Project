@@ -16,20 +16,26 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Org::create([
-            'title' => 'Provost\'s office',
-            'description' => 'The place to be',
+            'title' => 'President\'s office',
+            'description' => 'root',
             'children' => [
                 [
-                    'title' => 'Colleges and schools',
-                    'description' => 'What else would our university be without them?',
+                    'title' => 'Provost\'s office',
+                    'description' => 'The place to be',
                     'children' => [
                         [
-                            'title' => 'Khoury College of Computer Sciences',
-                            'description' => 'An instant return on investment. Apply now!',
+                            'title' => 'Colleges and schools',
+                            'description' => 'What else would our university be without them?',
+                            'children' => [
+                                [
+                                    'title' => 'Khoury College of Computer Sciences',
+                                    'description' => 'An instant return on investment. Apply now!',
+                                ],
+                            ],
                         ],
-                    ],
-                ],
-            ],
+                    ]
+                ]
+            ]
         ]);
 
         DB::table('props')->insert([
@@ -62,13 +68,13 @@ class DatabaseSeeder extends Seeder
             ['url' => 'https://www.khoury.northeastern.edu/'],
         ]);
 
-        $this->createRelationship('Provost\'s office', 'https://provost.northeastern.edu/');
-        $this->createRelationship('Provost\'s office', 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
-        $this->createRelationship('Colleges and schools', 'https://provost.northeastern.edu/academics/colleges-schools/');
-        $this->createRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://provost.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
+        $this->createOrgPropMonitorRelationship('Colleges and schools', 'https://provost.northeastern.edu/academics/colleges-schools/');
+        $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
     }
 
-    private function createRelationship($orgTitle, $propUrl) {
+    private function createOrgPropMonitorRelationship($orgTitle, $propUrl) {
         $prop = Prop::where('url', $propUrl)->first();
         $org = Org::where('title', $orgTitle)->first();
         $monitor = Monitor::where('url', $propUrl)->first();
