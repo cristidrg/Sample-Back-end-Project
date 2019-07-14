@@ -14,6 +14,8 @@ class CreateMonitorsTable extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('monitors');
+
         Schema::create('monitors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('url')->unique();
@@ -52,6 +54,6 @@ class CreateMonitorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('monitors');
+        Schema::dropIfExists('monitors');
     }
 }

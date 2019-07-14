@@ -13,10 +13,10 @@ class CreatePropsTable extends Migration
      */
     public function up()
     {
-        Schema::create('props', function (Blueprint $table) {
-            $table->nestedSet();
+        Schema::dropIfExists('props');
 
-            $table->increments('id');
+        Schema::create('props', function (Blueprint $table) {
+            $table->increments('id')->unique();
             $table->timestamps();
 
             $table->string('title');
@@ -27,6 +27,9 @@ class CreatePropsTable extends Migration
             $table->float('a11yScore')->default('0');
             $table->float('seoScore')->default('0');
             $table->string('fetchTime')->default('0');
+
+            $table->integer('org_id')->unsigned()->index()->nullable();
+            $table->foreign('org_id')->references('id')->on('orgs');
         });
     }
 

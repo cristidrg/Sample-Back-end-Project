@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Seeder;
 use App\Prop;
+use App\Org;
+
 use Spatie\UptimeMonitor\Models\Monitor;
 
 class DatabaseSeeder extends Seeder
@@ -13,50 +15,64 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Prop::create([
+        Org::create([
             'title' => 'Provost\'s office',
             'description' => 'The place to be',
-            'url' => 'https://provost.northeastern.edu/',
             'children' => [
                 [
                     'title' => 'Colleges and schools',
                     'description' => 'What else would our university be without them?',
-                    'url' => 'https://provost.northeastern.edu/academics/colleges-schools/',
                     'children' => [
                         [
                             'title' => 'Khoury College of Computer Sciences',
                             'description' => 'An instant return on investment. Apply now!',
-                            'url' => 'https://www.khoury.northeastern.edu/',
                         ],
                     ],
                 ],
             ],
         ]);
 
-
-        DB::table('monitors')->insert([
-            'url' => 'https://provost.northeastern.edu/'
+        DB::table('props')->insert([
+            [
+                'title' => 'Provost PROP',
+                'description' => 'An amazing prop',
+                'url' => 'https://provost.northeastern.edu/'
+            ],
+            [
+                'title' => 'Budget & Planning PROP',
+                'description' => 'A prosperous prop',
+                'url' => 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'
+            ],
+            [
+                'title' => 'Colleges PROP',
+                'description' => 'A collegiate prop',
+                'url' => 'https://provost.northeastern.edu/academics/colleges-schools/'
+            ],
+            [
+                'title' => 'CCIS PROP',
+                'description' => 'A programmy prop',
+                'url' => 'https://www.khoury.northeastern.edu/'
+            ],
         ]);
 
         DB::table('monitors')->insert([
-            'url' => 'https://provost.northeastern.edu/academics/colleges-schools/'
+            ['url' => 'https://provost.northeastern.edu/'],
+            ['url' => 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'],
+            ['url' => 'https://provost.northeastern.edu/academics/colleges-schools/'],
+            ['url' => 'https://www.khoury.northeastern.edu/'],
         ]);
 
-        DB::table('monitors')->insert([
-            'url' => 'https://www.khoury.northeastern.edu/'
-        ]);
+        $this->createRelationship('Provost\'s office', 'https://provost.northeastern.edu/');
+        $this->createRelationship('Provost\'s office', 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
+        $this->createRelationship('Colleges and schools', 'https://provost.northeastern.edu/academics/colleges-schools/');
+        $this->createRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
+    }
 
-        $prop1 = Prop::where('url', 'https://provost.northeastern.edu/')->first();
-        $monitor1 = Monitor::where('url', 'https://provost.northeastern.edu/')->first();
-        
-        $prop2 = Prop::where('url', 'https://provost.northeastern.edu/academics/colleges-schools/')->first();
-        $monitor2 = Monitor::where('url', 'https://provost.northeastern.edu/academics/colleges-schools/')->first();
-
-        $prop3 = Prop::where('url', 'https://www.khoury.northeastern.edu/')->first();
-        $monitor3 = Monitor::where('url', 'https://www.khoury.northeastern.edu/')->first();
-
-        $prop1->monitor()->save($monitor1);
-        $prop2->monitor()->save($monitor2);
-        $prop3->monitor()->save($monitor3);
+    private function createRelationship($orgTitle, $propUrl) {
+        $prop = Prop::where('url', $propUrl)->first();
+        $org = Org::where('title', $orgTitle)->first();
+        $monitor = Monitor::where('url', $propUrl)->first();
+        $prop->monitor()->save($monitor);
+        $org->props()->save($prop);
     }
 }
