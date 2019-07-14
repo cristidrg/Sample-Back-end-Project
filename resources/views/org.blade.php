@@ -18,13 +18,13 @@
         <div class="">
             <div class="">
                 <div class="">
-                    NU Props, a humble start
+                    NU Props, a humble start | {{$org->title}}
                 </div>
                 <ul>
-                     @foreach ($topLevelOrgs as $org)
-                        <a href="/org/{{$org->id}}"><li class="org">ORG: {{$org->title}}</li></a>
+                     @foreach ($childrenOrgs as $childOrg)
+                        <a href="/org/{{$childOrg->id}}"><li class="org">ORG: {{$childOrg->title}}</li></a>
                      @endforeach
-                     @foreach ($topLevelProps as $prop)
+                     @foreach ($childrenProps as $prop)
                         <a href="/prop/{{$prop->id}}"><li class="prop">PROP: {{$prop->title}}</li></a>
                      @endforeach
                 </ul>

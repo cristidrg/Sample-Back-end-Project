@@ -11,5 +11,6 @@
 |
 */
 
-Route::get('/', 'PropsController@home');
-// Route::get('/test', 'PropsController@test');
+Route::get('/', 'Controller@home');
+Route::get('/org/{org}', 'OrgController@show');
+Route::get('/prop/{prop}', 'PropController@show');

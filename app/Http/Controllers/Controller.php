@@ -7,7 +7,7 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-use App\Orgs;
+use App\Org;
 
 
 class Controller extends BaseController
@@ -16,10 +16,18 @@ class Controller extends BaseController
 
     public function home()
     {
-        $rootOrg = Orgs::withDepth()->having('depth', '=', 0)->get();
+        $rootOrg = Org::withDepth()->having('depth', '=', 0)->get()->first();
+        $topLevelOrgs = Org::withDepth()->having('depth', '=', 1)->get();
+
+        $topLevelProps = [];
+
+        if ($rootOrg->props()->count() > 0) {
+            $topLevelProps = $rootOrg->props();
+        }
 
         return view('welcome', [
-            'rootOrg' => $rootOrg,
+            'topLevelOrgs' => $topLevelOrgs,
+            'topLevelProps' => $topLevelProps
         ]);
     }
 }
