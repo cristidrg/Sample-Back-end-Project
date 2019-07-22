@@ -31,7 +31,157 @@ class DatabaseSeeder extends Seeder
                                     'title' => 'Khoury College of Computer Sciences',
                                     'description' => 'An instant return on investment. Apply now!',
                                 ],
+                                [
+                                    'title' => 'Bouvé College of Health Sciences',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'College of Arts, Media and Design',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'College of Engineering',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'College of Social Sciences and Humanities',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'College of Professional Studies',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'College of Science',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'Bouvé College of Health Sciences',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'D’Amore-McKim School of Business',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'Khoury College of Computer Sciences',
+                                    'description' => 'Lorem Ipsum',
+                                ],
+                                [
+                                    'title' => 'School of Law',
+                                    'description' => 'Lorem Ipsum',
+                                ],
                             ],
+                        ],
+                        [
+                            'title' => 'Academic and Faculty Affairs',
+                            'description' => 'Lorem Ipsum',
+                            'children' => [
+                                [
+                                    'title' => 'ADVANCE Faculty Development',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'University Ombuds',
+                                    'description' => 'lipsum',
+                                ],
+                            ]
+                        ],
+                        [
+                            'title' => 'Budget, Planning, and Administration',
+                            'description' => 'Lorem Ipsum',
+                            'children' => [
+                                [
+                                    'title' => 'Academic Fiscal Affairs',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Academic Space',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'University Decision Support',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'University Registrar',
+                                    'description' => 'lipsum',
+                                ],
+                            ]
+                        ],
+                        [
+                            'title' => 'Curriculum and Programs',
+                            'description' => 'Lorem Ipsum',
+                            'children' => [
+                                [
+                                    'title' => 'Explore Program',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'ROTC',
+                                    'description' => 'lipsum',
+                                ]
+                            ]
+                        ],
+                        [
+                            'title' => 'Institutional Diversity and Inclusion',
+                            'description' => 'Lorem Ipsum'
+                        ],
+                        [
+                            'title' => 'Information Technology',
+                            'description' => 'Lorem Ipsum',
+                            'children' => [
+                                [
+                                    'title' => 'IT Operations',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Information Security',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Research Computing',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Engagement and Experience',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Academic Technologies',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Enterprise Platforms',
+                                    'description' => 'lipsum',
+                                ]
+                            ]
+                        ],
+                        [
+                            'title' => 'Library',
+                            'description' => 'Lorem Ipsum'
+                        ],
+                        [
+                            'title' => 'Research and Institutes',
+                            'description' => 'Lorem Ipsum',
+                            'children' => [
+                                [
+                                    'title' => 'Office of Research Development',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Research Enterprise Services',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Research Compliance',
+                                    'description' => 'lipsum',
+                                ],
+                                [
+                                    'title' => 'Center for Research Innovation',
+                                    'description' => 'lipsum',
+                                ]
+                            ]
                         ],
                     ]
                 ]
