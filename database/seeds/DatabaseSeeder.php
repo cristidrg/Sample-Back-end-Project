@@ -184,6 +184,156 @@ class DatabaseSeeder extends Seeder
                             ]
                         ],
                     ]
+                ],
+                [
+                    'title' => 'Advancement',
+                    'description' => '',
+                    'children' => [
+                        [
+                            'title' => 'Alumni Relations',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Development',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Corporate and Foundation Relations',
+                            'description' => ''
+                        ]
+                    ]
+                ],
+                [
+                    'title' => 'Chancellor',
+                    'description' => '',
+                    'children' => [
+                        [
+                            'title' => 'Undergraduate and Experiental Learning',
+                            'description' => '',
+                            'children' => [
+                                [
+                                    'title' => 'Center for Advancing Teaching and Learning Through Research (CATLR)',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'Self-Authored Integrated Learning (SAIL)',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'Employer Engagement and Career Design',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'General Studies',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'Honors Program',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'Peer Tutoring',
+                                    'description' => ''
+                                ],
+                                [
+                                    'title' => 'Undergraduate Research and Fellowships',
+                                    'description' => ''
+                                ]
+                            ]
+                        ],
+                        [
+                            'title' => 'Student Affairs',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Digital and Mobile Learning',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Lifelong Learning',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Athletics',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Enrollment Management',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'The PhD Network',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Global Campus Network',
+                            'description' => ''
+                        ]
+                    ]
+                ],
+                [
+                    'title' => 'External Affairs',
+                    'description' => '',
+                    'children' => [
+                        [
+                            'title' => 'Communications',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Government Relations',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Marketing',
+                            'description' => ''
+                        ]
+                    ]
+                ],
+                [
+                    'title' => 'Finance',
+                    'description' => '',
+                    'children' => [
+                        [
+                            'title' => 'Audit and Advisory Services',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Campus Planning and Development',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Facilities',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Human Resources Management',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Treasurer',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'General Counsel General',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'City and Community Affairs',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Compliance',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Legal Affairs and Deputy General Counsel',
+                            'description' => ''
+                        ],
+                        [
+                            'title' => 'Public Safety',
+                            'description' => ''
+                        ]
+                    ]
                 ]
             ]
         ]);
