@@ -34,3 +34,4 @@
 
 
 require('./charts');
+require('./jqueryMenus');

@@ -13,18 +13,48 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body class="props-body">
-        <nav class="nav">
-            <a class="nav__home" href="/">NUProps</a>
-            <svg class="nav__burger" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div class="nav bw-0 bwr-2 bs-solid bc-gray-200">
+            <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
+            <h1 class="nav__handle">Salut</h1>
+            <nav id="navigation" data-navigation-handle=".nav_handle" role="navigation">
+                <input class="nav__search bg-black" type="text" placeholder="Search Properties">
+                <div class="nav__filters">
+                    <label class="nav__option">Uptime</label>
+                    <div class="form__check nav__filter-group d-flex flex-col">
+                        <label><input type="checkbox">Up</label>
+                        <label><input type="checkbox">Down</label>
+                    </div>
+
+                    <label class="nav__option">Accessibility</label>
+                    <div class="form__check nav__filter-group d-flex flex-col">
+                        <label><input type="checkbox">90-100</label>
+                        <label><input type="checkbox">50-89</label>
+                        <label><input type="checkbox">0-49</label>
+                    </div>
+
+                    <label class="nav__option">SEO</label>
+                    <div class="form__check nav__filter-group d-flex flex-col">
+                        <label><input type="checkbox">90-100</label>
+                        <label><input type="checkbox">50-89</label>
+                        <label><input type="checkbox">0-49</label>
+                    </div>
+
+                    <label class="nav__option">Performance</label>
+                    <div class="form__check nav__filter-group d-flex flex-col">
+                        <label><input type="checkbox">90-100</label>
+                        <label><input type="checkbox">50-89</label>
+                        <label><input type="checkbox">0-49</label>
+                    </div>
+                </div>
+            </nav>
+            {{-- <svg id="filter_menu" class="nav__burger" width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <line y1="0.5" x2="21" y2="0.5" stroke="#EFEFEF"/>
                 <line y1="7.5" x2="21" y2="7.5" stroke="#EFEFEF"/>
                 <line y1="14.5" x2="21" y2="14.5" stroke="#EFEFEF"/>
-            </svg>
+            </svg> --}}
+        </div>
 
-            <input class="nav__search" type="text" placeholder="Search Properties">
-        </nav>
-
-        <main>
+        <main class="main">
             <h1 class="props-header">Overall Status of Northeastern Properties</h1>
 
             <div class="charts">

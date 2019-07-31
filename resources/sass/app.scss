@@ -1,6 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,800&display=swap');
-// @import "~kernl-ui/src/styles/main";
+@import "~kernl-ui/src/styles/main";
+@import "~formstone/dist/css/navigation";
 
 // Variables
 @import 'reset';
@@ -13,6 +14,11 @@ body {
 .props-body {
     background: $background;
     color: $white;
+
+    @include mqbp-up(d) {
+        display: flex;
+        min-height: 100vh;
+    }
 }
 
 .nav {
@@ -20,14 +26,30 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
     padding: 15px 20px 25px 20px;
+
+    @include mqbp-up(d) {
+        width: 350px;
+        flex-direction: column;
+        flex-wrap: none;
+        justify-content: flex-start;
+        padding: 27px 20px 25px 33px;
+
+    }
 }
+
 
 .nav__home {
     text-decoration: none;
 
-    color: #EFEFEF;
-    font-size: 17px;
-    font-weight: 300;
+    // @include mqbp-up(d) {
+    //     @extend .fs-d3; TODO: THIS!
+    // }
+}
+
+.nav__handle {
+    @include mqbp-up(d) {
+        display: none;
+    }
 }
 
 .nav__search {
@@ -35,13 +57,39 @@ body {
     margin-top: 20px;
     padding: 13px 5px 13px 15px;
     
-    background: $background;
     border: 1px solid $white;
 
     color: $gray1;
     font-weight: 400;
     font-size: 18px;
     font-family: 'Lato', sans-serif; // TODO: Why does this need to be here??
+
+    @include mqbp-up(d) {
+        
+    }
+}
+
+.nav__filters > .nav__option {
+    @extend .fs-d1;
+    @extend .mt-1;
+
+    color: $white;
+
+    :not(:first) {
+        @extend .mt-2;
+    }
+}
+.nav__filter-group > label {
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+
+    > input {
+        margin: 0 5px 0 0;
+        border-radius: 2px;
+        border: 1px solid $gray-300;
+        background-color: black;
+    }
 }
 
 .props-header {
@@ -52,16 +100,25 @@ body {
     text-align: center;
 }
 
+.main {
+    @include mqbp-up(d) {
+        flex: 0 100%;
+    }
+}
+
 .charts {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     margin-top: 37px;
 }
 
 .charts__entry {
     display: flex;
+    flex: 0 50%;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 27px;
 }
 
 .charts__canvas-container {
@@ -79,6 +136,49 @@ body {
 
 .charts__value {
     position: absolute;
+}
+
+.score-scale {
+    display: flex;
+    justify-content: center;
+    color: $gray2;
+    padding: 0 20px;
+}
+
+.score-scale__ranges {
+    display: flex;
+    
+    list-style-type: none;
+}
+
+.score-scale__label {
+    margin-right: 15px;
+}
+
+.score-scale__entry {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.score-scale__entry::before {
+    content: ' ';
+    display: block;
+    width: 15px;
+    height: 10px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+.score-scale__entry.green::before {
+    background-color: $green;
+}
+
+.score-scale__entry.orange::before {
+    background-color: $orange;
+}
+
+.score-scale__entry.red::before {
+    background-color: $red;
 }
 
 .prop-list {
@@ -146,3 +246,57 @@ body {
     font-size: 13px;
     font-weight: 400;
 }
+
+// PROP PAGE
+.prop-page__type {
+    text-transform: uppercase;
+    text-align: center;
+
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.prop-page__breadcrumbs {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+
+    font-size: 13px;
+    line-height: 18px;
+    color: $gray2;
+}
+
+.prop-page__bread-entry:not(:last-child)::after {
+    content: '>';
+    margin: 0 5px;
+}
+
+.prop-page__title {
+    text-align: center;
+
+    font-size: 27px;
+    font-weight: 300;
+    margin-top: 25px;
+}
+
+.prop-page__lighthouse {
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 20px;
+
+    text-decoration: none;
+    color: $teal;
+    
+    font-size: 15px;
+}
+
+.prop-page__details {
+    color: $gray4;
+    background-color: $gray3;
+    margin: 25px 5px;
+    padding: 20px 15px;
+    font-size: 13px;
+    line-height: 18px;
+}
+
