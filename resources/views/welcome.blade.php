@@ -13,10 +13,19 @@
         <link rel="stylesheet" href="/css/app.css">
     </head>
     <body class="props-body">
-        <div class="nav bw-0 bwr-2 bs-solid bc-gray-200">
-            <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
-            <h1 class="nav__handle">Salut</h1>
-            <nav id="navigation" data-navigation-handle=".nav_handle" role="navigation">
+        <div class="nav">
+            <div class="nav__icons">
+                <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
+                <div class="nav__handle">
+                    <!-- TODO: ADD SEARCH ICON -->
+                    <svg class="nav__burger " width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <line y1="0.5" x2="21" y2="0.5" stroke="#EFEFEF"/>
+                        <line y1="7.5" x2="21" y2="7.5" stroke="#EFEFEF"/>
+                        <line y1="14.5" x2="21" y2="14.5" stroke="#EFEFEF"/>
+                    </svg>
+                </div>
+            </div>
+            <nav id="navigation" data-navigation-handle=".nav__handle" role="navigation">
                 <input class="nav__search bg-black" type="text" placeholder="Search Properties">
                 <div class="nav__filters">
                     <label class="nav__option">Uptime</label>

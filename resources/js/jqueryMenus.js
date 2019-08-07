@@ -5,8 +5,9 @@ let $menu = $('#navigation');
 
 $menu.navigation({
     type: 'overlay',
-    gravity: 'right',
-    maxWidth: '991px'
+    gravity: 'left',
+    maxWidth: '991px',
+    label: false
 });
     
     // const browseLinks = document.querySelectorAll('#chart_menu a');

@@ -28,6 +28,8 @@ body {
     padding: 15px 20px 25px 20px;
 
     @include mqbp-up(d) {
+        //bw-0 bwr-2 bs-solid bc-gray-200
+        border-right: 2px solid $gray-200;
         width: 350px;
         flex-direction: column;
         flex-wrap: none;
@@ -35,6 +37,12 @@ body {
         padding: 27px 20px 25px 33px;
 
     }
+}
+
+.nav__icons {
+    display: flex;
+    align-items: center;
+    width: 100%;
 }
 
 
@@ -46,7 +54,18 @@ body {
     // }
 }
 
-.nav__handle {
+#navigation {
+    @include mqbp-down(t) {
+        padding: 27px 20px 25px 33px;
+        background-color: black;
+        border-right: 2px solid $gray-200;
+    }
+}
+
+.nav__handle.fs-navigation-handle {
+    width: auto;
+    margin-left: auto;
+
     @include mqbp-up(d) {
         display: none;
     }
@@ -98,6 +117,10 @@ body {
     line-height: 37px;
 
     text-align: center;
+
+    @include mqbp-up(d) {
+        margin-top: 22.5px;
+    }
 }
 
 .main {

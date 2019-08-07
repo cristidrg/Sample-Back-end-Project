@@ -24983,6 +24983,7 @@ body {
 
 @media (min-width: 992px) {
   .nav {
+    border-right: 2px solid #d0d0d0;
     width: 350px;
     flex-direction: column;
     flex-wrap: none;
@@ -24991,12 +24992,31 @@ body {
   }
 }
 
+.nav__icons {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .nav__home {
   text-decoration: none;
 }
 
+@media (max-width: 991px) {
+  #navigation {
+    padding: 27px 20px 25px 33px;
+    background-color: black;
+    border-right: 2px solid #d0d0d0;
+  }
+}
+
+.nav__handle.fs-navigation-handle {
+  width: auto;
+  margin-left: auto;
+}
+
 @media (min-width: 992px) {
-  .nav__handle {
+  .nav__handle.fs-navigation-handle {
     display: none;
   }
 }
@@ -25034,6 +25054,12 @@ body {
   font-weight: 300;
   line-height: 37px;
   text-align: center;
+}
+
+@media (min-width: 992px) {
+  .props-header {
+    margin-top: 22.5px;
+  }
 }
 
 @media (min-width: 992px) {

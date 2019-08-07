@@ -45267,8 +45267,9 @@ __webpack_require__.r(__webpack_exports__);
 var $menu = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#navigation');
 $menu.navigation({
   type: 'overlay',
-  gravity: 'right',
-  maxWidth: '991px'
+  gravity: 'left',
+  maxWidth: '991px',
+  label: false
 }); // const browseLinks = document.querySelectorAll('#chart_menu a');
 // const filterLinks = [
 //   ...document.querySelectorAll('#filter_menu a'),
