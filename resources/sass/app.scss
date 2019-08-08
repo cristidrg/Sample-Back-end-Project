@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700,800&display=swap');
 @import "~kernl-ui/src/styles/main";
 @import "~formstone/dist/css/navigation";
+@import "~formstone/dist/css/tabs.css";
 
 // Variables
 @import 'reset';
@@ -316,10 +317,42 @@ body {
 
 .prop-page__details {
     color: $gray4;
-    background-color: $gray3;
-    margin: 25px 5px;
-    padding: 20px 15px;
+
+    padding-top: 22px;
+    
     font-size: 13px;
     line-height: 18px;
+}
+
+.prop-page__tab-wrapper {
+    margin-top: 25px;
+    padding: 20px 15px 15px 25px;
+    min-height: 420px;
+    
+    @include mqbp-up(d) {
+        padding-top: 15px;
+        min-height: 350px;
+    }
+}
+
+.prop-page__tabs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $gray4;
+}
+
+.prop-page__tabs > a {
+    color: $gray5;
+    font-size: 15px;
+    padding-bottom: 5px;
+}
+
+.prop-page__tabs > .fs-tabs-active {
+    color: white;
+    border-bottom: 4.5px solid $gray4;
+}
+
+.section .prop-page__tab-wrapper.section {
+    padding: inherit;
 }
 

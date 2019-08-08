@@ -35,3 +35,4 @@
 
 require('./charts');
 require('./jqueryMenus');
+require('./propTabs');
