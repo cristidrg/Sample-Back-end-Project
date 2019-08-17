@@ -12,6 +12,10 @@ body {
     font-family: 'Lato', sans-serif;
 }
 
+.hidden-visi {
+    visibility: hidden;
+}
+
 .props-body {
     background: $background;
     color: $white;
@@ -134,7 +138,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 37px;
+    margin-top: 40px;
 }
 
 .charts__entry {
@@ -143,6 +147,10 @@ body {
     flex-direction: column;
     align-items: center;
     margin-bottom: 27px;
+    
+    @include mqbp-up(d) {
+        flex: auto;
+    }
 }
 
 .charts__canvas-container {
@@ -162,11 +170,30 @@ body {
     position: absolute;
 }
 
+.prop-page__legend {
+    display: flex;
+    flex-direction: column;
+
+    @include mqbp-up(d) {
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+        align-items: center;
+
+        margin-top: 20px;
+    }
+}
+
 .score-scale {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     color: $gray2;
     padding: 0 20px;
+
+    @include mqbp-up(d) {
+        justify-content: center;
+        width: 100%;
+        font-size: 17px;
+    }
 }
 
 .score-scale__ranges {
@@ -203,6 +230,24 @@ body {
 
 .score-scale__entry.red::before {
     background-color: $red;
+}
+
+.prop-page__lighthouse {
+    display: inline-block;
+    margin-top: 25px;
+    margin-left: 20px;
+
+    text-decoration: none;
+    color: $teal;
+    
+    font-size: 15px;
+
+    @include mqbp-up(d) {
+        margin-top: 0;
+        position: absolute;
+
+        font-size: 17px;
+    }
 }
 
 .prop-list {
@@ -278,7 +323,7 @@ body {
 
     font-size: 15px;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin: 0 auto 10px;
 }
 
 .prop-page__breadcrumbs {
@@ -289,12 +334,24 @@ body {
     font-size: 13px;
     line-height: 18px;
     color: $gray2;
+
+    @include mqbp-up(d) {
+        font-size: 15px;
+    }
 }
 
-.prop-page__bread-entry:not(:last-child)::after {
-    content: '>';
-    margin: 0 5px;
+.prop-page__breadcrumbs > a:not(:last-child):not(:first-child) {
+    @include mqbp-down(d) {
+        white-space: nowrap;
+        overflow: hidden;
+        width: 50px;
+        text-overflow: ellipsis;
+    }
 }
+
+// .prop-page__bread-entry:not(:last-child)::after {
+//     margin: 0 5px;
+// }
 
 .prop-page__title {
     text-align: center;
@@ -304,16 +361,14 @@ body {
     margin-top: 25px;
 }
 
-.prop-page__lighthouse {
-    display: inline-block;
-    margin-top: 25px;
-    margin-left: 20px;
-
-    text-decoration: none;
+.prop-page__link {
     color: $teal;
-    
-    font-size: 15px;
+    margin-top: 5px;
+    display: block;
+    text-align: center;
 }
+
+
 
 .prop-page__details {
     color: $gray4;
@@ -322,6 +377,10 @@ body {
     
     font-size: 13px;
     line-height: 18px;
+
+    @include mqbp-up(d) {
+        font-size: 16px;
+    }
 }
 
 .prop-page__tab-wrapper {
@@ -330,6 +389,7 @@ body {
     min-height: 420px;
     
     @include mqbp-up(d) {
+        margin-top: 45px;
         padding-top: 15px;
         min-height: 350px;
     }
