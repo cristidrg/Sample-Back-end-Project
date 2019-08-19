@@ -16,6 +16,10 @@ body {
     visibility: hidden;
 }
 
+.breadcrumb a:only-child {
+    padding-right: 0;
+}
+
 .props-body {
     background: $background;
     color: $white;

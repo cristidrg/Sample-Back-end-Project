@@ -45580,13 +45580,24 @@ var uptimeChart = document.getElementById('uptime');
 var performanceChart = document.getElementById('performance');
 var accessibilityChart = document.getElementById('accessibility');
 
-if (uptimeChart) {
-  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(uptimeChart, {
+var createChart = function createChart(element) {
+  var score = element.getAttribute("data-score");
+  var color = 'rgba(186,219,0,1)';
+  var backupColor = 'rgba(212,27,44,1)';
+
+  if (score < 0.9 && score > 0.49) {
+    color = 'rgba(255,191,61,1)';
+  } else if (score < 0.5) {
+    color = 'rgba(212,27,44,1)';
+    backupColor = 'rgba(0,0,0,1)';
+  }
+
+  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(element, {
     type: 'doughnut',
     data: {
       datasets: [{
-        data: [2, 98],
-        backgroundColor: ['rgba(212,27,44,1)', 'rgba(186,219,0,1)'],
+        data: [score * 100, 100 - score * 100],
+        backgroundColor: [color, backupColor],
         borderWidth: 0
       }]
     },
@@ -45596,46 +45607,22 @@ if (uptimeChart) {
       cutoutPercentage: 85
     }
   });
-}
+};
 
 if (accessibilityChart) {
-  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(accessibilityChart, {
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: [80, 20],
-        backgroundColor: ['rgba(255,191,61,1)', 'rgba(0,0,0,1)'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutoutPercentage: 85
-    }
-  });
+  createChart(accessibilityChart);
 }
 
 if (performanceChart) {
-  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(performanceChart, {
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: [2, 98],
-        backgroundColor: ['rgba(212,27,44,1)', 'rgba(186,219,0,1)'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutoutPercentage: 85
-    }
-  });
+  createChart(performanceChart);
 }
 
 if (seoChart) {
-  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(seoChart, {
+  createChart(seoChart);
+}
+
+if (uptimeChart) {
+  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(uptimeChart, {
     type: 'doughnut',
     data: {
       datasets: [{

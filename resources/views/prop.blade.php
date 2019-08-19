@@ -3,16 +3,20 @@
 @section('title', 'Org')
 
 @section('content')
-    <h2 class="prop-page__type">Property</h2>
-
-    <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
-        <a href="#">Provost</a>
-        <a href="#">University Support Decision</a>
-        <a href="#">University Support Decision</a>
-    </nav>
-
-    <h1 class="prop-page__title">Career Outcomes</h1>
-    <a href="#" class="prop-page__link">https://careeroutcomes.northeastern.edu</a>
+    <div>
+        <h2 class="prop-page__type">Property</h2>
+        <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
+            @if (isset($prop->org->parent->parent) && $prop->org->parent->parent->id != 1)
+                <a href={{"/org/".$prop->org->parent->parent->id}}>{{$prop->org->parent->parent->title}}</a>
+            @endif
+            @if ($prop->org->parent->id != 1)
+                <a href={{"/org/".$prop->org->parent->id}}>{{$prop->org->parent->title}}</a>
+            @endif
+            <a href={{"/org/".$prop->org->id}}>{{$prop->org->title}}</a>
+        </nav>
+    </div>
+    <h1 class="prop-page__title">{{$prop->title}}</h1>
+    <a href="#" class="prop-page__link">{{$prop->url}}</a>
     <div class="charts">
         <div class="charts__entry">
             <div class="charts__canvas-container">
@@ -22,19 +26,19 @@
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="accessibility"></canvas>
+                <canvas id="accessibility" data-score="{{$prop->a11yScore}}"></canvas>
             </div>
             <label class="charts__label">Accessibility</label>
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="seo"></canvas>
+                <canvas id="seo" data-score="{{$prop->seoScore}}"></canvas>
             </div>
             <label class="charts__label">SEO</label>
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="performance"></canvas>
+                <canvas id="performance" data-score="{{$prop->perfScore}}"></canvas>
             </div>
             <label class="charts__label">Performance</label>
         </div>
