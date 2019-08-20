@@ -3,6 +3,17 @@
 @section('title', 'Org')
 
 @section('content')
+    <div>
+        <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
+         @if (isset($org->parent->parent->parent))
+                <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a>
+            @endif
+            @if (isset($org->parent->parent))
+                <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a>
+            @endif
+            <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
+        </nav>
+    </div>
     <h1 class="props-header">{{$org->title}}</h1>
 
     <div class="charts">
@@ -14,7 +25,7 @@
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="accessibility"></canvas>
+                <canvas id="accessibility" data-score="{{$a11yScore}}""></canvas>
             </div>
             <label class="charts__label">Accessibility</label>
         </div>

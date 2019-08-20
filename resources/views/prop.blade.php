@@ -6,10 +6,13 @@
     <div>
         <h2 class="prop-page__type">Property</h2>
         <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
-            @if (isset($prop->org->parent->parent) && $prop->org->parent->parent->id != 1)
+            @if (isset($prop->org->parent->parent->parent))
+                <a href={{"/org/".$prop->org->parent->parent->parent->id}}>{{$prop->org->parent->parent->parent->title}}</a>
+            @endif
+            @if (isset($prop->org->parent->parent))
                 <a href={{"/org/".$prop->org->parent->parent->id}}>{{$prop->org->parent->parent->title}}</a>
             @endif
-            @if ($prop->org->parent->id != 1)
+            @if (isset($prop->org->parent))
                 <a href={{"/org/".$prop->org->parent->id}}>{{$prop->org->parent->title}}</a>
             @endif
             <a href={{"/org/".$prop->org->id}}>{{$prop->org->title}}</a>

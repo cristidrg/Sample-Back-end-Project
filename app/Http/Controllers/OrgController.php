@@ -46,10 +46,14 @@ class OrgController extends Controller
      */
     public function show(Org $org)
     {
+
+
+
         return view('org', [
             'org' => $org,
             'childrenOrgs' => $org->children,
             'childrenProps' => $org->props,
+            'a11yScore' => $org->getA11yScore()
         ]);
     }
 
