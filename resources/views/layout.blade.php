@@ -26,35 +26,39 @@
                 </div>
             </div>
             <nav id="navigation" data-navigation-handle=".nav__handle" role="navigation">
-                <input class="nav__search bg-black" type="text" placeholder="Search Properties">
-                <div class="nav__filters">
-                    <label class="nav__option">Uptime</label>
-                    <div class="form__check nav__filter-group d-flex flex-col">
-                        <label><input type="checkbox">Up</label>
-                        <label><input type="checkbox">Down</label>
-                    </div>
+                <form action="/search" method="POST" role="search">
+                    {{ csrf_field() }}
+                    <input class="nav__search bg-black" name="search_title" type="text" placeholder="Search Properties">
+                    <div class="nav__filters">
+                        <label class="nav__option">Uptime</label>
+                        <div class="form__check nav__filter-group d-flex flex-col">
+                            <label><input name="monitor_up" type="checkbox">Up</label>
+                            <label><input name="monitor_down" type="checkbox">Down</label>
+                        </div>
 
-                    <label class="nav__option">Accessibility</label>
-                    <div class="form__check nav__filter-group d-flex flex-col">
-                        <label><input type="checkbox">90-100</label>
-                        <label><input type="checkbox">50-89</label>
-                        <label><input type="checkbox">0-49</label>
-                    </div>
+                        <label class="nav__option">Accessibility</label>
+                        <div class="form__check nav__filter-group d-flex flex-col">
+                            <label><input name="a11y_green" type="checkbox">90-100</label>
+                            <label><input name="a11y_yellow" type="checkbox">50-89</label>
+                            <label><input name="a11y_red" type="checkbox">0-49</label>
+                        </div>
 
-                    <label class="nav__option">SEO</label>
-                    <div class="form__check nav__filter-group d-flex flex-col">
-                        <label><input type="checkbox">90-100</label>
-                        <label><input type="checkbox">50-89</label>
-                        <label><input type="checkbox">0-49</label>
-                    </div>
+                        <label class="nav__option">SEO</label>
+                        <div class="form__check nav__filter-group d-flex flex-col">
+                            <label><input name="seo_green" type="checkbox">90-100</label>
+                            <label><input name="seo_yellow" type="checkbox">50-89</label>
+                            <label><input name="seo_red" type="checkbox">0-49</label>
+                        </div>
 
-                    <label class="nav__option">Performance</label>
-                    <div class="form__check nav__filter-group d-flex flex-col">
-                        <label><input type="checkbox">90-100</label>
-                        <label><input type="checkbox">50-89</label>
-                        <label><input type="checkbox">0-49</label>
+                        <label class="nav__option">Performance</label>
+                        <div class="form__check nav__filter-group d-flex flex-col">
+                            <label><input name="perf_green" type="checkbox">90-100</label>
+                            <label><input name="perf_yellow" type="checkbox">50-89</label>
+                            <label><input name="perf_red" type="checkbox">0-49</label>
+                        </div>
                     </div>
-                </div>
+                    <button class="nav__form-submit btn bg-red" type="submit">Filter</button>
+                </form>
             </nav>
         </div>
 

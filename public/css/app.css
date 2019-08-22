@@ -25058,6 +25058,11 @@ body {
   background-color: black;
 }
 
+.nav__form-submit {
+  width: 100%;
+  margin-top: 20px;
+}
+
 .props-header {
   font-size: 29px;
   font-weight: 300;
