@@ -25108,6 +25108,19 @@ body {
   width: 150px;
 }
 
+.charts__canvas-container.charts__uptime {
+  position: relative;
+}
+
+.charts__warning {
+  font-size: 65px;
+  font-weight: 800;
+  color: #D41B2C;
+  top: 31%;
+  left: 43%;
+  position: absolute;
+}
+
 .charts__label {
   margin-top: 15px;
   color: #979797;
@@ -25217,6 +25230,19 @@ body {
   font-weight: 600;
   display: flex;
   align-items: center;
+  position: relative;
+}
+
+.prop-list__entry.prop-list__down-org::after {
+  content: " ";
+  display: block;
+  background-color: #D41B2C;
+  width: 14px;
+  height: 14px;
+  border-radius: 14px;
+  position: absolute;
+  right: 0;
+  bottom: 10px;
 }
 
 .prop-list__wrapper {
@@ -25247,6 +25273,10 @@ body {
   position: absolute;
   right: 0;
   top: calc(50% - 7px);
+}
+
+.prop-list__p-wrapper.prop-list__down::after {
+  background-color: #D41B2C;
 }
 
 .prop-list__count {

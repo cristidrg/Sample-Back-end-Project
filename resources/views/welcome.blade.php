@@ -21,19 +21,19 @@
     </div>
 
     <ul class="prop-list">
-        @foreach ($topLevelProps as $prop)
-            <a href="/prop/{{$prop->id}}">
-                <li class="prop">
+     @foreach ($topLevelProps as $prop)
+            <a class="prop-list__entry" href="/prop/{{$prop->id}}">
+                <li class="prop-list__p-wrapper {{$prop->monitor->uptime_status == 'down' ? 'prop-list__down': ''}}">
                     {{$prop->title}}
-                    {{$prop->url}}
+                    <span class="prop-list__url">{{$prop->url}}</span>
                 </li>
             </a>
         @endforeach
-        @foreach ($topLevelOrgs as $org)
-            <a class="prop-list__entry" href="/org/{{$org->id}}">
+        @foreach ($topLevelOrgs as $childOrg)
+            <a class="prop-list__entry {{$childOrg->hasDownProps($childOrg) ? 'prop-list__down-org': ''}}" href="/org/{{$childOrg->id}}">
                 <li class="prop-list__wrapper">
-                    {{$org->title}} 
-                    <span class="prop-list__count">{{count($org->children) + count($org->props)}}</span>
+                    {{$childOrg->title}} 
+                    <span class="prop-list__count">{{count($childOrg->children) + count($childOrg->props)}}</span>
                 </li>
             </a>
         @endforeach

@@ -15,8 +15,11 @@ class PropController extends Controller
      */
     public function show(Prop $prop)
     {
+        $isPropUp = $prop->monitor->uptime_status == 'up' ? '1' : '0';
+
         return view('prop', [
-            'prop' => $prop
+            'prop' => $prop,
+            'isPropUp' => $isPropUp
         ]);
     }
 

@@ -45581,9 +45581,18 @@ var performanceChart = document.getElementById('performance');
 var accessibilityChart = document.getElementById('accessibility');
 
 var createChart = function createChart(element) {
+  var flipColors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
   var score = element.getAttribute("data-score");
+  var flip = element.getAttribute("data-flip");
+  console.log(flip);
   var color = 'rgba(186,219,0,1)';
   var backupColor = 'rgba(212,27,44,1)';
+
+  if (flip) {
+    var auxvar = color;
+    color = backupColor;
+    backupColor = auxvar;
+  }
 
   if (score < 0.9 && score > 0.49) {
     color = 'rgba(255,191,61,1)';
@@ -45622,21 +45631,7 @@ if (seoChart) {
 }
 
 if (uptimeChart) {
-  new chart_js__WEBPACK_IMPORTED_MODULE_0___default.a(uptimeChart, {
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: [2, 98],
-        backgroundColor: ['rgba(212,27,44,1)', 'rgba(186,219,0,1)'],
-        borderWidth: 0
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      cutoutPercentage: 85
-    }
-  });
+  createChart(uptimeChart, true);
 }
 
 /***/ }),

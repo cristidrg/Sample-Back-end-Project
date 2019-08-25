@@ -34,14 +34,14 @@
     <ul class="prop-list">
         @foreach ($childrenProps as $prop)
             <a class="prop-list__entry" href="/prop/{{$prop->id}}">
-                <li class="prop-list__p-wrapper">
+                <li class="prop-list__p-wrapper {{$prop->monitor->uptime_status == 'down' ? 'prop-list__down': ''}}">
                     {{$prop->title}}
                     <span class="prop-list__url">{{$prop->url}}</span>
                 </li>
             </a>
         @endforeach
         @foreach ($childrenOrgs as $childOrg)
-            <a class="prop-list__entry" href="/org/{{$childOrg->id}}">
+            <a class="prop-list__entry {{$childOrg->hasDownProps($childOrg) ? 'prop-list__down-org': ''}}" href="/org/{{$childOrg->id}}">
                 <li class="prop-list__wrapper">
                     {{$childOrg->title}} 
                     <span class="prop-list__count">{{count($childOrg->children) + count($childOrg->props)}}</span>

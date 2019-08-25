@@ -32,6 +32,22 @@ class Org extends Model
         return $a11ySum;
     }
 
+    public function hasDownProps(Org $org) {
+        $downProps = false;
+
+        foreach ($org->props as $prop) {
+            if ($prop->monitor->uptime_status == 'down') {
+                return true;
+            }
+        }
+
+        foreach ($org->children as $childOrg) {
+            $downProps = $downProps || $this->hasDownProps($childOrg);
+        }
+
+        return $downProps;
+    }
+
     public function getScore(Org $org) {
         $a11ySum = 0;
 

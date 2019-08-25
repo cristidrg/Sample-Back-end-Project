@@ -22,8 +22,11 @@
     <a href="#" class="prop-page__link">{{$prop->url}}</a>
     <div class="charts">
         <div class="charts__entry">
-            <div class="charts__canvas-container">
-                <canvas id="uptime"></canvas>
+            <div class="charts__canvas-container charts__uptime">
+                <canvas id="uptime" data-flip="{{!$isPropUp}}" data-score="1"></canvas>
+                @if (!$isPropUp)
+                    <span class="charts__warning">!</span>
+                @endif
             </div>
             <label class="charts__label">Uptime</label>
         </div>

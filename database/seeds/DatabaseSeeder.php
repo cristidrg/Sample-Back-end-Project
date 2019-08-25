@@ -347,7 +347,7 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'Budget & Planning PROP',
                 'description' => 'A prosperous prop',
-                'url' => 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'
+                'url' => 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'
             ],
             [
                 'title' => 'Colleges PROP',
@@ -363,13 +363,13 @@ class DatabaseSeeder extends Seeder
 
         DB::table('monitors')->insert([
             ['url' => 'https://provost.northeastern.edu/'],
-            ['url' => 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'],
+            ['url' => 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'],
             ['url' => 'https://provost.northeastern.edu/academics/colleges-schools/'],
             ['url' => 'https://www.khoury.northeastern.edu/'],
         ]);
 
         $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://provost.northeastern.edu/');
-        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://finance.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
+        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
         $this->createOrgPropMonitorRelationship('Colleges and schools', 'https://provost.northeastern.edu/academics/colleges-schools/');
         $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
     }

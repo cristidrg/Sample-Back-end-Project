@@ -165,7 +165,22 @@ body {
 .charts__canvas-container {
     height: 150px;
     width: 150px;
+
+    &.charts__uptime {
+        position: relative;
+    }
 }
+
+.charts__warning {
+    font-size: 65px;
+    font-weight: 800;
+    color: $red;
+
+    top: 31%;
+    left: 43%;
+    position: absolute;
+}
+
 
 .charts__label {
     margin-top: 15px;
@@ -278,6 +293,19 @@ body {
 
     display: flex;
     align-items: center;
+    position: relative;
+
+    &.prop-list__down-org::after {
+        content: " ";
+        display: block;
+        background-color: $red;
+        width: 14px;
+        height: 14px;
+        border-radius: 14px;
+        position: absolute;
+        right: 0;
+        bottom: 10px;
+    }
 }
 
 .prop-list__wrapper {
@@ -311,6 +339,10 @@ body {
         position: absolute;
         right: 0;
         top: calc(50% - 7px);
+    }
+
+    &.prop-list__down::after {
+        background-color: $red;
     }
 }
 
