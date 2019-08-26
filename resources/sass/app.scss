@@ -165,10 +165,25 @@ body {
 .charts__canvas-container {
     height: 150px;
     width: 150px;
+    position: relative;
+}
 
-    &.charts__uptime {
-        position: relative;
-    }
+.charts__score {
+    font-size: 65px;
+    top: 31%;
+    position: absolute;
+
+    &.clr-orange { color: $orange; }
+
+    &.clr-red { color: $red; }
+
+    &.clr-green { color: $green; }
+
+    &.digits-3 { left: 11%; }
+
+    &.digits-2 { left: 26%; }
+
+    &.digits-1 { left: 37%; }
 }
 
 .charts__warning {
@@ -178,6 +193,17 @@ body {
 
     top: 31%;
     left: 43%;
+    position: absolute;
+}
+
+.charts__check {
+    width: 80px;
+    height: 80px;
+
+    color: $green;
+
+    top: 28%;
+    left: 24%;
     position: absolute;
 }
 

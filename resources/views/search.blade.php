@@ -7,7 +7,7 @@
     <ul class="prop-list">
        @foreach ($propResults as $prop)
             <a class="prop-list__entry" href="/prop/{{$prop->id}}">
-                <li class="prop-list__p-wrapper">
+                <li class="prop-list__p-wrapper {{$prop->monitor->uptime_status == 'down' ? 'prop-list__down': ''}}">
                     {{$prop->title}}
                     <span class="prop-list__url">{{$prop->url}}</span>
                 </li>

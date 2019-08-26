@@ -9,27 +9,23 @@ class Org extends Model
 {
     use NodeTrait;
     
-
-    /**
-     * Get the comments for the blog post.
-     */
     public function props()
     {
         return $this->hasMany('App\Prop');
     }
 
     public function getPropCount(Org $org) {
-        $a11ySum = 0;
+        $propCount = 0;
 
         foreach ($org->props as $prop) {
-            $a11ySum = $a11ySum + 1;
+            $propCount = $propCount + 1;
         }
 
         foreach ($org->children as $childOrg) {
-            $a11ySum = $a11ySum + $this->getScore($childOrg);
+            $propCount = $propCount + $this->getPropCount($childOrg);
         }
 
-        return $a11ySum;
+        return $propCount;
     }
 
     public function hasDownProps(Org $org) {
@@ -62,6 +58,22 @@ class Org extends Model
         return $a11ySum;
     }
 
+    public function getUptimeCount(Org $org) {
+        $upCount = 0;
+
+        foreach ($org->props as $prop) {
+            $value = $prop->monitor->uptime_status == 'up' ? 1 : 0;
+
+            $upCount = $upCount + $value;
+        }
+
+        foreach ($org->children as $childOrg) {
+            $upCount = $upCount + $this->getUptimeCount($childOrg);
+        }
+
+        return $upCount;
+    }
+
 
     public function getA11yScore()
     {
@@ -71,9 +83,19 @@ class Org extends Model
             return 1;
         }
 
-        return $this->getScore($this) / $propCount;
+        return intval($this->getScore($this) / $propCount * 100) / 100;
+    }
+
+    public function getUptimeScore()
+    {
+        $propCount = $this->getPropCount($this);
+
+        if ($propCount == 0) {
+            return 1;
+        }
+
+        return $this->getUptimeCount($this) / $propCount;
     }
 }
 
 Org::fixTree();
-

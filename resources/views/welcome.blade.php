@@ -8,13 +8,19 @@
     <div class="charts">
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="uptime"></canvas>
+                <canvas id="uptime" data-score="{{$uptimeScore}}"></canvas>
+                @if ($uptimeScore < 1)
+                    <span class="charts__warning">!</span>
+                @else
+                    <i class="charts__check" data-feather="check"></i>
+                @endif
             </div>
             <label class="charts__label">Uptime</label>
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
-                <canvas id="accessibility"></canvas>
+                <canvas id="accessibility" data-score="{{$a11yScore}}"></canvas>
+                <span class="charts__score {{$utils->getDigitClass($a11yScore)}} {{$utils->getColorClass($a11yScore)}}">{{$a11yScore * 100}}</span>
             </div>
             <label class="charts__label">Accessibility</label>
         </div>

@@ -19,13 +19,15 @@
         </nav>
     </div>
     <h1 class="prop-page__title">{{$prop->title}}</h1>
-    <a href="#" class="prop-page__link">{{$prop->url}}</a>
+    <a href="{{$prop->url}}" class="prop-page__link">{{$prop->url}}</a>
     <div class="charts">
         <div class="charts__entry">
             <div class="charts__canvas-container charts__uptime">
                 <canvas id="uptime" data-flip="{{!$isPropUp}}" data-score="1"></canvas>
                 @if (!$isPropUp)
                     <span class="charts__warning">!</span>
+                @else
+                    <i class="charts__check" data-feather="check"></i>
                 @endif
             </div>
             <label class="charts__label">Uptime</label>
@@ -33,18 +35,21 @@
         <div class="charts__entry">
             <div class="charts__canvas-container">
                 <canvas id="accessibility" data-score="{{$prop->a11yScore}}"></canvas>
+                <span class="charts__score {{$utils->getDigitClass($prop->a11yScore)}} {{$utils->getColorClass($prop->a11yScore)}}">{{$prop->a11yScore * 100}}</span>
             </div>
             <label class="charts__label">Accessibility</label>
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
                 <canvas id="seo" data-score="{{$prop->seoScore}}"></canvas>
+                <span class="charts__score {{$utils->getDigitClass($prop->seoScore)}} {{$utils->getColorClass($prop->seoScore)}}">{{$prop->seoScore * 100}}</span>
             </div>
             <label class="charts__label">SEO</label>
         </div>
         <div class="charts__entry">
             <div class="charts__canvas-container">
                 <canvas id="performance" data-score="{{$prop->perfScore}}"></canvas>
+                <span class="charts__score {{$utils->getDigitClass($prop->perfScore)}} {{$utils->getColorClass($prop->perfScore)}}">{{$prop->perfScore * 100}}</span>
             </div>
             <label class="charts__label">Performance</label>
         </div>
@@ -60,7 +65,7 @@
             </ol>
         </div>
 
-        <a class="prop-page__lighthouse" href="#">Full Lighthouse Report</a>
+        <a class="prop-page__lighthouse" href="/audits/{{$prop->id}}.html">Full Lighthouse Report</a>
     </div>
     <div class="prop-page__tab-wrapper bg-gray-800" role="tablist">
         <nav class="prop-page__tabs">

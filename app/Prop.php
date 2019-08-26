@@ -16,9 +16,3 @@ class Prop extends Model
         return $this->belongsTo('App\Org');
     }
 }
-
-
-/*
-$prop = new App\Prop;
-$prop->monitor()->save($monitor);
-*/

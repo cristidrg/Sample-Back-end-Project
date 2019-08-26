@@ -28,6 +28,9 @@ Route::get('/prop/{prop}', 'PropController@show');
 Route::any('/search',function() {
     $q = Input::get( 'search_title' );
     
+    $monitor_up = Input::get('monitor_up');
+    $monitor_down = Input::get('monitor_down');
+
     $a11y_green = Input::get('a11y_green');
     $a11y_yellow = Input::get('a11y_yellow');
     $a11y_red = Input::get('a11y_yellow');
@@ -82,6 +85,24 @@ Route::any('/search',function() {
 
     if ($perf_red) {
         $propResults = $propResults->merge(Prop::whereBetween('perfScore', [0, 0.49])->get());
+    }
+
+    $allProps = Prop::all();
+
+    if ($monitor_up) {
+        foreach ($allProps as $prop) {
+            if ($prop->monitor->uptime_status == 'up') {
+                $propResults = $propResults->push($prop);
+            }
+        }
+    }
+
+    if ($monitor_down) {
+        foreach ($allProps as $prop) {
+            if ($prop->monitor->uptime_status == 'down') {
+                $propResults = $propResults->push($prop);
+            }
+        }
     }
 
 

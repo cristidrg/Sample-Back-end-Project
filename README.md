@@ -5,11 +5,14 @@
 ```
 composer install
 npm install
+
 php artisan migrate
 php artisan db:seed
 
 
-cd lighthouse
+cd lighthouse/
+npm install -g lighthouse
+npm run audit-dev
 ```
 
 

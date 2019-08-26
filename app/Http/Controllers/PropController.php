@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Prop;
+use App\Utils;
 
 class PropController extends Controller
 {
@@ -19,7 +20,8 @@ class PropController extends Controller
 
         return view('prop', [
             'prop' => $prop,
-            'isPropUp' => $isPropUp
+            'isPropUp' => $isPropUp,
+            'utils' => new Utils
         ]);
     }
 

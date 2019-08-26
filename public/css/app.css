@@ -25106,10 +25106,37 @@ body {
 .charts__canvas-container {
   height: 150px;
   width: 150px;
+  position: relative;
 }
 
-.charts__canvas-container.charts__uptime {
-  position: relative;
+.charts__score {
+  font-size: 65px;
+  top: 31%;
+  position: absolute;
+}
+
+.charts__score.clr-orange {
+  color: #FFBF3D;
+}
+
+.charts__score.clr-red {
+  color: #D41B2C;
+}
+
+.charts__score.clr-green {
+  color: #BADB00;
+}
+
+.charts__score.digits-3 {
+  left: 11%;
+}
+
+.charts__score.digits-2 {
+  left: 26%;
+}
+
+.charts__score.digits-1 {
+  left: 37%;
 }
 
 .charts__warning {
@@ -25118,6 +25145,15 @@ body {
   color: #D41B2C;
   top: 31%;
   left: 43%;
+  position: absolute;
+}
+
+.charts__check {
+  width: 80px;
+  height: 80px;
+  color: #BADB00;
+  top: 28%;
+  left: 24%;
   position: absolute;
 }
 

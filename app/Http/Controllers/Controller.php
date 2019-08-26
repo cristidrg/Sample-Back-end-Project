@@ -8,7 +8,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 use App\Org;
-
+use App\Utils;
 
 class Controller extends BaseController
 {
@@ -27,7 +27,10 @@ class Controller extends BaseController
 
         return view('welcome', [
             'topLevelOrgs' => $topLevelOrgs,
-            'topLevelProps' => $topLevelProps
+            'topLevelProps' => $topLevelProps,
+            'a11yScore' => $rootOrg->getA11yScore(),
+            'uptimeScore' => $rootOrg->getUptimeScore(),
+            'utils' => new Utils
         ]);
     }
 }
