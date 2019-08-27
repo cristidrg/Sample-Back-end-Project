@@ -74,16 +74,18 @@ const saveResult = async (result, title, id) => {
     const a11yScore = resultJson.categories.accessibility.score;
     const seoScore = resultJson.categories.seo.score;
     
-    await connection.query(`
-        UPDATE props
-        SET
-            perfScore = '${perfScore}',
-            a11yScore = '${a11yScore}',
-            seoScore = '${seoScore}',
-            fetchTime = '${fetchTime}'
-        WHERE url = '${requestedUrl}';
-    `, (error) => {
-        if (error) throw error;
-        console.log('Updated DB Succesfully for ' + title);
-    });
+    if (perfScore != null && a11yScore != null && seoScore != null) {
+        await connection.query(`
+            UPDATE props
+            SET
+                perfScore = '${perfScore}',
+                a11yScore = '${a11yScore}',
+                seoScore = '${seoScore}',
+                fetchTime = '${fetchTime}'
+            WHERE url = '${requestedUrl}';
+        `, (error) => {
+            if (error) throw error;
+            console.log('Updated DB Succesfully for ' + title);
+        });
+    }
 };

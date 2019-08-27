@@ -8,11 +8,14 @@ npm install
 
 php artisan migrate
 php artisan db:seed
-
+php artisan monitor:check-uptime
 
 cd lighthouse/
 npm install -g lighthouse
-npm run audit-dev
+node init
+
+cd ../
+php artisan serve
 ```
 
 
