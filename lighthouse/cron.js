@@ -1,7 +1,14 @@
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const cron = require("node-cron");
 const mysql = require('mysql');
 const fs = require('fs');
+
+const opts = {
+    chromeFlags: ['--headless'],
+    onlyCategories: ['performance', 'seo', 'accessibility'],
+    output: 'html'
+  };
 
 async function launchChromeAndRunLighthouse(url, opts, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
@@ -16,44 +23,7 @@ async function launchChromeAndRunLighthouse(url, opts, config = null) {
   }).catch(error => console.log(error));
 }
 
-const opts = {
-  chromeFlags: ['--headless'],
-  onlyCategories: ['performance', 'seo', 'accessibility'],
-  output: 'html'
-};
-
-// SETUP: Database Connection Data
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'props'
-});
-
-connection.connect();
-
-connection.query(`
-    SELECT id, url, title
-    FROM props;
-`, async (error, results) => {
-    if (error) throw error;
-
-    console.log("Select Query succesfull");
-
-    const mapEntryToFunc = entry => new Promise((resolve, reject) => {
-        console.log("Launching Lighthouse Test for " + entry.url);
-
-        launchChromeAndRunLighthouse(entry.url, opts)
-            .then(res => resolve(saveResult(res, entry.title, entry.id)))
-            .catch(error => reject(error));
-    })
-
-    for (let result of results.map(x => () => mapEntryToFunc(x))) {
-        await result()
-    }
-
-});
-
+// Helper for Database writing
 const saveResult = async (result, title, id) => {
     if (result == undefined) {
         console.log('Lighthouse test failed to run for ' + title);
@@ -89,3 +59,37 @@ const saveResult = async (result, title, id) => {
         });
     }
 };
+
+// Run Cron: Database Connection Data
+cron.schedule("* * * * *", function() {
+    // SETUP: Database Connection Data
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'props'
+    });
+
+    connection.connect();
+
+    connection.query(`
+        SELECT id, url, title
+        FROM props;
+    `, async (error, results) => {
+        if (error) throw error;
+
+        console.log("Select Query succesfull");
+
+        const mapEntryToFunc = entry => new Promise((resolve, reject) => {
+            console.log("Launching Lighthouse Test for " + entry.url);
+
+            launchChromeAndRunLighthouse(entry.url, opts)
+                .then(res => resolve(saveResult(res, entry.title, entry.id)))
+                .catch(error => reject(error));
+        })
+
+        for (let result of results.map(x => () => mapEntryToFunc(x))) {
+            await result()
+        }
+    });
+});

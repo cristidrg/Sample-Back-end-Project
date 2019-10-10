@@ -12,10 +12,12 @@ php artisan monitor:check-uptime
 
 cd lighthouse/
 npm install -g lighthouse
+npm install
 node init
 
 cd ../
 php artisan serve
+npm run prod - in another terminal
 ```
 
 
