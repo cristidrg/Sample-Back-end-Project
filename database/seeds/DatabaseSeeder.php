@@ -16,230 +16,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Org::create([
-            'title' => 'President\'s office',
+            'title' => 'Northeastern',
             'description' => 'root',
             'children' => [
                 [
-                    'title' => 'Provost\'s office',
-                    'description' => 'The place to be',
-                    'children' => [
-                        [
-                            'title' => 'Colleges and schools',
-                            'description' => 'What else would our university be without them?',
-                            'children' => [
-                                [
-                                    'title' => 'Khoury College of Computer Sciences',
-                                    'description' => 'An instant return on investment. Apply now!',
-                                ],
-                                [
-                                    'title' => 'Bouvé College of Health Sciences',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'College of Arts, Media and Design',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'College of Engineering',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'College of Social Sciences and Humanities',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'College of Professional Studies',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'College of Science',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'Bouvé College of Health Sciences',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'D’Amore-McKim School of Business',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'Khoury College of Computer Sciences',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                                [
-                                    'title' => 'School of Law',
-                                    'description' => 'Lorem Ipsum',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Academic and Faculty Affairs',
-                            'description' => 'Lorem Ipsum',
-                            'children' => [
-                                [
-                                    'title' => 'ADVANCE Faculty Development',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'University Ombuds',
-                                    'description' => 'lipsum',
-                                ],
-                            ]
-                        ],
-                        [
-                            'title' => 'Budget, Planning, and Administration',
-                            'description' => 'Lorem Ipsum',
-                            'children' => [
-                                [
-                                    'title' => 'Academic Fiscal Affairs',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Academic Space',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'University Decision Support',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'University Registrar',
-                                    'description' => 'lipsum',
-                                ],
-                            ]
-                        ],
-                        [
-                            'title' => 'Curriculum and Programs',
-                            'description' => 'Lorem Ipsum',
-                            'children' => [
-                                [
-                                    'title' => 'Explore Program',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'ROTC',
-                                    'description' => 'lipsum',
-                                ]
-                            ]
-                        ],
-                        [
-                            'title' => 'Institutional Diversity and Inclusion',
-                            'description' => 'Lorem Ipsum'
-                        ],
-                        [
-                            'title' => 'Information Technology',
-                            'description' => 'Lorem Ipsum',
-                            'children' => [
-                                [
-                                    'title' => 'IT Operations',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Information Security',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Research Computing',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Engagement and Experience',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Academic Technologies',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Enterprise Platforms',
-                                    'description' => 'lipsum',
-                                ]
-                            ]
-                        ],
-                        [
-                            'title' => 'Library',
-                            'description' => 'Lorem Ipsum'
-                        ],
-                        [
-                            'title' => 'Research and Institutes',
-                            'description' => 'Lorem Ipsum',
-                            'children' => [
-                                [
-                                    'title' => 'Office of Research Development',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Research Enterprise Services',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Research Compliance',
-                                    'description' => 'lipsum',
-                                ],
-                                [
-                                    'title' => 'Center for Research Innovation',
-                                    'description' => 'lipsum',
-                                ]
-                            ]
-                        ],
-                    ]
-                ],
-                [
                     'title' => 'Advancement',
                     'description' => '',
-                    'children' => [
-                        [
-                            'title' => 'Alumni Relations',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Development',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Corporate and Foundation Relations',
-                            'description' => ''
-                        ]
-                    ]
+                    'children' => []
                 ],
                 [
                     'title' => 'Chancellor',
                     'description' => '',
                     'children' => [
                         [
-                            'title' => 'Undergraduate and Experiental Learning',
+                            'title' => 'Undergraduate Affairs',
                             'description' => '',
-                            'children' => [
-                                [
-                                    'title' => 'Center for Advancing Teaching and Learning Through Research (CATLR)',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'Self-Authored Integrated Learning (SAIL)',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'Employer Engagement and Career Design',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'General Studies',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'Honors Program',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'Peer Tutoring',
-                                    'description' => ''
-                                ],
-                                [
-                                    'title' => 'Undergraduate Research and Fellowships',
-                                    'description' => ''
-                                ]
-                            ]
+                            'children' => []
                         ],
                         [
                             'title' => 'Student Affairs',
@@ -250,19 +42,7 @@ class DatabaseSeeder extends Seeder
                             'description' => ''
                         ],
                         [
-                            'title' => 'Lifelong Learning',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Athletics',
-                            'description' => ''
-                        ],
-                        [
                             'title' => 'Enrollment Management',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'The PhD Network',
                             'description' => ''
                         ],
                         [
@@ -292,93 +72,226 @@ class DatabaseSeeder extends Seeder
                 [
                     'title' => 'Finance',
                     'description' => '',
+                    'children' => []
+                ],
+                [
+                    'title' => 'General Counsel',
+                    'description' => '',
+                    'children' => []
+                ],
+                [
+                    'title' => 'Provost',
+                    'description' => '',
                     'children' => [
                         [
-                            'title' => 'Audit and Advisory Services',
+                            'title' => 'Colleges and schools',
+                            'description' => '',
+                            'children' => [
+                                [
+                                    'title' => 'Bouvé College of Health Sciences',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'College of Arts, Media and Design',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'Khoury College of Computer Sciences',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'College of Engineering',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'College of Professional Studies',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'College of Science',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'College of Social Sciences and Humanities',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'D’Amore-McKim School of Business',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'School of Law',
+                                    'description' => '',
+                                ],
+                            ],
+                        ],
+                        [
+                            'title' => 'Academic Affairs',
+                            'description' => '',
+                            'children' => []
+                        ],
+                        [
+                            'title' => 'Budget, Planning, and Administration',
+                            'description' => '',
+                            'children' => [
+                                [
+                                    'title' => 'University Decision Support',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'University Registrar',
+                                    'description' => '',
+                                ],
+                            ]
+                        ],
+                        [
+                            'title' => 'Curriculum and Programs',
+                            'description' => '',
+                            'children' => [
+                                [
+                                    'title' => 'Explore Program',
+                                    'description' => '',
+                                ],
+                                [
+                                    'title' => 'ROTC',
+                                    'description' => '',
+                                ]
+                            ]
+                        ],
+                        [
+                            'title' => 'Institutional Diversity and Inclusion',
                             'description' => ''
                         ],
                         [
-                            'title' => 'Campus Planning and Development',
+                            'title' => 'Information Technology',
+                            'description' => '',
+                            'children' => []
+                        ],
+                        [
+                            'title' => 'Library',
                             'description' => ''
                         ],
                         [
-                            'title' => 'Facilities',
-                            'description' => ''
+                            'title' => 'Entreprenuership',
+                            'description' => '',
                         ],
                         [
-                            'title' => 'Human Resources Management',
-                            'description' => ''
+                            'title' => 'Research',
+                            'description' => '',
                         ],
                         [
-                            'title' => 'Treasurer',
-                            'description' => ''
+                            'title' => 'Institutes',
+                            'description' => '',
                         ],
-                        [
-                            'title' => 'General Counsel General',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'City and Community Affairs',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Compliance',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Legal Affairs and Deputy General Counsel',
-                            'description' => ''
-                        ],
-                        [
-                            'title' => 'Public Safety',
-                            'description' => ''
-                        ]
                     ]
-                ]
+                ],
             ]
         ]);
 
         DB::table('props')->insert([
             [
-                'title' => 'Provost PROP',
-                'description' => 'An amazing prop',
-                'url' => 'https://provost.northeastern.edu/'
+                'title' => 'Office of the Provost',
+                'description' => '',
+                'url' => 'https://provost.northeastern.edu'
             ],
             [
-                'title' => 'Budget & Planning PROP',
-                'description' => 'A prosperous prop',
-                'url' => 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'
+                'title' => 'Broken Property',
+                'description' => '',
+                'url' => 'https://broken.northeastern.edu'
             ],
             [
-                'title' => 'Colleges PROP',
-                'description' => 'A collegiate prop',
-                'url' => 'https://provost.northeastern.edu/academics/colleges-schools/'
+                'title' => 'Bouvé College of Health Sciences',
+                'description' => '',
+                'url' => 'https://bouve.northeastern.edu',
             ],
             [
-                'title' => 'CCIS PROP',
-                'description' => 'A programmy prop',
-                'url' => 'https://www.khoury.northeastern.edu/'
+                'title' => 'College of Arts, Media and Design',
+                'description' => '',
+                'url' => 'https://camd.northeastern.edu',
+            ],
+            [
+                'title' => 'Khoury College of Computer Sciences',
+                'description' => '',
+                'url' => 'https://www.khoury.northeastern.edu',
+            ],
+            [
+                'title' => 'College of Engineering',
+                'description' => '',
+                'url' => 'http://coe.northeastern.edu',
+            ],
+            [
+                'title' => 'College of Professional Studies',
+                'description' => '',
+                'url' => 'http://cps.northeastern.edu',
+            ],
+            [
+                'title' => 'College of Science',
+                'description' => '',
+                'url' => 'http://cos.northeastern.edu',
+            ],
+            [
+                'title' => 'College of Social Sciences and Humanities',
+                'description' => '',
+                'url' => 'http://cssh.northeastern.edu',
+            ],
+            [
+                'title' => 'D\'Amore-McKim School of Business',
+                'description' => '',
+                'url' => 'http://damore-mckim.northeastern.edu',
+            ],
+            [
+                'title' => 'School of Law',
+                'description' => '',
+                'url' => 'http://www.northeastern.edu/law',
+            ],
+            [
+                'title' => 'Office of the Chancellor',
+                'description' => '',
+                'url' => 'http://chancellor.northeastern.edu',
+            ],
+            [
+                'title' => 'Self-Authored Integrated Learning (SAIL)',
+                'description' => 'SAIL is a digital platform that helps students capture, reflect on, and express their unique learning experiences.',
+                'url' => 'http://sail.northeastern.edu',
             ],
         ]);
 
-        DB::table('monitors')->insert([
-            ['url' => 'https://provost.northeastern.edu/'],
-            ['url' => 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/'],
-            ['url' => 'https://provost.northeastern.edu/academics/colleges-schools/'],
-            ['url' => 'https://www.khoury.northeastern.edu/'],
-        ]);
+        // DB::table('monitors')->insert([
+        //     ['url' => 'https://provost.northeastern.edu'],
+        //     ['url' => 'https://broken.northeastern.edu'],
+        //     ['url' => 'https://bouve.northeastern.edu'],
+        //     ['url' => 'https://camd.northeastern.edu'],
+        //     ['url' => 'https://www.khoury.northeastern.edu'],
+        //     ['url' => 'https://coe.northeastern.edu'],
+        //     ['url' => 'https://cps.northeastern.edu'],
+        //     ['url' => 'https://cos.northeastern.edu'],
+        //     ['url' => 'https://cssh.northeastern.edu'],
+        //     ['url' => 'http://damore-mckim.northeastern.edu'],
+        //     ['url' => 'https://www.northeastern.edu/law'],
+        //     ['url' => 'https://sail.northeastern.edu'],
+        // ]);
 
-        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://provost.northeastern.edu/');
-        $this->createOrgPropMonitorRelationship('Provost\'s office', 'https://finance444.northeastern.edu/departments/office-of-financial-planning-strategy-and-analytics/');
-        $this->createOrgPropMonitorRelationship('Colleges and schools', 'https://provost.northeastern.edu/academics/colleges-schools/');
-        $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Bouvé College of Health Sciences', 'https://bouve.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('College of Arts, Media and Design', 'https://camd.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('College of Engineering', 'https://coe.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('College of Professional Studies', 'https://cps.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('College of Science', 'https://cos.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('College of Social Sciences and Humanities', 'https://cssh.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('D\'Amore-McKim School of Business', 'http://damore-mckim.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('School of Law', 'https://www.northeastern.edu/law');
+        $this->createOrgPropMonitorRelationship('Chancellor', 'https://chancellor.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Undergraduate Affairs', 'https://sail.northeastern.edu');
     }
 
-    private function createOrgPropMonitorRelationship($orgTitle, $propUrl) {
+    private function createOrgPropMonitorRelationship($orgTitle, $propUrl)
+    {
         $prop = Prop::where('url', $propUrl)->first();
         $org = Org::where('title', $orgTitle)->first();
         $monitor = Monitor::where('url', $propUrl)->first();
-        $prop->monitor()->save($monitor);
+        // $prop->monitor()->save($monitor);
         $org->props()->save($prop);
     }
 }
