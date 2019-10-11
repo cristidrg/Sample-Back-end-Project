@@ -2,6 +2,7 @@ const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 const mysql = require('mysql');
 const fs = require('fs');
+const cron = require("node-cron");
 
 async function launchChromeAndRunLighthouse(url, opts, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
@@ -23,39 +24,41 @@ const opts = {
   port: '8003'
 };
 
-// SETUP: Database Connection Data
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'propsadmin',
-    password: 'props123',
-    database: 'props_prod'
+cron.schedule("* * * * *", function() {
+    // SETUP: Database Connection Data
+    const connection = mysql.createConnection({
+        host: 'localhost',
+        user: 'propsadmin',
+        password: 'props123',
+        database: 'props_prod'
+    });
+
+    connection.connect();
+
+    connection.query(`
+        SELECT id, url, title
+        FROM props;
+    `, async (error, results) => {
+        if (error) throw error;
+
+        console.log("Select Query succesfull");
+
+        const mapEntryToFunc = entry => new Promise((resolve, reject) => {
+            console.log("Launching Lighthouse Test for " + entry.url);
+
+            launchChromeAndRunLighthouse(entry.url, opts)
+                .then(res => resolve(saveResult(res, entry.title, entry.id, connection)))
+                .catch(error => reject(error));
+        })
+
+        for (let result of results.map(x => () => mapEntryToFunc(x))) {
+            await result()
+        }
+
+    });
 });
 
-connection.connect();
-
-connection.query(`
-    SELECT id, url, title
-    FROM props;
-`, async (error, results) => {
-    if (error) throw error;
-
-    console.log("Select Query succesfull");
-
-    const mapEntryToFunc = entry => new Promise((resolve, reject) => {
-        console.log("Launching Lighthouse Test for " + entry.url);
-
-        launchChromeAndRunLighthouse(entry.url, opts)
-            .then(res => resolve(saveResult(res, entry.title, entry.id)))
-            .catch(error => reject(error));
-    })
-
-    for (let result of results.map(x => () => mapEntryToFunc(x))) {
-        await result()
-    }
-
-});
-
-const saveResult = async (result, title, id) => {
+const saveResult = async (result, title, id, connection) => {
     if (result == undefined) {
         console.log('Lighthouse test failed to run for ' + title);
         return;
