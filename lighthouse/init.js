@@ -17,17 +17,18 @@ async function launchChromeAndRunLighthouse(url, opts, config = null) {
 }
 
 const opts = {
-  chromeFlags: ['--headless'],
+  chromeFlags: ['--headless', '--no-sandbox'],
   onlyCategories: ['performance', 'seo', 'accessibility'],
-  output: 'html'
+  output: 'html',
+  port: '8003'
 };
 
 // SETUP: Database Connection Data
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'props'
+    user: 'propsadmin',
+    password: 'props123',
+    database: 'props_prod'
 });
 
 connection.connect();
