@@ -22,5 +22,7 @@ npm run prod - in another terminal
 
 
 ## Useful Links
-https://github.com/spatie/uptime-monitor-app
+https://github.com/spatie/uptime-monitor-app + https://laravel.com/docs/5.8/scheduling
+
 https://github.com/lazychaser/laravel-nestedset
+https://github.com/GoogleChrome/lighthouse
