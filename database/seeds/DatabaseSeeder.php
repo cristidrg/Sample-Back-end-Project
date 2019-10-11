@@ -256,20 +256,20 @@ class DatabaseSeeder extends Seeder
             ],
         ]);
 
-        // DB::table('monitors')->insert([
-        //     ['url' => 'https://provost.northeastern.edu'],
-        //     ['url' => 'https://broken.northeastern.edu'],
-        //     ['url' => 'https://bouve.northeastern.edu'],
-        //     ['url' => 'https://camd.northeastern.edu'],
-        //     ['url' => 'https://www.khoury.northeastern.edu'],
-        //     ['url' => 'https://coe.northeastern.edu'],
-        //     ['url' => 'https://cps.northeastern.edu'],
-        //     ['url' => 'https://cos.northeastern.edu'],
-        //     ['url' => 'https://cssh.northeastern.edu'],
-        //     ['url' => 'http://damore-mckim.northeastern.edu'],
-        //     ['url' => 'https://www.northeastern.edu/law'],
-        //     ['url' => 'https://sail.northeastern.edu'],
-        // ]);
+        DB::table('monitors')->insert([
+            ['url' => 'https://provost.northeastern.edu'],
+            ['url' => 'https://broken.northeastern.edu'],
+            ['url' => 'https://bouve.northeastern.edu'],
+            ['url' => 'https://camd.northeastern.edu'],
+            ['url' => 'https://www.khoury.northeastern.edu'],
+            ['url' => 'https://coe.northeastern.edu'],
+            ['url' => 'https://cps.northeastern.edu'],
+            ['url' => 'https://cos.northeastern.edu'],
+            ['url' => 'https://cssh.northeastern.edu'],
+            ['url' => 'http://damore-mckim.northeastern.edu'],
+            ['url' => 'https://www.northeastern.edu/law'],
+            ['url' => 'https://sail.northeastern.edu'],
+        ]);
 
         $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu');
         $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu');
@@ -291,7 +291,7 @@ class DatabaseSeeder extends Seeder
         $prop = Prop::where('url', $propUrl)->first();
         $org = Org::where('title', $orgTitle)->first();
         $monitor = Monitor::where('url', $propUrl)->first();
-        // $prop->monitor()->save($monitor);
+        $prop->monitor()->save($monitor);
         $org->props()->save($prop);
     }
 }
