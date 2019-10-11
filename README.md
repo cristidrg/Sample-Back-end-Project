@@ -13,7 +13,7 @@ php artisan monitor:check-uptime
 cd lighthouse/
 npm install -g lighthouse
 npm install
-node init
+npm run start
 
 cd ../
 php artisan serve
