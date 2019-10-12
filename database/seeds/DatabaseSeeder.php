@@ -290,7 +290,7 @@ class DatabaseSeeder extends Seeder
     /*
         This function maps a prop to its monitor and parent org.
         @orgTitle - The org->title value
-        @propUrl - the url of the prop -- be sure that a monitor with this url created
+        @propUrl - the url of the prop -- be sure that a monitor with this url is created
     */
     private function createOrgPropMonitorRelationship($orgTitle, $propUrl)
     {

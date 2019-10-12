@@ -1,15 +1,10 @@
+require('dotenv').config({ path: '../.env' });
+
 const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
 const cron = require("node-cron");
 const mysql = require('mysql');
 const fs = require('fs');
-const cron = require("node-cron");
-
-const opts = {
-    chromeFlags: ['--headless'],
-    onlyCategories: ['performance', 'seo', 'accessibility'],
-    output: 'html'
-  };
 
 async function launchChromeAndRunLighthouse(url, opts, config = null) {
   return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
@@ -28,16 +23,18 @@ const opts = {
   chromeFlags: ['--headless', '--no-sandbox'],
   onlyCategories: ['performance', 'seo', 'accessibility'],
   output: 'html',
-  port: '8003'
+  port: process.env.LIGHTHOUSE_PORT
 };
+
+console.log(process.env.DB_USERNAME);
 
 cron.schedule("* * * * *", function() {
     // SETUP: Database Connection Data
     const connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'propsadmin',
-        password: 'props123',
-        database: 'props_prod'
+        host: process.env.DB_HOST,
+        user: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DATABASE
     });
 
     connection.connect();
