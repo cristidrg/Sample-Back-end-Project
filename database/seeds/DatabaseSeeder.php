@@ -217,42 +217,42 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'College of Engineering',
                 'description' => '',
-                'url' => 'http://coe.northeastern.edu',
+                'url' => 'https://coe.northeastern.edu',
             ],
             [
                 'title' => 'College of Professional Studies',
                 'description' => '',
-                'url' => 'http://cps.northeastern.edu',
+                'url' => 'https://cps.northeastern.edu',
             ],
             [
                 'title' => 'College of Science',
                 'description' => '',
-                'url' => 'http://cos.northeastern.edu',
+                'url' => 'https://cos.northeastern.edu',
             ],
             [
                 'title' => 'College of Social Sciences and Humanities',
                 'description' => '',
-                'url' => 'http://cssh.northeastern.edu',
+                'url' => 'https://cssh.northeastern.edu',
             ],
             [
                 'title' => 'D\'Amore-McKim School of Business',
                 'description' => '',
-                'url' => 'http://damore-mckim.northeastern.edu',
+                'url' => 'https://damore-mckim.northeastern.edu',
             ],
             [
                 'title' => 'School of Law',
                 'description' => '',
-                'url' => 'http://www.northeastern.edu/law',
+                'url' => 'https://www.northeastern.edu/law',
             ],
             [
                 'title' => 'Office of the Chancellor',
                 'description' => '',
-                'url' => 'http://chancellor.northeastern.edu',
+                'url' => 'https://chancellor.northeastern.edu',
             ],
             [
                 'title' => 'Self-Authored Integrated Learning (SAIL)',
                 'description' => 'SAIL is a digital platform that helps students capture, reflect on, and express their unique learning experiences.',
-                'url' => 'http://sail.northeastern.edu',
+                'url' => 'https://sail.northeastern.edu',
             ],
         ]);
 
@@ -266,7 +266,8 @@ class DatabaseSeeder extends Seeder
             ['url' => 'https://cps.northeastern.edu'],
             ['url' => 'https://cos.northeastern.edu'],
             ['url' => 'https://cssh.northeastern.edu'],
-            ['url' => 'http://damore-mckim.northeastern.edu'],
+            ['url' => 'https://damore-mckim.northeastern.edu'],
+            ['url' => 'https://chancellor.northeastern.edu'],
             ['url' => 'https://www.northeastern.edu/law'],
             ['url' => 'https://sail.northeastern.edu'],
         ]);
@@ -280,12 +281,17 @@ class DatabaseSeeder extends Seeder
         $this->createOrgPropMonitorRelationship('College of Professional Studies', 'https://cps.northeastern.edu');
         $this->createOrgPropMonitorRelationship('College of Science', 'https://cos.northeastern.edu');
         $this->createOrgPropMonitorRelationship('College of Social Sciences and Humanities', 'https://cssh.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('D\'Amore-McKim School of Business', 'http://damore-mckim.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('D’Amore-McKim School of Business', 'https://damore-mckim.northeastern.edu');
         $this->createOrgPropMonitorRelationship('School of Law', 'https://www.northeastern.edu/law');
         $this->createOrgPropMonitorRelationship('Chancellor', 'https://chancellor.northeastern.edu');
         $this->createOrgPropMonitorRelationship('Undergraduate Affairs', 'https://sail.northeastern.edu');
     }
 
+    /*
+        This function maps a prop to its monitor and parent org.
+        @orgTitle - The org->title value
+        @propUrl - the url of the prop -- be sure that a monitor with this url created
+    */
     private function createOrgPropMonitorRelationship($orgTitle, $propUrl)
     {
         $prop = Prop::where('url', $propUrl)->first();
