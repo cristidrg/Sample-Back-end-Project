@@ -39,7 +39,7 @@
             <a class="prop-list__entry {{$childOrg->hasDownProps($childOrg) ? 'prop-list__down-org': ''}}" href="/org/{{$childOrg->id}}">
                 <li class="prop-list__wrapper">
                     {{$childOrg->title}} 
-                    <span class="prop-list__count">{{count($childOrg->children) + count($childOrg->props)}}</span>
+                    <span class="prop-list__count">{{$childOrg->getPropCount($childOrg)}}</span>
                 </li>
             </a>
         @endforeach

@@ -1,4 +1,16 @@
-@extends('layout')
+@extends('layout', [
+    'a11y_green' => $a11y_green,
+    'a11y_yellow' => $a11y_yellow,
+    'a11y_red' => $a11y_red,
+    'seo_green' => $seo_green,
+    'seo_yellow' => $seo_yellow,
+    'seo_red' => $seo_red,
+    'perf_green' => $perf_green,
+    'perf_yellow' => $perf_yellow,
+    'perf_red' => $perf_red,
+    'monitor_up' => $monitor_up,
+    'monitor_down' => $monitor_down,
+])
 
 @section('title', 'Home')
 

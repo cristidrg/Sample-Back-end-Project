@@ -188,56 +188,66 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
+
+        /*
+            In order for the lighthouse script to work,
+            root level domains need to end with '/'
+            
+            Correct:
+                https://provost.northeastern.edu/
+            Incorrect:
+                https://provost.northeastern.edu
+        */
         DB::table('props')->insert([
             [
                 'title' => 'Office of the Provost',
                 'description' => '',
-                'url' => 'https://provost.northeastern.edu'
+                'url' => 'https://provost.northeastern.edu/'
             ],
             [
                 'title' => 'Broken Property',
                 'description' => '',
-                'url' => 'https://broken.northeastern.edu'
+                'url' => 'https://broken.northeastern.edu/'
             ],
             [
                 'title' => 'Bouvé College of Health Sciences',
                 'description' => '',
-                'url' => 'https://bouve.northeastern.edu',
+                'url' => 'https://bouve.northeastern.edu/',
             ],
             [
                 'title' => 'College of Arts, Media and Design',
                 'description' => '',
-                'url' => 'https://camd.northeastern.edu',
+                'url' => 'https://camd.northeastern.edu/',
             ],
             [
                 'title' => 'Khoury College of Computer Sciences',
                 'description' => '',
-                'url' => 'https://www.khoury.northeastern.edu',
+                'url' => 'https://www.khoury.northeastern.edu/',
             ],
             [
                 'title' => 'College of Engineering',
                 'description' => '',
-                'url' => 'https://coe.northeastern.edu',
+                'url' => 'https://coe.northeastern.edu/',
             ],
             [
                 'title' => 'College of Professional Studies',
                 'description' => '',
-                'url' => 'https://cps.northeastern.edu',
+                'url' => 'https://cps.northeastern.edu/',
             ],
             [
                 'title' => 'College of Science',
                 'description' => '',
-                'url' => 'https://cos.northeastern.edu',
+                'url' => 'https://cos.northeastern.edu/',
             ],
             [
                 'title' => 'College of Social Sciences and Humanities',
                 'description' => '',
-                'url' => 'https://cssh.northeastern.edu',
+                'url' => 'https://cssh.northeastern.edu/',
             ],
             [
                 'title' => 'D\'Amore-McKim School of Business',
                 'description' => '',
-                'url' => 'https://damore-mckim.northeastern.edu',
+                'url' => 'https://damore-mckim.northeastern.edu/',
             ],
             [
                 'title' => 'School of Law',
@@ -247,44 +257,44 @@ class DatabaseSeeder extends Seeder
             [
                 'title' => 'Office of the Chancellor',
                 'description' => '',
-                'url' => 'https://chancellor.northeastern.edu',
+                'url' => 'https://chancellor.northeastern.edu/',
             ],
             [
                 'title' => 'Self-Authored Integrated Learning (SAIL)',
                 'description' => 'SAIL is a digital platform that helps students capture, reflect on, and express their unique learning experiences.',
-                'url' => 'https://sail.northeastern.edu',
+                'url' => 'https://sail.northeastern.edu/',
             ],
         ]);
 
         DB::table('monitors')->insert([
-            ['url' => 'https://provost.northeastern.edu'],
-            ['url' => 'https://broken.northeastern.edu'],
-            ['url' => 'https://bouve.northeastern.edu'],
-            ['url' => 'https://camd.northeastern.edu'],
-            ['url' => 'https://www.khoury.northeastern.edu'],
-            ['url' => 'https://coe.northeastern.edu'],
-            ['url' => 'https://cps.northeastern.edu'],
-            ['url' => 'https://cos.northeastern.edu'],
-            ['url' => 'https://cssh.northeastern.edu'],
-            ['url' => 'https://damore-mckim.northeastern.edu'],
-            ['url' => 'https://chancellor.northeastern.edu'],
+            ['url' => 'https://provost.northeastern.edu/'],
+            ['url' => 'https://broken.northeastern.edu/'],
+            ['url' => 'https://bouve.northeastern.edu/'],
+            ['url' => 'https://camd.northeastern.edu/'],
+            ['url' => 'https://www.khoury.northeastern.edu/'],
+            ['url' => 'https://coe.northeastern.edu/'],
+            ['url' => 'https://cps.northeastern.edu/'],
+            ['url' => 'https://cos.northeastern.edu/'],
+            ['url' => 'https://cssh.northeastern.edu/'],
+            ['url' => 'https://damore-mckim.northeastern.edu/'],
+            ['url' => 'https://chancellor.northeastern.edu/'],
             ['url' => 'https://www.northeastern.edu/law'],
-            ['url' => 'https://sail.northeastern.edu'],
+            ['url' => 'https://sail.northeastern.edu/'],
         ]);
 
-        $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('Bouvé College of Health Sciences', 'https://bouve.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('College of Arts, Media and Design', 'https://camd.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('College of Engineering', 'https://coe.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('College of Professional Studies', 'https://cps.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('College of Science', 'https://cos.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('College of Social Sciences and Humanities', 'https://cssh.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('D’Amore-McKim School of Business', 'https://damore-mckim.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Bouvé College of Health Sciences', 'https://bouve.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('College of Arts, Media and Design', 'https://camd.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('College of Engineering', 'https://coe.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('College of Professional Studies', 'https://cps.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('College of Science', 'https://cos.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('College of Social Sciences and Humanities', 'https://cssh.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('D’Amore-McKim School of Business', 'https://damore-mckim.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('School of Law', 'https://www.northeastern.edu/law');
-        $this->createOrgPropMonitorRelationship('Chancellor', 'https://chancellor.northeastern.edu');
-        $this->createOrgPropMonitorRelationship('Undergraduate Affairs', 'https://sail.northeastern.edu');
+        $this->createOrgPropMonitorRelationship('Chancellor', 'https://chancellor.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Undergraduate Affairs', 'https://sail.northeastern.edu/');
     }
 
     /*

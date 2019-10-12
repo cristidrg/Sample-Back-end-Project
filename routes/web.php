@@ -33,7 +33,7 @@ Route::any('/search',function() {
 
     $a11y_green = Input::get('a11y_green');
     $a11y_yellow = Input::get('a11y_yellow');
-    $a11y_red = Input::get('a11y_yellow');
+    $a11y_red = Input::get('a11y_red');
 
     $seo_green = Input::get('seo_green');
     $seo_yellow = Input::get('seo_yellow');
@@ -89,7 +89,7 @@ Route::any('/search',function() {
 
     $allProps = Prop::all();
 
-    if ($monitor_up) {
+    if ($monitor_up == "on") {
         foreach ($allProps as $prop) {
             if ($prop->monitor->uptime_status == 'up') {
                 $propResults = $propResults->push($prop);
@@ -97,7 +97,7 @@ Route::any('/search',function() {
         }
     }
 
-    if ($monitor_down) {
+    if ($monitor_down == "on") {
         foreach ($allProps as $prop) {
             if ($prop->monitor->uptime_status == 'down') {
                 $propResults = $propResults->push($prop);
@@ -109,6 +109,17 @@ Route::any('/search',function() {
     return view('search', [
         'orgResults' => $orgResults,
         'propResults' => $propResults,
-        'q' => $q
+        'q' => $q,
+        'monitor_up' => $monitor_up,
+        'monitor_down' => $monitor_down,
+        'a11y_green' => $a11y_green,
+        'a11y_yellow' => $a11y_yellow,
+        'a11y_red' => $a11y_red,
+        'seo_green' => $seo_green,
+        'seo_yellow' => $seo_yellow,
+        'seo_red' => $seo_red,
+        'perf_green' => $perf_green,
+        'perf_yellow' => $perf_yellow,
+        'perf_red' => $perf_red
     ]);
 });

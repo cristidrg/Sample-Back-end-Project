@@ -26,8 +26,6 @@ const opts = {
   port: process.env.LIGHTHOUSE_PORT
 };
 
-console.log(process.env.DB_USERNAME);
-
 cron.schedule("* * * * *", function() {
     // SETUP: Database Connection Data
     const connection = mysql.createConnection({
@@ -49,7 +47,6 @@ cron.schedule("* * * * *", function() {
 
         const mapEntryToFunc = entry => new Promise((resolve, reject) => {
             console.log("Launching Lighthouse Test for " + entry.url);
-
             launchChromeAndRunLighthouse(entry.url, opts)
                 .then(res => resolve(saveResult(res, entry.title, entry.id, connection)))
                 .catch(error => reject(error));
@@ -58,7 +55,6 @@ cron.schedule("* * * * *", function() {
         for (let result of results.map(x => () => mapEntryToFunc(x))) {
             await result()
         }
-
     });
 });
 
