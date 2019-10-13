@@ -98,13 +98,13 @@ body {
 }
 
 .nav__filters > .nav__option {
-    @extend .fs-d1;
-    @extend .mt-1;
+    @extend .fs--d1;
+    @extend .mt--1;
 
     color: $white;
 
     :not(:first) {
-        @extend .mt-2;
+        @extend .mt--2;
     }
 }
 .nav__filter-group > label {

@@ -18,7 +18,7 @@ npm run start
 
 cd ../
 php artisan serve
-npm run prod - in another terminal
+npm run watch - in another terminal
 ```
 
 
