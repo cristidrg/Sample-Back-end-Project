@@ -71,31 +71,31 @@ class DatabaseSeeder extends Seeder
                             'title' => 'Colleges and schools',
                             'children' => [
                                 [
-                                    'title' => 'Bouvé College of Health Sciences',
+                                    'title' => 'Bouvé',
                                 ],
                                 [
-                                    'title' => 'College of Arts, Media and Design',
+                                    'title' => 'CAMD',
                                 ],
                                 [
-                                    'title' => 'Khoury College of Computer Sciences',
+                                    'title' => 'Khoury',
                                 ],
                                 [
-                                    'title' => 'College of Engineering',
+                                    'title' => 'COE',
                                 ],
                                 [
-                                    'title' => 'College of Professional Studies',
+                                    'title' => 'CPS',
                                 ],
                                 [
-                                    'title' => 'College of Science',
+                                    'title' => 'COS',
                                 ],
                                 [
-                                    'title' => 'College of Social Sciences and Humanities',
+                                    'title' => 'CSSH',
                                 ],
                                 [
-                                    'title' => 'D’Amore-McKim School of Business',
+                                    'title' => 'DMSB',
                                 ],
                                 [
-                                    'title' => 'School of Law',
+                                    'title' => 'Law',
                                 ],
                             ],
                         ],
@@ -206,47 +206,52 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://connect-to-tech.northeastern.edu/',
             ],
             [
-                'org' => 'Bouvé College of Health Sciences',
+                'org' => 'Bouvé',
                 'title' => 'Bouvé College of Health Sciences',
                 'url' => 'https://bouve.northeastern.edu/',
             ],
             [
-                'org' => 'College of Arts, Media and Design',
+                'org' => 'CAMD',
                 'title' => 'College of Arts, Media and Design',
                 'url' => 'https://camd.northeastern.edu/',
             ],
             [
-                'org' => 'Khoury College of Computer Sciences',
+                'org' => 'Khoury',
                 'title' => 'Khoury College of Computer Sciences',
                 'url' => 'https://www.khoury.northeastern.edu/',
             ],
             [
-                'org' => 'College of Engineering',
+                'org' => 'COE',
                 'title' => 'College of Engineering',
                 'url' => 'https://coe.northeastern.edu/',
             ],
             [
-                'org' => 'College of Professional Studies',
+                'org' => 'COE',
+                'title' => 'Bernard M. Gordon Center for Subsurface Sensing and Imaging Systems (Gordon-CenSSIS)',
+                'url' => 'http://www.censsis.neu.edu',
+            ],
+            [
+                'org' => 'CPS',
                 'title' => 'College of Professional Studies',
                 'url' => 'https://cps.northeastern.edu/',
             ],
             [
-                'org' => 'College of Science',
+                'org' => 'COS',
                 'title' => 'College of Science',
                 'url' => 'https://cos.northeastern.edu/',
             ],
             [
-                'org' => 'College of Social Sciences and Humanities',
+                'org' => 'CSSH',
                 'title' => 'College of Social Sciences and Humanities',
                 'url' => 'https://cssh.northeastern.edu/',
             ],
             [
-                'org' => 'D’Amore-McKim School of Business',
+                'org' => 'DMSB',
                 'title' => 'D’Amore-McKim School of Business',
                 'url' => 'https://damore-mckim.northeastern.edu/',
             ],
             [
-                'org' => 'School of Law',
+                'org' => 'Law',
                 'title' => 'School of Law',
                 'url' => 'https://www.northeastern.edu/law',
             ],
