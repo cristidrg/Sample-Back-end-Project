@@ -31,24 +31,26 @@ class DatabaseSeeder extends Seeder
                         [
                             'title' => 'Undergraduate Affairs',
                             'description' => '',
-                            'children' => []
+                            'children' => [],
                         ],
                         [
                             'title' => 'Student Affairs',
-                            'description' => ''
+                            'description' => '',
+                            'children' => [
+                                [
+                                    'title' => 'Athletics',
+                                    'description' => ''
+                                ],
+                            ]
                         ],
                         [
                             'title' => 'Digital and Mobile Learning',
-                            'description' => ''
+                            'description' => '',
                         ],
                         [
                             'title' => 'Enrollment Management',
-                            'description' => ''
+                            'description' => '',
                         ],
-                        [
-                            'title' => 'Global Campus Network',
-                            'description' => ''
-                        ]
                     ]
                 ],
                 [
@@ -66,8 +68,8 @@ class DatabaseSeeder extends Seeder
                         [
                             'title' => 'Marketing',
                             'description' => ''
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
                 [
                     'title' => 'Finance',
@@ -191,6 +193,18 @@ class DatabaseSeeder extends Seeder
         */
         DB::table('props')->insert([
             [
+                'title' => 'University Advancement',
+                'url' => 'https://advancement.northeastern.edu/',
+            ],
+            [
+                'title' => 'Alumni Relations',
+                'url' => 'https://alumni.northeastern.edu/',
+            ],
+            [
+                'title' => 'Northeastern Giving',
+                'url' => 'https://giving.northeastern.edu/',
+            ],
+            [
                 'title' => 'Office of the Provost',
                 'url' => 'https://provost.northeastern.edu/',
             ],
@@ -280,6 +294,9 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('monitors')->insert([
+            ['url' => 'https://advancement.northeastern.edu/'],
+            ['url' => 'https://alumni.northeastern.edu/'],
+            ['url' => 'https://giving.northeastern.edu/'],
             ['url' => 'https://provost.northeastern.edu/'],
             ['url' => 'https://broken.northeastern.edu/'],
             ['url' => 'https://its.northeastern.edu/'],
@@ -301,6 +318,12 @@ class DatabaseSeeder extends Seeder
             ['url' => 'https://sail.northeastern.edu/'],
         ]);
 
+        //Advancement
+        $this->createOrgPropMonitorRelationship('Advancement', 'https://advancement.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Advancement', 'https://alumni.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Advancement', 'https://giving.northeastern.edu/');
+
+        // Provost
         $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://its.northeastern.edu/');
@@ -318,6 +341,8 @@ class DatabaseSeeder extends Seeder
         $this->createOrgPropMonitorRelationship('College of Social Sciences and Humanities', 'https://cssh.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('D’Amore-McKim School of Business', 'https://damore-mckim.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('School of Law', 'https://www.northeastern.edu/law');
+
+        //Chancellor
         $this->createOrgPropMonitorRelationship('Chancellor', 'https://chancellor.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Undergraduate Affairs', 'https://sail.northeastern.edu/');
     }
