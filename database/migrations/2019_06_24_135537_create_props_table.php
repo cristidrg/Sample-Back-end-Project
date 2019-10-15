@@ -20,7 +20,7 @@ class CreatePropsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->string('url')->unique();
 
             $table->float('perfScore')->default('0');

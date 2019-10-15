@@ -14,7 +14,7 @@ class CreateOrgsTable extends Migration
     public function up()
     {
         Schema::dropIfExists('orgs');
-   
+
         Schema::create('orgs', function (Blueprint $table) {
             $table->nestedSet();
 
@@ -22,7 +22,7 @@ class CreateOrgsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable();
         });
     }
 
