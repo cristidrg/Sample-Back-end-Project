@@ -176,6 +176,36 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://broken.northeastern.edu/',
             ],
             [
+                'org' => 'Academic Affairs',
+                'title' => 'ADVANCE: Office of Faculty Development',
+                'url' => 'https://faculty.northeastern.edu/advance',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'University Ombuds',
+                'url' => 'https://provost.northeastern.edu/ombuds',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'New Faculty Orientation',
+                'url' => 'https://faculty.northeastern.edu/orientation',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Faculty Senate',
+                'url' => 'https://faculty.northeastern.edu/senate/',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Faculty Handbook',
+                'url' => 'https://faculty.northeastern.edu/handbook/',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Northeast Faculty Leadership Program',
+                'url' => 'https://web.northeastern.edu/nflp/',
+            ],
+            [
                 'org' => 'ITS',
                 'title' => 'Information Technology Services',
                 'url' => 'https://its.northeastern.edu/',
@@ -228,7 +258,7 @@ class DatabaseSeeder extends Seeder
             [
                 'org' => 'COE',
                 'title' => 'Bernard M. Gordon Center for Subsurface Sensing and Imaging Systems (Gordon-CenSSIS)',
-                'url' => 'http://www.censsis.neu.edu',
+                'url' => 'http://www.censsis.neu.edu/',
             ],
             [
                 'org' => 'CPS',
