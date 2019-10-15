@@ -147,23 +147,14 @@ class DatabaseSeeder extends Seeder
                         [
                             'title' => 'Curriculum and Programs',
                             'description' => '',
-                            'children' => [
-                                [
-                                    'title' => 'Explore Program',
-                                    'description' => '',
-                                ],
-                                [
-                                    'title' => 'ROTC',
-                                    'description' => '',
-                                ]
-                            ]
+                            'children' => []
                         ],
                         [
                             'title' => 'Institutional Diversity and Inclusion',
                             'description' => ''
                         ],
                         [
-                            'title' => 'Information Technology',
+                            'title' => 'Information Technology Services',
                             'description' => '',
                             'children' => []
                         ],
@@ -192,7 +183,7 @@ class DatabaseSeeder extends Seeder
         /*
             In order for the lighthouse script to work,
             root level domains need to end with '/'
-            
+
             Correct:
                 https://provost.northeastern.edu/
             Incorrect:
@@ -201,13 +192,35 @@ class DatabaseSeeder extends Seeder
         DB::table('props')->insert([
             [
                 'title' => 'Office of the Provost',
-                'description' => '',
-                'url' => 'https://provost.northeastern.edu/'
+                'url' => 'https://provost.northeastern.edu/',
             ],
             [
                 'title' => 'Broken Property',
-                'description' => '',
-                'url' => 'https://broken.northeastern.edu/'
+                'url' => 'https://broken.northeastern.edu/',
+            ],
+            [
+                'title' => 'Information Technology Services',
+                'url' => 'https://its.northeastern.edu/',
+            ],
+            [
+                'title' => 'Chief Information Officer',
+                'url' => 'https://cio.northeastern.edu/',
+            ],
+            [
+                'title' => 'Academic Technology Services',
+                'url' => 'https://www.northeastern.edu/ats',
+            ],
+            [
+                'title' => 'Office of Information Security',
+                'url' => 'https://www.northeastern.edu/securenu',
+            ],
+            [
+                'title' => 'Digital Accessibility',
+                'url' => 'https://digital-accessibility.northeastern.edu/',
+            ],
+            [
+                'title' => 'Connect to Tech',
+                'url' => 'https://connect-to-tech.northeastern.edu/',
             ],
             [
                 'title' => 'Bouvé College of Health Sciences',
@@ -269,6 +282,12 @@ class DatabaseSeeder extends Seeder
         DB::table('monitors')->insert([
             ['url' => 'https://provost.northeastern.edu/'],
             ['url' => 'https://broken.northeastern.edu/'],
+            ['url' => 'https://its.northeastern.edu/'],
+            ['url' => 'https://cio.northeastern.edu/'],
+            ['url' => 'https://www.northeastern.edu/ats'],
+            ['url' => 'https://www.northeastern.edu/securenu'],
+            ['url' => 'https://digital-accessibility.northeastern.edu/'],
+            ['url' => 'https://connect-to-tech.northeastern.edu/'],
             ['url' => 'https://bouve.northeastern.edu/'],
             ['url' => 'https://camd.northeastern.edu/'],
             ['url' => 'https://www.khoury.northeastern.edu/'],
@@ -284,6 +303,12 @@ class DatabaseSeeder extends Seeder
 
         $this->createOrgPropMonitorRelationship('Provost', 'https://provost.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Provost', 'https://broken.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://its.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://cio.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://www.northeastern.edu/ats');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://www.northeastern.edu/securenu');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://digital-accessibility.northeastern.edu/');
+        $this->createOrgPropMonitorRelationship('Information Technology Services', 'https://connect-to-tech.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Bouvé College of Health Sciences', 'https://bouve.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('College of Arts, Media and Design', 'https://camd.northeastern.edu/');
         $this->createOrgPropMonitorRelationship('Khoury College of Computer Sciences', 'https://www.khoury.northeastern.edu/');
