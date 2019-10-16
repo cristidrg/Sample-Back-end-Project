@@ -20,7 +20,7 @@ Route::get('/', 'Controller@home');
 Route::get('/org/1', function () {
     return redirect('/');
 });
-Route::get('/org/{org}', 'OrgController@show');
+Route::resource('org', 'OrgController');
 Route::get('/prop/{prop}', 'PropController@show');
 
 

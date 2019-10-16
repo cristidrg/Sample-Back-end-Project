@@ -8,7 +8,13 @@ use Kalnoy\Nestedset\NodeTrait;
 class Org extends Model
 {
     use NodeTrait;
-    
+
+    protected $fillable = ['title'];
+    protected $attributes = [
+        'title' => '',
+        'description' => '',
+    ];
+
     public function props()
     {
         return $this->hasMany('App\Prop');
