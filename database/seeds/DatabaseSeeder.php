@@ -106,10 +106,7 @@ class DatabaseSeeder extends Seeder
                             'title' => 'Budget, Planning, and Administration',
                             'children' => [
                                 [
-                                    'title' => 'University Decision Support',
-                                ],
-                                [
-                                    'title' => 'University Registrar',
+                                    'title' => 'UDS',
                                 ],
                             ]
                         ],
@@ -206,6 +203,66 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://web.northeastern.edu/nflp/',
             ],
             [
+                'org' => 'Budget, Planning, and Administration',
+                'title' => 'Academic Fiscal Affairs',
+                'url' => 'https://provost.northeastern.edu/budget',
+            ],
+            [
+                'org' => 'Budget, Planning, and Administration',
+                'title' => 'University Registrar',
+                'url' => 'https://registrar.northeastern.edu/',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'University Decision Support',
+                'url' => 'https://provost.northeastern.edu/uds',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'Career Outcomes',
+                'url' => 'https://dev-graduateoutcomes.northeastern.edu/',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'Facts and Figures',
+                'url' => 'https://facts.northeastern.edu/',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'Undergraduate Education',
+                'url' => 'https://undergraduate.northeastern.edu/',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'Explore Program',
+                'url' => 'http://undergraduate.northeastern.edu/explore',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'NUpath',
+                'url' => 'https://www.northeastern.edu/core',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'ROTC',
+                'url' => 'http://www.northeastern.edu/neurotc',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Office of Institutional Diversity and Inclusion',
+                'url' => 'https://provost.northeastern.edu/oidi',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Diversity at  Northeastern',
+                'url' => 'https://www.northeastern.edu/diversity',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Women of Color in the Academy Conference',
+                'url' => 'http://web.northeastern.edu/woc',
+            ],
+            [
                 'org' => 'ITS',
                 'title' => 'Information Technology Services',
                 'url' => 'https://its.northeastern.edu/',
@@ -234,6 +291,26 @@ class DatabaseSeeder extends Seeder
                 'org' => 'ITS',
                 'title' => 'Connect to Tech',
                 'url' => 'https://connect-to-tech.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Northeastern University Library',
+                'url' => 'https://library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Scholar OneSearch',
+                'url' => 'https://onesearch.library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Digital Repository Service',
+                'url' => 'https://repository.library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Digital Publishing',
+                'url' => 'https://digitalpublishing.library.northeastern.edu/',
             ],
             [
                 'org' => 'Bouvé',
@@ -271,9 +348,19 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://cos.northeastern.edu/',
             ],
             [
+                'org' => 'COS',
+                'title' => 'Marine Science Center',
+                'url' => 'https://cos.northeastern.edu/marinescience',
+            ],
+            [
                 'org' => 'CSSH',
                 'title' => 'College of Social Sciences and Humanities',
                 'url' => 'https://cssh.northeastern.edu/',
+            ],
+            [
+                'org' => 'CSSH',
+                'title' => 'Center for International Affairs and World Cultures',
+                'url' => 'https://cssh.northeastern.edu/internationalcenter',
             ],
             [
                 'org' => 'DMSB',
