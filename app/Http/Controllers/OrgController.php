@@ -17,7 +17,7 @@ class OrgController extends Controller
     {
         $orgs = Org::all();
 
-        return view('orgindex', compact('orgs'));
+        return view('org/index', compact('orgs'));
     }
 
     /**
@@ -29,7 +29,7 @@ class OrgController extends Controller
     {
         $orgs = Org::all();
 
-        return view('orgcreate', [
+        return view('org/create', [
             'orgs' => $orgs
         ]);
     }
@@ -71,7 +71,7 @@ class OrgController extends Controller
     {
         $org = Org::find($id);
 
-        return view('org', [
+        return view('org/show', [
             'org' => $org,
             'childrenOrgs' => $org->children,
             'childrenProps' => $org->props,
@@ -90,7 +90,7 @@ class OrgController extends Controller
     public function edit($id)
     {
         $org = Org::find($id);
-        return view('orgedit', [
+        return view('org/edit', [
             'org' => $org,
             'parent_title' => $org->parent->title,
             'orgs' => Org::all()
@@ -120,7 +120,7 @@ class OrgController extends Controller
         $org->parent_id = $orgParent->id;
 
         $org->save();
-        
+
         return redirect('/org')->with('success', 'org updated!');
     }
 
