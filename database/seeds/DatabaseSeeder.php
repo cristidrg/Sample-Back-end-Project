@@ -106,10 +106,7 @@ class DatabaseSeeder extends Seeder
                             'title' => 'Budget, Planning, and Administration',
                             'children' => [
                                 [
-                                    'title' => 'University Decision Support',
-                                ],
-                                [
-                                    'title' => 'University Registrar',
+                                    'title' => 'UDS',
                                 ],
                             ]
                         ],
@@ -126,7 +123,7 @@ class DatabaseSeeder extends Seeder
                             'title' => 'Library',
                         ],
                         [
-                            'title' => 'Entreprenuership',
+                            'title' => 'Entrepreneurship',
                         ],
                         [
                             'title' => 'Research',
@@ -172,68 +169,42 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'Provost',
+                'title' => 'Academic Honors',
+                'url' => 'http://provost.northeastern.edu/academic-honors',
+            ],
+            [
+                'org' => 'Provost',
+                'title' => 'International Travel',
+                'url' => 'http://provost.northeastern.edu/international-travel',
+            ],
+            [
+                'org' => 'Provost',
+                'title' => 'NCH',
+                'url' => 'http://provost.northeastern.edu/nch',
+                'description' => 'Temporary site welcoming NCH (London campus) graduates and alumni',
+            ],
+            [
+                'org' => 'Provost',
+                'title' => 'Chancellor reorg feedback',
+                'url' => 'https://provost.northeastern.edu/chancellor',
+                'description' => 'Temporary reorganization feedback site',
+            ],
+            [
+                'org' => 'Provost',
+                'title' => 'Meet the University',
+                'url' => 'http://provost.northeastern.edu/meet-the-university',
+                'description' => 'A monthly speaker series designed to help staff bridge the gap between their daily contributions and the bigger picture goals of Northeastern 2025.',
+            ],
+            [
+                'org' => 'Provost',
+                'title' => 'Provost Candidate Search',
+                'url' => 'http://provost.northeastern.edu/candidate-search',
+                'description' => 'Temporary Provost candidate search site',
+            ],
+            [
+                'org' => 'Provost',
                 'title' => 'Broken Property',
                 'url' => 'https://broken.northeastern.edu/',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'ADVANCE: Office of Faculty Development',
-                'url' => 'https://faculty.northeastern.edu/advance',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'University Ombuds',
-                'url' => 'https://provost.northeastern.edu/ombuds',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'New Faculty Orientation',
-                'url' => 'https://faculty.northeastern.edu/orientation',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'Faculty Senate',
-                'url' => 'https://faculty.northeastern.edu/senate/',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'Faculty Handbook',
-                'url' => 'https://faculty.northeastern.edu/handbook/',
-            ],
-            [
-                'org' => 'Academic Affairs',
-                'title' => 'Northeast Faculty Leadership Program',
-                'url' => 'https://web.northeastern.edu/nflp/',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Information Technology Services',
-                'url' => 'https://its.northeastern.edu/',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Chief Information Officer',
-                'url' => 'https://cio.northeastern.edu/',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Academic Technology Services',
-                'url' => 'https://www.northeastern.edu/ats',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Office of Information Security',
-                'url' => 'https://www.northeastern.edu/securenu',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Digital Accessibility',
-                'url' => 'https://digital-accessibility.northeastern.edu/',
-            ],
-            [
-                'org' => 'ITS',
-                'title' => 'Connect to Tech',
-                'url' => 'https://connect-to-tech.northeastern.edu/',
             ],
             [
                 'org' => 'Bouvé',
@@ -271,9 +242,19 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://cos.northeastern.edu/',
             ],
             [
+                'org' => 'COS',
+                'title' => 'Marine Science Center',
+                'url' => 'https://cos.northeastern.edu/marinescience',
+            ],
+            [
                 'org' => 'CSSH',
                 'title' => 'College of Social Sciences and Humanities',
                 'url' => 'https://cssh.northeastern.edu/',
+            ],
+            [
+                'org' => 'CSSH',
+                'title' => 'Center for International Affairs and World Cultures',
+                'url' => 'https://cssh.northeastern.edu/internationalcenter',
             ],
             [
                 'org' => 'DMSB',
@@ -286,6 +267,216 @@ class DatabaseSeeder extends Seeder
                 'url' => 'https://www.northeastern.edu/law',
             ],
             [
+                'org' => 'Academic Affairs',
+                'title' => 'ADVANCE: Office of Faculty Development',
+                'url' => 'https://faculty.northeastern.edu/advance',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'University Ombuds',
+                'url' => 'https://provost.northeastern.edu/ombuds',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'New Faculty Orientation',
+                'url' => 'https://faculty.northeastern.edu/orientation',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Faculty Senate',
+                'url' => 'https://faculty.northeastern.edu/senate/',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Faculty Handbook',
+                'url' => 'https://faculty.northeastern.edu/handbook/',
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'Northeast Faculty Leadership Program',
+                'url' => 'https://web.northeastern.edu/nflp/',
+            ],
+            [
+                'org' => 'Budget, Planning, and Administration',
+                'title' => 'Academic Fiscal Affairs',
+                'url' => 'https://provost.northeastern.edu/budget',
+            ],
+            [
+                'org' => 'Budget, Planning, and Administration',
+                'title' => 'University Registrar',
+                'url' => 'https://registrar.northeastern.edu/',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'University Decision Support',
+                'url' => 'https://provost.northeastern.edu/uds',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'Career Outcomes',
+                'url' => 'https://dev-graduateoutcomes.northeastern.edu/',
+            ],
+            [
+                'org' => 'UDS',
+                'title' => 'Facts and Figures',
+                'url' => 'https://facts.northeastern.edu/',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'Undergraduate Education',
+                'url' => 'https://undergraduate.northeastern.edu/',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'Explore Program',
+                'url' => 'http://undergraduate.northeastern.edu/explore',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'NUpath',
+                'url' => 'https://www.northeastern.edu/core',
+            ],
+            [
+                'org' => 'Curriculum and Programs',
+                'title' => 'ROTC',
+                'url' => 'http://www.northeastern.edu/neurotc',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Office of Institutional Diversity and Inclusion',
+                'url' => 'https://provost.northeastern.edu/oidi',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Diversity at  Northeastern',
+                'url' => 'https://www.northeastern.edu/diversity',
+            ],
+            [
+                'org' => 'Institutional Diversity and Inclusion',
+                'title' => 'Women of Color in the Academy Conference',
+                'url' => 'http://web.northeastern.edu/woc',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Information Technology Services',
+                'url' => 'https://its.northeastern.edu/',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Chief Information Officer',
+                'url' => 'https://cio.northeastern.edu/',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Academic Technology Services',
+                'url' => 'https://www.northeastern.edu/ats',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Office of Information Security',
+                'url' => 'https://www.northeastern.edu/securenu',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Digital Accessibility',
+                'url' => 'https://digital-accessibility.northeastern.edu/',
+            ],
+            [
+                'org' => 'ITS',
+                'title' => 'Connect to Tech',
+                'url' => 'https://connect-to-tech.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Northeastern University Library',
+                'url' => 'https://library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Scholar OneSearch',
+                'url' => 'https://onesearch.library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Digital Repository Service',
+                'url' => 'https://repository.library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Library',
+                'title' => 'Digital Publishing',
+                'url' => 'https://digitalpublishing.library.northeastern.edu/',
+            ],
+            [
+                'org' => 'Entrepreneurship',
+                'title' => 'Center for Research Innovation',
+                'url' => 'https://www.northeastern.edu/cri',
+            ],
+            [
+                'org' => 'Research',
+                'title' => 'Division of Research',
+                'url' => 'https://research.northeastern.edu/',
+            ],
+            [
+                'org' => 'Research',
+                'title' => 'Office of Research Development',
+                'url' => 'https://www.northeastern.edu/resdev',
+            ],
+            [
+                'org' => 'Research',
+                'title' => 'Research Enterprise Services (NU-RES)',
+                'url' => 'https://research.northeastern.edu/nu-res',
+            ],
+            [
+                'org' => 'Research',
+                'title' => 'Human Subjects Research Protection (HRSP)',
+                'url' => 'https://research.northeastern.edu/hsrp',
+            ],
+            [
+                'org' => 'Research',
+                'title' => 'Animal Care (DLAM)',
+                'url' => 'https://research.northeastern.edu/animalcare',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Coastal Sustainability Institute',
+                'url' => 'https://www.northeastern.edu/csi',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Cybersecurity and Privacy Institute',
+                'url' => 'https://cyber.khoury.northeastern.edu',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Global Resilience Institute',
+                'url' => 'https://globalresilience.northeastern.edu/',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Institute for Chemical Imaging of Living Systems',
+                'url' => 'https://www.northeastern.edu/cils/',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Institute for Experiential Robotics',
+                'url' => 'https://www.northeastern.edu/robotics',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Institute for the Wireless Internet of Things',
+                'url' => 'https://www.northeastern.edu/wiot',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Kostas Research Institute for Homeland Security',
+                'url' => 'http://northeastern.edu/kostas',
+            ],
+            [
+                'org' => 'Institutes',
+                'title' => 'Network Science Institute',
+                'url' => 'https://www.networkscienceinstitute.org',
+            ],
+            [
                 'org' => 'Chancellor',
                 'title' => 'Office of the Chancellor',
                 'url' => 'https://chancellor.northeastern.edu/',
@@ -294,6 +485,11 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Undergraduate Affairs',
                 'title' => 'Self-Authored Integrated Learning (SAIL)',
                 'url' => 'https://sail.northeastern.edu/',
+            ],
+            [
+                'org' => 'Digital and Mobile Learning',
+                'title' => 'Global Experience Office (GEO)',
+                'url' => 'https://www.northeastern.edu/geo',
             ],
         ];
 
