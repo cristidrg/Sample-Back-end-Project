@@ -22,6 +22,7 @@ Route::get('/org/1', function () {
 });
 Route::resource('org', 'OrgController');
 Route::resource('prop', 'PropController');
+Route::resource('technology', 'TechnologyController');
 
 Route::any('/search',function() {
     $q = Input::get( 'search_title' );

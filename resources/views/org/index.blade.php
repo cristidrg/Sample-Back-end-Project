@@ -7,6 +7,7 @@
         {{ session()->get('popup') }}  
     @endif
     <div>
+        <a href="{{ route('org.create') }}" class="btn">Create</a>
         <table class="table table-striped">
             <thead>
                 <tr>

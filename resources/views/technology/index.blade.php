@@ -1,35 +1,31 @@
 @extends('layout')
 
-@section('title', 'Prop List')
+@section('title', 'Technology List')
 
 @section('content')
     @if(session()->get('popup'))
         {{ session()->get('popup') }}  
     @endif
     <div>
-        <a href="{{ route('prop.create') }}" class="btn">Create</a>
+        <a href="{{ route('technology.create') }}" class="btn">Create</a>
         <table class="table table-striped">
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Title</td>
-                    <td>URL</td>
-                    <td>Parent Org Id</td>
+                    <td>Name</td>
                     <td colspan = 2>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                @foreach($props as $prop)
+                @foreach($technologies as $technology)
                 <tr>
-                    <td>{{$prop->id}}</td>
-                    <td>{{$prop->title}}</td>
-                    <td>{{$prop->url}}</td>
-                    <td>{{$prop->org_id}}</td>
+                    <td>{{$technology->id}}</td>
+                    <td>{{$technology->name}}</td>
                     <td>
-                        <a href="{{ route('prop.edit',$prop->id)}}" class="btn">Edit</a>
+                        <a href="{{ route('technology.edit',$technology->id)}}" class="btn">Edit</a>
                     </td>
                     <td>
-                        <form action="{{ route('prop.destroy', $prop->id)}}" method="post">
+                        <form action="{{ route('technology.destroy', $technology->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn" type="submit">Delete</button>
