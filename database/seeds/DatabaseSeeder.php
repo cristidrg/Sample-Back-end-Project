@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Prop;
 use App\Org;
+use App\Technology;
 
 use Spatie\UptimeMonitor\Models\Monitor;
 
@@ -151,6 +152,7 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Advancement',
                 'title' => 'University Advancement',
                 'url' => 'https://advancement.northeastern.edu/',
+                'technologies' => ['Wodrpress', 'PHP']
             ],
             [
                 'org' => 'Advancement',
@@ -504,7 +506,20 @@ class DatabaseSeeder extends Seeder
             ]);
 
             $this->createOrgPropMonitorRelationship($prop['org'], $prop['url']);
+
+            if (isset($prop['technologies'])) {
+                foreach ($prop['technologies'] as $technology) {
+                    $technologyModel = Technology::where('name', $prop['url'])->first();
+                    
+                    if ($technologyModel == null) {
+                        $technologyModel = Technology::create(['name' => $technology]);
+                    }
+
+                    Prop::where('url', $prop['url'])->first()->technologies()->save($technologyModel);
+                }
+            }
         }
+
     }
 
     /*

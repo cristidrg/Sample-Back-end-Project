@@ -17,6 +17,11 @@ class Prop extends Model
         return $this->hasOne('Spatie\UptimeMonitor\Models\Monitor', 'url', 'url');
     }
 
+    public function technologies()
+    {
+        return $this->hasMany('App\Technology');
+    }
+
     public function org()
     {
         return $this->belongsTo('App\Org');
