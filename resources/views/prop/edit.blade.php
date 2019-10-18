@@ -1,24 +1,24 @@
 @extends('layout')
 
-@section('title', 'Edit Org')
+@section('title', 'Edit Prop')
 
 @section('content')
     <div>
-        <form method="post" action={{ route('org.update', $org->id) }}>
+        <form method="post" action={{ route('prop.update', $prop->id) }}>
             @method('PATCH') 
             @csrf
             <div>
                 @csrf
-                <label for="title">Org Title:</label>
-                <input required type="text" class="form-control" name="title" value={{ $org->title }} />
+                <label for="title">Prop Title:</label>
+                <input required type="text" class="form-control" name="title" value={{ $prop->title }} />
             </div>
             <div>
                 @csrf
-                <label for="description">Org Description:</label>
-                <input required type="text" class="form-control" name="description" value={{ $org->description }} />
+                <label for="url">Prop Url:</label>
+                <input required type="text" class="form-control" name="url" value={{ $prop->url }} />
             </div>
             <div>
-                <label for="parent">Org Parent:</label>
+                <label for="parent">Parent org:</label>
                 <select name="parent" value={{$parent_title}}>
                     @foreach ($orgs as $org)
                         @if ($org->title == $parent_title)

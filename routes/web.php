@@ -21,9 +21,7 @@ Route::get('/org/1', function () {
     return redirect('/');
 });
 Route::resource('org', 'OrgController');
-Route::get('/prop/{prop}', 'PropController@show');
-
-
+Route::resource('prop', 'PropController');
 
 Route::any('/search',function() {
     $q = Input::get( 'search_title' );

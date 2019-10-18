@@ -512,7 +512,7 @@ class DatabaseSeeder extends Seeder
         @orgTitle - The org->title value
         @propUrl - the url of the prop -- be sure that a monitor with this url is created
     */
-    private function createOrgPropMonitorRelationship($orgTitle, $propUrl)
+    public function createOrgPropMonitorRelationship($orgTitle, $propUrl)
     {
         $prop = Prop::where('url', $propUrl)->first();
         $org = Org::where('title', $orgTitle)->first();

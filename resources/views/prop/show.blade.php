@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Org')
+@section('title', $prop->title)
 
 @section('content')
     <div>

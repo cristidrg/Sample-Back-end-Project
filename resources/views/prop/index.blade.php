@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Org List')
+@section('title', 'Prop List')
 
 @section('content')
     @if(session()->get('popup'))
@@ -12,23 +12,23 @@
                 <tr>
                     <td>ID</td>
                     <td>Title</td>
-                    <td>Description</td>
-                    <td>Parent ID</td>
+                    <td>URL</td>
+                    <td>Parent Org Id</td>
                     <td colspan = 2>Actions</td>
                 </tr>
             </thead>
             <tbody>
-                @foreach($orgs as $org)
+                @foreach($props as $prop)
                 <tr>
-                    <td>{{$org->id}}</td>
-                    <td>{{$org->title}}</td>
-                    <td>{{$org->description}}</td>
-                    <td>{{$org->parent_id}}</td>
+                    <td>{{$prop->id}}</td>
+                    <td>{{$prop->title}}</td>
+                    <td>{{$prop->url}}</td>
+                    <td>{{$prop->org_id}}</td>
                     <td>
-                        <a href="{{ route('org.edit',$org->id)}}" class="btn">Edit</a>
+                        <a href="{{ route('prop.edit',$prop->id)}}" class="btn">Edit</a>
                     </td>
                     <td>
-                        <form action="{{ route('org.destroy', $org->id)}}" method="post">
+                        <form action="{{ route('prop.destroy', $prop->id)}}" method="post">
                             @csrf
                             @method('DELETE')
                             <button class="btn" type="submit">Delete</button>
