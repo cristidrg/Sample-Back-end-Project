@@ -29,7 +29,7 @@ class CreatePropsTable extends Migration
             $table->string('fetchTime')->default('0');
 
             $table->integer('org_id')->unsigned()->index()->nullable();
-            $table->foreign('org_id')->references('id')->on('orgs');
+            $table->foreign('org_id')->references('id')->on('orgs')->onDelete('cascade');
         });
     }
 

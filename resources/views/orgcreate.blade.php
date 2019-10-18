@@ -4,6 +4,9 @@
 
 @section('content')
     <div>
+        @if(session()->get('popup'))
+            {{ session()->get('popup') }}  
+        @endif
         <form method="post" action={{ route('org.store') }}>
             <div>
                 @csrf

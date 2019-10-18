@@ -15,7 +15,9 @@ class OrgController extends Controller
      */
     public function index()
     {
-        //
+        $orgs = Org::all();
+
+        return view('orgindex', compact('orgs'));
     }
 
     /**
@@ -44,14 +46,14 @@ class OrgController extends Controller
             'org_title'=>'required',
             'org_parent'=>'required',
         ]);
-        
-        $orgParent = Org::where('title', $request->get('org_parent'))->first();;
-        info($orgParent);
 
+        if (Org::where('title', $request->get('org_title'))->first() != null) {
+            return redirect('/org/create')->with('popup', 'Error: There is an org with that title already.');
+        }
+
+        $orgParent = Org::where('title', $request->get('org_parent'))->first();
         if ($orgParent == null) {
-            return redirect('/org/create', [
-                'popup' => 'Fail to create'
-            ]);
+            return redirect('/org/create')->with('popup', 'Error: The parent org does not exist');
         }
 
         $org = Org::create(['title' => $request->get('org_title')], $orgParent);
@@ -87,7 +89,12 @@ class OrgController extends Controller
      */
     public function edit($id)
     {
-        //
+        $org = Org::find($id);
+        return view('orgedit', [
+            'org' => $org,
+            'parent_title' => $org->parent->title,
+            'orgs' => Org::all()
+        ]);
     }
 
     /**
@@ -99,7 +106,22 @@ class OrgController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'description'=>'required',
+            'parent' =>'required',
+        ]);
+
+        $org = Org::find($id);
+        $org->title =  $request->get('title');
+        $org->description = $request->get('description');
+        
+        $orgParent = Org::where('title', $request->get('parent'))->first();
+        $org->parent_id = $orgParent->id;
+
+        $org->save();
+        
+        return redirect('/org')->with('success', 'org updated!');
     }
 
     /**
@@ -110,6 +132,9 @@ class OrgController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $org = Org::find($id);
+        $org->delete();
+
+        return redirect('/org')->with('popup', 'Org with id ' . $id .' has been deleted');
     }
 }
