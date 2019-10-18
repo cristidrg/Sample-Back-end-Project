@@ -43,7 +43,7 @@
             </div>
             <nav id="navigation" data-navigation-handle=".nav__handle" role="navigation">
                 <form action="/search" method="POST" role="search">
-                    {{ csrf_field() }}
+                    @csrf
                     <input class="nav__search bg-black" name="search_title" type="text" placeholder="Search Properties"
                     value="{{$q}}">
 
@@ -51,29 +51,28 @@
                         <label class="nav__option">Uptime</label>
 
                         <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="monitor_up" type="checkbox"   {{$monitor_up != 'false' ? "checked" : ''}}>Up</label>
-                            <label><input name="monitor_down" type="checkbox" {{$monitor_down != 'false' ? "checked": ''}}>Down</label>
+                            <label><input name="monitor" type="radio" value="up" {{$monitor_up != 'false' ? "checked" : ''}}>Up</label>
+                            <label><input name="monitor" type="radio" value="down" {{$monitor_down != 'false' ? "checked": ''}}>Down</label>
                         </div>
-                        {{$a11y_red}}
                         <label class="nav__option">Accessibility</label>
                         <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="a11y_green" type="checkbox" {{$a11y_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="a11y_yellow" type="checkbox" {{$a11y_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="a11y_red" type="checkbox" {{$a11y_red != 'false' ? "checked" : ''}}>0-49</label>
+                            <label><input name="a11y" type="radio" value="green" {{$a11y_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label><input name="a11y" type="radio" value="yellow" {{$a11y_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label><input name="a11y" type="radio" value="red" {{$a11y_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
 
                         <label class="nav__option">SEO</label>
                         <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="seo_green" type="checkbox" {{$seo_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="seo_yellow" type="checkbox" {{$seo_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="seo_red" type="checkbox" {{$seo_red != 'false' ? "checked" : ''}}>0-49</label>
+                            <label><input name="seo" type="radio" value="green" {{$seo_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label><input name="seo" type="radio" value="yellow" {{$seo_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label><input name="seo" type="radio" value="red" {{$seo_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
 
                         <label class="nav__option">Performance</label>
                         <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="perf_green" type="checkbox" {{$perf_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="perf_yellow" type="checkbox" {{$perf_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="perf_red" type="checkbox" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
+                            <label><input name="perf" type="radio" value="green" {{$perf_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label><input name="perf" type="radio" value="yellow" {{$perf_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label><input name="perf" type="radio" value="red" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
                     </div>
                     <button class="nav__form-submit btn bg-red" type="submit">Filter</button>
