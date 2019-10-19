@@ -123,9 +123,11 @@ class PropController extends Controller
     public function edit($id)
     {
         $prop = Prop::find($id);
+        $propEnvs = json_decode($prop->environments);
 
         return view('prop/edit', [
             'prop' => $prop,
+            'propEnvs' => $propEnvs,
             'parent_title' => $prop->org->title,
             'orgs' => Org::all(),
             'technologies' => Technology::all()
@@ -151,11 +153,32 @@ class PropController extends Controller
         $prop = Prop::find($id);
         $prop->title =  $request->get('title');
         $prop->url = $request->get('url');
+
+        $environments = array();
+        $env_types = $request->get('env_types');
+        $env_servers = $request->get('env_servers');
+        $env_urls = $request->get('env_urls');
+
+        if ($env_types && count($env_types) > 0) {
+            foreach($env_types as $index=>$env_type) {
+                $env_entry = [];
+                $env_entry['type'] = $env_type;
+                $env_entry['server'] = $env_servers[$index];
+                $env_entry['url'] = $env_urls[$index];
+                
+                $environments[$index] = $env_entry;
+            }
+        }
+        $prop->environments = json_encode($environments);
         
-        $prop->technologies()->detach();
-        foreach ($request->get('technologies') as $technology) {
-            $technologyModel = Technology::where('name', $technology)->first();
-            $prop->technologies()->attach($technologyModel);
+        $technologies = $request->get('technologies');
+        if ($technologies && count($technologies) > 0) {
+            $prop->technologies()->detach();
+            
+            foreach ($technologies as $technology) {
+                $technologyModel = Technology::where('name', $technology)->first();
+                $prop->technologies()->attach($technologyModel);
+            }
         }
 
         $parentOrg = Org::where('title', $request->get('parent'))->first();

@@ -42,6 +42,27 @@
                     @endforeach
                 </select>
             </div>
+             <div>
+                <label>Environments:</label>
+                <div class="prop-environment-form">
+                    @foreach ($propEnvs as $index=>$environment)
+                        @php
+                            $index = $index +1;
+                        @endphp
+                        <p>Environment {{$index}}</p>
+                        <label>Type:</label>
+                        <input type="text" name="{{'env_types['.$index.']'}}" value="{{$environment->type}}"/>
+
+                        <label>Server:</label>
+                        <input type="text" name="{{'env_servers['.$index.']'}}" value="{{$environment->server}}"/>
+
+                        <label>URL:</label>
+                        <input type="text" name="{{'env_urls['.$index.']'}}" value="{{$environment->url}}"/>
+                    @endforeach
+                </div>
+                <button class="prop-environment-form__add">Add environment</button>
+                <button class="prop-environment-form__remove">Remove environment</button>
+            </div>
             <button type="submit">Update</button>
         </form>
     </div>
