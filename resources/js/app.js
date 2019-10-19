@@ -5,3 +5,4 @@ feather.replace()
 require('./charts');
 require('./jqueryMenus');
 require('./propTabs');
+require('./dynamicInput');

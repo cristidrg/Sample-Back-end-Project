@@ -49,29 +49,48 @@ class PropController extends Controller
             'url' => 'required',
             'parent_org' => 'required'
         ]);
-
+        
         if (Prop::where('url', $request->get('url'))->first() != null) {
             return redirect('/prop/create')->with('popup', 'Error: There is a prop with that url already.');
         }
 
-        $parentOrg = Org::where('title', $request->get('parent_org'))->first();
-        if ($parentOrg == null) {
-            return redirect('/prop/create')->with('popup', 'Error: The given parent org does not exist.');
+        $environments = array();
+        $env_types = $request->get('env_types');
+        $env_servers = $request->get('env_servers');
+        $env_urls = $request->get('env_urls');
+
+        if ($env_types && count($env_types) > 0) {
+            foreach($env_types as $index=>$env_type) {
+                $env_entry = [];
+                $env_entry['type'] = $env_type;
+                $env_entry['server'] = $env_servers[$index];
+                $env_entry['url'] = $env_urls[$index];
+                
+                $environments[$index] = $env_entry;
+            }
         }
 
-        $monitor = Monitor::create(['url' => $request->get('url')]);
         $prop = Prop::create([
             'title' => $request->get('title'),
-            'url' => $request->get('url')
+            'url' => $request->get('url'),
+            'environments' => json_encode(array_values($environments))
         ]);
+        
+        $monitor = Monitor::create(['url' => $request->get('url')]);
+        $prop->monitor()->save($monitor);
 
-        foreach ($request->get('technologies') as $technology) {
-            $technologyModel = Technology::where('name', $technology)->first();
-            $prop->technologies()->save($technologyModel);
+        $parentOrg = Org::where('title', $request->get('parent_org'))->first();
+        $parentOrg->props()->save($prop);
+
+        $technologies = $request->get('technologies');
+        if ($technologies && count($technologies) > 0) {
+            foreach ($technologies as $technology) {
+                $technologyModel = Technology::where('name', $technology)->first();
+                $prop->technologies()->save($technologyModel);
+            }
         }
 
-        $prop->monitor()->save($monitor);
-        $parentOrg->props()->save($prop);
+        $prop->save();
 
         return redirect('prop/')->with('popup', 'Prop ' . $request->get('title') . ' has been created!');
     }
@@ -142,7 +161,7 @@ class PropController extends Controller
         $parentOrg = Org::where('title', $request->get('parent'))->first();
         $prop->org()->dissociate();
         $parentOrg->props()->save($prop);
-        
+
         $prop->save();
 
         return redirect('/prop')->with('success', 'prop updated!');

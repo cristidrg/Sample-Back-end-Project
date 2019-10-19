@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prop extends Model
 { 
-    protected $fillable = ['title', 'url'];
+    protected $fillable = ['title', 'url', 'environments'];
     protected $attributes = [
         'title' => '',
         'url' => '',
+        'environments' => '[]'
     ];
 
     public function monitor()
