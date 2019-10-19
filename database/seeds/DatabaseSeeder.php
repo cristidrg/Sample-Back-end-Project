@@ -520,6 +520,18 @@ class DatabaseSeeder extends Seeder
             }
         }
 
+        DB::table('users')->insert([
+            'first_name' => 'Cristian',
+            'last_name' => 'Dragomir',
+            'email' => 'address@mailbox.com',
+            'title' => 'developer'
+        ]);
+        DB::table('users')->insert([
+            'first_name' => 'Tim',
+            'last_name' => 'Albert',
+            'email' => 'mailbox@address.com',
+            'title' => 'developer'
+        ]);
     }
 
     /*
