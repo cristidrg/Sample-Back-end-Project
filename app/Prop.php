@@ -19,7 +19,7 @@ class Prop extends Model
 
     public function technologies()
     {
-        return $this->hasMany('App\Technology');
+        return $this->belongsToMany('App\Technology', 'props_technologies', 'prop_id', 'technology_id');
     }
 
     public function org()

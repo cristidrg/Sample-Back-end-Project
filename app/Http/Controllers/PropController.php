@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Org;
 use App\Prop;
 use App\Utils;
+use App\Technology;
 use Illuminate\Http\Request;
 use Spatie\UptimeMonitor\Models\Monitor;
 
@@ -29,16 +30,15 @@ class PropController extends Controller
      */
     public function create()
     {
-        $orgs = Org::all();
-
         return view('prop/create', [
-            'orgs' => $orgs
+            'orgs' => Org::all(),
+            'technologies' => Technology::all()
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     * 
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -64,6 +64,11 @@ class PropController extends Controller
             'title' => $request->get('title'),
             'url' => $request->get('url')
         ]);
+
+        foreach ($request->get('technologies') as $technology) {
+            $technologyModel = Technology::where('name', $technology)->first();
+            $prop->technologies()->save($technologyModel);
+        }
 
         $prop->monitor()->save($monitor);
         $parentOrg->props()->save($prop);
@@ -99,10 +104,12 @@ class PropController extends Controller
     public function edit($id)
     {
         $prop = Prop::find($id);
+
         return view('prop/edit', [
             'prop' => $prop,
             'parent_title' => $prop->org->title,
-            'orgs' => Org::all()
+            'orgs' => Org::all(),
+            'technologies' => Technology::all()
         ]);
 
     }
@@ -119,20 +126,23 @@ class PropController extends Controller
         $request->validate([
             'title'=>'required',
             'url'=>'required',
-            'parent' =>'required',
+            'parent' =>'required'
         ]);
 
         $prop = Prop::find($id);
         $prop->title =  $request->get('title');
         $prop->url = $request->get('url');
         
+        $prop->technologies()->detach();
+        foreach ($request->get('technologies') as $technology) {
+            $technologyModel = Technology::where('name', $technology)->first();
+            $prop->technologies()->attach($technologyModel);
+        }
+
         $parentOrg = Org::where('title', $request->get('parent'))->first();
-        
         $prop->org()->dissociate();
-        $prop->save();
-
-
         $parentOrg->props()->save($prop);
+        
         $prop->save();
 
         return redirect('/prop')->with('success', 'prop updated!');

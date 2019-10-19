@@ -30,6 +30,9 @@
     </head>
     <body class="props-body">
         <div class="nav">
+            <div>
+            Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a>
+            </div>
             <div class="nav__icons">
                 <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
                 <div class="nav__handle">

@@ -21,8 +21,10 @@ Route::get('/org/1', function () {
     return redirect('/');
 });
 Route::resource('org', 'OrgController');
-Route::resource('prop', 'PropController');
 Route::resource('technology', 'TechnologyController');
+Route::resource('prop', 'PropController');
+Route::post('/prop/{id}/technologies', 'PropController@addTechnology');
+Route::delete('/prop/{id}/tags/{tagID}', 'PropController@deleteTechnology');
 
 Route::any('/search',function() {
     $q = Input::get( 'search_title' );

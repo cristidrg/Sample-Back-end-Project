@@ -15,6 +15,7 @@
                     <td>Title</td>
                     <td>URL</td>
                     <td>Parent Org Id</td>
+                    <td>Technologies</td>
                     <td colspan = 2>Actions</td>
                 </tr>
             </thead>
@@ -25,6 +26,11 @@
                     <td>{{$prop->title}}</td>
                     <td>{{$prop->url}}</td>
                     <td>{{$prop->org_id}}</td>
+                    <td>
+                        @foreach($prop->technologies as $technology)
+                            {{$technology->name}} 
+                        @endforeach
+                    </td>
                     <td>
                         <a href="{{ route('prop.edit',$prop->id)}}" class="btn">Edit</a>
                     </td>

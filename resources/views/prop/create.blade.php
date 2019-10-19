@@ -25,6 +25,14 @@
                     @endforeach
                 </select>
             </div>
+            <div>
+                <label for="technologies">Technologies:</label>
+                <select name="technologies[]" multiple>
+                    @foreach ($technologies as $technology)
+                        <option>{{$technology->name}}</option>
+                    @endforeach
+                </select>
+            </div>
             <button type="submit">Add</button>
         </form>
     </div>

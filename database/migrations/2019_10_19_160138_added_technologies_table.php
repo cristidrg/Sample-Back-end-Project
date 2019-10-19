@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTechnologiesTable extends Migration
+class AddedTechnologiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,9 @@ class CreateTechnologiesTable extends Migration
     public function up()
     {
         Schema::create('technologies', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->string('name');
+            $table->increments('id');
+            $table->string('name')->unique();
             $table->timestamps();
-
-            $table->integer('prop_id')->unsigned()->index()->nullable();
-            $table->foreign('prop_id')->references('id')->on('props')->onDelete('cascade');
         });
     }
 

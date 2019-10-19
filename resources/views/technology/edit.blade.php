@@ -9,7 +9,7 @@
             @csrf
             <div>
                 <label for="name">Technology Name:</label>
-                <input required type="text" class="form-control" name="name" value={{ $technology->name }} />
+                <input required type="text" class="form-control" name="name" value="{{ $technology->name }}" />
             </div>
             <button type="submit">Update</button>
         </form>
