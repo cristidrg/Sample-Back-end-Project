@@ -1,6 +1,6 @@
 # NU Props 
 
-## Installating Dev Environment
+## Installating Dev Environment Locally
 
 ```
 composer install
@@ -21,6 +21,11 @@ php artisan serve
 npm run watch - in another terminal
 ```
 
+
+## Installing on a server
+Install Node
+Install PHP and Laravel
+Install a mail server https://devanswers.co/how-to-get-php-mail-working-on-ubuntu-16-04-digitalocean-droplet/
 
 ## Useful Links
 https://github.com/spatie/uptime-monitor-app + https://laravel.com/docs/5.8/scheduling
