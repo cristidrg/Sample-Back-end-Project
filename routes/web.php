@@ -17,9 +17,9 @@ use Illuminate\Support\Facades\Input;
 */
 
 Route::get('/', 'Controller@home');
-Route::get('/org/1', function () {
-    return redirect('/');
-});
+// Route::get('/org/1', function () {
+//     return redirect('/');
+// });
 Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
 Route::resource('prop', 'PropController');

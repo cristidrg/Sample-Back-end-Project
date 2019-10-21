@@ -26094,8 +26094,16 @@ table {
   border-spacing: 0;
 }
 
-body {
-  font-family: "Lato", sans-serif;
+.audit_bar {
+  height: 20px;
+  position: relative;
+}
+
+.audit_bar > span {
+  display: block;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
 }
 
 .hidden-visi {

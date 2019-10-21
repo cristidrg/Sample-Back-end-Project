@@ -22,13 +22,13 @@
         <title>NU PROPS - @yield('title')</title>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700&display=swap" rel="stylesheet">
         
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css" }}>
         <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
-    <body class="bg-gray-900 props-body">
+    <body class="bg-gray-900 font-body props-body">
         <div class="nav">
             <div>
             Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
@@ -83,7 +83,7 @@
             </nav>
         </div>
 
-        <main class="container mx-auto">
+        <main class="w-full ml-10 mt-12 mr-16">
             @yield('content')
         </main>
     </body>

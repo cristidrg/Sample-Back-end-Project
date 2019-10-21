@@ -76,6 +76,8 @@ class OrgController extends Controller
             'childrenOrgs' => $org->children,
             'childrenProps' => $org->props,
             'a11yScore' => $org->getA11yScore(),
+            'perfScore' => $org->getPerfScore(),
+            'seoScore' => $org->getSeoScore(),
             'uptimeScore' => $org->getUptimeScore(),
             'utils' => new Utils
         ]);

@@ -50,7 +50,7 @@ class Org extends Model
         return $downProps;
     }
 
-    public function getScore(Org $org) {
+    public function getA11yScoreHelper(Org $org) {
         $a11ySum = 0;
 
         foreach ($org->props as $prop) {
@@ -58,11 +58,70 @@ class Org extends Model
         }
 
         foreach ($org->children as $childOrg) {
-            $a11ySum = $a11ySum + $this->getScore($childOrg);
+            $a11ySum = $a11ySum + $this->getA11yScoreHelper($childOrg);
         }
 
         return $a11ySum;
     }
+
+    public function getA11yScore() {
+        $propCount = $this->getPropCount($this);
+
+        if ($propCount == 0) {
+            return 1;
+        }
+
+        return intval($this->getA11yScoreHelper($this) / $propCount * 100) / 100;
+    }
+
+    public function getPerfScoreHelper(Org $org) {
+        $perfSum = 0;
+
+        foreach ($org->props as $prop) {
+            $perfSum = $perfSum + $prop->perfScore;
+        }
+
+        foreach ($org->children as $childOrg) {
+            $perfSum = $perfSum + $this->getPerfScoreHelper($childOrg);
+        }
+
+        return $perfSum;
+    }
+
+    public function getPerfScore() {
+        $propCount = $this->getPropCount($this);
+
+        if ($propCount == 0) {
+            return 1;
+        }
+
+        return intval($this->getPerfScoreHelper($this) / $propCount * 100) / 100;
+    }
+
+    public function getSeoScoreHelper(Org $org) {
+        $seoSum = 0;
+
+        foreach ($org->props as $prop) {
+            $seoSum = $seoSum + $prop->seoScore;
+        }
+
+        foreach ($org->children as $childOrg) {
+            $seoSum = $seoSum + $this->getSeoScoreHelper($childOrg);
+        }
+
+        return $seoSum;
+    }
+
+    public function getSeoScore() {
+        $propCount = $this->getPropCount($this);
+
+        if ($propCount == 0) {
+            return 1;
+        }
+
+        return intval($this->getSeoScoreHelper($this) / $propCount * 100) / 100;
+    }
+
 
     public function getUptimeCount(Org $org) {
         $upCount = 0;
@@ -78,18 +137,6 @@ class Org extends Model
         }
 
         return $upCount;
-    }
-
-
-    public function getA11yScore()
-    {
-        $propCount = $this->getPropCount($this);
-
-        if ($propCount == 0) {
-            return 1;
-        }
-
-        return intval($this->getScore($this) / $propCount * 100) / 100;
     }
 
     public function getUptimeScore()
