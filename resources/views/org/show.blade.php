@@ -3,19 +3,25 @@
 @section('title', $org->title)
 
 @section('content')
-    <div>
-        <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
-         @if (isset($org->parent->parent->parent))
-                <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a>
-            @endif
-            @if (isset($org->parent->parent))
-                <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a>
-            @endif
-            <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
-        </nav>
-    </div>
-    <h1 class="props-header">{{$org->title}}</h1>
+    <nav class="text-base font-regular text-gray-500 mb-1">
+        @if (isset($org->parent->parent->parent))
+            <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a> /
+        @endif
+        @if (isset($org->parent->parent))
+            <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a> / 
+        @endif
+        <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
+    </nav>
+    <h1 class="text-3xl font-bold text-gray-400">{{$org->title}}</h1>
 
+    <p class="mt-32 text-base text-gray-200 font-bold uppercase">Audit</p>
+    <div class="bg-gray-800">
+        <div class="flex">
+            <p>✓ <span class="font-bold">55</span> Properties</p>
+            <p class="ml-10">X <span class="font-bold">1</span> Properties</p>
+        </div>
+        
+    </div>
     <div class="charts">
         <div class="charts__entry">
             <div class="charts__canvas-container charts__uptime">

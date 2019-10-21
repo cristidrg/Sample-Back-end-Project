@@ -26,9 +26,9 @@
         
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css" }}>
-
+        <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
-    <body class="props-body">
+    <body class="bg-gray-900 props-body">
         <div class="nav">
             <div>
             Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
@@ -83,7 +83,7 @@
             </nav>
         </div>
 
-        <main class="main section">
+        <main class="container mx-auto">
             @yield('content')
         </main>
     </body>
