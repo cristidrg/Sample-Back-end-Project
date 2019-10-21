@@ -19,6 +19,10 @@ class CreateUsersTable extends Migration
             $table->string('last_name');
             $table->string('email');
             $table->string('title');
+            
+            $table->integer('org_id')->unsigned()->index()->nullable();
+            $table->foreign('org_id')->references('id')->on('orgs')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

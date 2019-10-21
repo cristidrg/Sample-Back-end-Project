@@ -7,7 +7,7 @@
         {{ session()->get('popup') }}  
     @endif
     <div>
-        <a href="{{ route('technology.create') }}" class="btn">Create</a>
+        <a href="{{ route('technology.create') }}"  class="text-xl">Create</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -22,13 +22,13 @@
                     <td>{{$technology->id}}</td>
                     <td>{{$technology->name}}</td>
                     <td>
-                        <a href="{{ route('technology.edit',$technology->id)}}" class="btn">Edit</a>
+                        <a href="{{ route('technology.edit',$technology->id)}}"  class="text-xl">Edit</a>
                     </td>
                     <td>
                         <form action="{{ route('technology.destroy', $technology->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" type="submit">Delete</button>
+                            <button  class="text-xl" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>

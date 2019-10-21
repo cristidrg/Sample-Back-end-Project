@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Org;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -26,7 +27,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user/create');
+        return view('user/create', [
+            'orgs' => Org::all()
+        ]);
     }
 
     /**
@@ -41,19 +44,25 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'title' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'maintains_org' => 'required'
         ]);
 
         if (User::where('email', $request->get('email'))->first() != null) {
             return redirect('/user/create')->with('popup', 'Error: There is a user with this email');
         }
 
-        $technology = User::create([
+        $user = User::create([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
             'title' => $request->get('title'),
             'email' => $request->get('email')
         ]);
+
+        $orgToMaintain = Org::where('title', $request->get('maintains_org'))->first();
+        $orgToMaintain->contact()->save($user);
+
+        $user->save();
 
         return redirect('user/')->with('popup', 'user ' . $request->get('first_name') . ' has been created!');
     }
@@ -78,8 +87,11 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+
         return view('user/edit', [
-            'user' => $user
+            'user' => $user,
+            'orgs' => Org::all(),
+            'maintaining_org' => $user->org ? $user->org->title : ''
         ]);
     }
 
@@ -96,7 +108,8 @@ class UserController extends Controller
             'first_name' => 'required',
             'last_name' => 'required',
             'title' => 'required',
-            'email' => 'required'
+            'email' => 'required',
+            'maintaining_org' => 'required'
         ]);
 
         $user = User::find($id);
@@ -105,8 +118,12 @@ class UserController extends Controller
         $user->email = $request->get('email');
         $user->title = $request->get('title');
 
+        $orgToMaintain = Org::where('title', $request->get('maintaining_org'))->first();
+        $user->org()->dissociate();
+        $orgToMaintain->contact()->save($user);
+        
         $user->save();
-
+        
         return redirect('/user')->with('popup', 'user updated!');
     }
 

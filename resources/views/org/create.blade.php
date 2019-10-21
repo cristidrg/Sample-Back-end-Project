@@ -15,13 +15,13 @@
             </div>
             <div>
                 <label for="org_parent">Org Parent:</label>
-                <select name="org_parent">
+                <select name="org_parent" class="text-black">
                     @foreach ($orgs as $org)
                         <option>{{$org->title}}</option>
                     @endforeach
                 </select>
             </div>
-            <button type="submit">Add</button>
+            <button type="submit"  class="text-xl">Add</button>
         </form>
     </div>
 @stop

@@ -26,7 +26,20 @@
                 <label for="title">Title</label>
                 <input required type="text" class="form-control" name="title" value="{{ $user->title }}"/>
             </div>
-            <button type="submit">Update</button>
+            <div>
+                @csrf
+                <label for="maintaining_org">Maintaining Org</label>
+                <select name="maintaining_org" value="{{$maintaining_org}}" class="text-black">
+                    @foreach ($orgs as $org)
+                        @if ($org->title == $maintaining_org)
+                            <option selected>{{$org->title}}</option>
+                        @else
+                            <option>{{$org->title}}</option>
+                        @endif
+                    @endforeach
+                </select>
+            </div>
+            <button type="submit" class="text-xl">Update</button>
         </form>
     </div>
 @stop

@@ -94,7 +94,7 @@ class OrgController extends Controller
         $org = Org::find($id);
         return view('org/edit', [
             'org' => $org,
-            'parent_title' => $org->parent->title,
+            'parent_title' => $org->parent ? $org->parent->title : '',
             'orgs' => Org::all()
         ]);
     }

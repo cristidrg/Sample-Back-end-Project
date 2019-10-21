@@ -20,6 +20,11 @@ class Org extends Model
         return $this->hasMany('App\Prop');
     }
 
+    public function contact()
+    {
+        return $this->hasOne('App\User');
+    }
+
     public function getPropCount(Org $org) {
         $propCount = 0;
 

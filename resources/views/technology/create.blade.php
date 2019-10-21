@@ -13,7 +13,7 @@
                 <label for="name">Technology Name:</label>
                 <input required type="text" class="form-control" name="name" />
             </div>
-            <button type="submit">Add</button>
+            <button type="submit"  class="text-xl">Add</button>
         </form>
     </div>
 @stop

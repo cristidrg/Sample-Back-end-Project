@@ -19,7 +19,7 @@
             </div>
             <div>
                 <label for="parent_org">Parent Org:</label>
-                <select name="parent_org">
+                <select name="parent_org" class="text-black">
                     @foreach ($orgs as $org)
                         <option>{{$org->title}}</option>
                     @endforeach
@@ -27,7 +27,7 @@
             </div>
             <div>
                 <label for="technologies">Technologies:</label>
-                <select name="technologies[]" multiple>
+                <select name="technologies[]" multiple class="text-black">
                     @foreach ($technologies as $technology)
                         <option>{{$technology->name}}</option>
                     @endforeach
@@ -52,7 +52,7 @@
                 <button class="prop-environment-form__add">Add environment</button>
                 <button class="prop-environment-form__remove">Remove environment</button>
             </div>
-            <button type="submit">Create new prop</button>
+            <button type="submit"  class="text-xl">Create new prop</button>
         </form>
     </div>
 @stop

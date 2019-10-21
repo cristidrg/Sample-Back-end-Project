@@ -7,7 +7,7 @@
         {{ session()->get('popup') }}  
     @endif
     <div>
-        <a href="{{ route('user.create') }}" class="btn">Create</a>
+        <a href="{{ route('user.create') }}" class="text-xl">Create</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -16,6 +16,7 @@
                     <td>Last Name</td>
                     <td>Email</td>
                     <td>Title</td>
+                    <td>Org</td>
                     <td colspan = 2>Actions</td>
                 </tr>
             </thead>
@@ -27,14 +28,15 @@
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->title}}</td>
+                    <td>{{$user->org_id}}</td>
                     <td>
-                        <a href="{{ route('user.edit',$user->id)}}" class="btn">Edit</a>
+                        <a href="{{ route('user.edit',$user->id)}}"  class="text-xl">Edit</a>
                     </td>
                     <td>
                         <form action="{{ route('user.destroy', $user->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" type="submit">Delete</button>
+                            <button  class="text-xl" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>

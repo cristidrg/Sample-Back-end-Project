@@ -19,7 +19,7 @@
             </div>
             <div>
                 <label for="parent">Org Parent:</label>
-                <select name="parent" value="{{$parent_title}}">
+                <select name="parent" value="{{$parent_title}}" class="text-black">
                     @foreach ($orgs as $org)
                         @if ($org->title == $parent_title)
                             <option selected>{{$org->title}}</option>
@@ -29,7 +29,7 @@
                     @endforeach
                 </select>
             </div>
-            <button type="submit">Update</button>
+            <button type="submit" class="text-xl">Update</button>
         </form>
     </div>
 @stop

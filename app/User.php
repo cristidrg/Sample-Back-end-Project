@@ -13,4 +13,10 @@ class User extends Model
         'email' => '',
         'title' => ''
     ];
+
+
+    public function org()
+    {
+        return $this->belongsTo('App\Org');
+    }
 }

@@ -124,10 +124,10 @@ class PropController extends Controller
     {
         $prop = Prop::find($id);
         $propEnvs = json_decode($prop->environments);
-
+        error_log($propEnvs);
         return view('prop/edit', [
             'prop' => $prop,
-            'propEnvs' => $propEnvs,
+            'propEnvs' => $propEnvs ? $propEnvs : [],
             'parent_title' => $prop->org->title,
             'orgs' => Org::all(),
             'technologies' => Technology::all()
@@ -183,6 +183,7 @@ class PropController extends Controller
 
         $parentOrg = Org::where('title', $request->get('parent'))->first();
         $prop->org()->dissociate();
+        $parentOrg->props()->dissociate($prop);
         $parentOrg->props()->save($prop);
 
         $prop->save();

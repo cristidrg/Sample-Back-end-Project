@@ -7,7 +7,7 @@
         {{ session()->get('popup') }}  
     @endif
     <div>
-        <a href="{{ route('prop.create') }}" class="btn">Create</a>
+        <a href="{{ route('prop.create') }}"  class="text-xl">Create</a>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -32,13 +32,13 @@
                         @endforeach
                     </td>
                     <td>
-                        <a href="{{ route('prop.edit',$prop->id)}}" class="btn">Edit</a>
+                        <a href="{{ route('prop.edit',$prop->id)}}"  class="text-xl">Edit</a>
                     </td>
                     <td>
                         <form action="{{ route('prop.destroy', $prop->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="btn" type="submit">Delete</button>
+                            <button  class="text-xl" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
