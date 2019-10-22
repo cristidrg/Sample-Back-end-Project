@@ -8,7 +8,7 @@
             <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a> /
         @endif
         @if (isset($org->parent->parent))
-            <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a> / 
+            <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a> /
         @endif
         @if (isset($org->parent))
             <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
@@ -65,8 +65,8 @@
         <p class="mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
         <ul>
             @foreach ($childrenProps as $prop)
-                <a href="/prop/{{$prop->id}}">
-                    <li class="flex pt-4 pb-4 border-b border-solid border-gray-700">
+                <a class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800" href="/prop/{{$prop->id}}">
+                    <li class="flex pt-4 pb-4">
                         <div class="flex flex-col justify-center">
                             <p class="text-base font-medium text-gray-200 mb-1">{{$prop->title}}</p>
                             <p class="text-sm text-gray-700">{{$prop->url}}</p>
@@ -107,48 +107,12 @@
 
     @if (count($childrenOrgs) > 0)
         <p class="mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Organizations</p>
-        <ul class="flex flex-wrap justify-between">
+        <div class="flex flex-wrap">
             @foreach ($childrenOrgs as $childOrg)
-                <a href="/org/{{$childOrg->id}}">
-                    <li class="flex flex-col w-56 pt-6 pb-6 pl-4 pr-4 mb-8 bg-gray-800">
-                        <h1 class="h-8">{{$childOrg->title}}</h1>
-                        <div class="h-24">
-                            @if ($childOrg->getUptimeCount($childOrg) > 0)
-                            <div class="mt-4 flex items-center">
-                                @include('svgs.check')
-                                <p class="ml-2 text-sm font-light"><span class="text-lg font-bold">{{$childOrg->getUptimeCount($childOrg)}} </span> Properties</p>
-                            </div>
-                            @endif
-                            @if ($childOrg->hasDownProps($childOrg))
-                                <div class="mt-4 flex items-center">
-                                    @include('svgs.warning')
-                                    <p class="ml-2 text-sm font-light"><span class="text-lg font-bold">{{$childOrg->getPropCount($childOrg) - $childOrg->getUptimeCount($childOrg)}} </span> Properties</p>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="mt-auto flex flex-col text-gray-400">
-                            <div>
-                                <p class="mb1">Accessibility</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getA11yScore()}}%"></span>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <p class="mb1">SEO</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getSeoScore()}}%"></span>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <p class="mb1">Performance</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getPerfScore()}}%"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </a>
+                <div class="w-1/4">
+                    @include('org.card')
+                </div>
             @endforeach
-        </ul>
+        </div>
     @endif
 @stop
