@@ -3,22 +3,22 @@
 @section('title', $prop->title)
 
 @section('content')
-    <div>
-        <h2 class="prop-page__type">Property</h2>
-        <nav class="prop-page__breadcrumbs breadcrumb +icon +chevron">
-            @if (isset($prop->org->parent->parent->parent))
-                <a href={{"/org/".$prop->org->parent->parent->parent->id}}>{{$prop->org->parent->parent->parent->title}}</a>
-            @endif
-            @if (isset($prop->org->parent->parent))
-                <a href={{"/org/".$prop->org->parent->parent->id}}>{{$prop->org->parent->parent->title}}</a>
-            @endif
-            @if (isset($prop->org->parent))
-                <a href={{"/org/".$prop->org->parent->id}}>{{$prop->org->parent->title}}</a>
-            @endif
-            <a href={{"/org/".$prop->org->id}}>{{$prop->org->title}}</a>
-        </nav>
+    <nav class="text-base font-regular text-gray-500 mb-1">
+        @if (isset($prop->org->parent->parent->parent))
+            <a href={{"/org/".$prop->org->parent->parent->parent->id}}>{{$prop->org->parent->parent->parent->title}}</a> /
+        @endif
+        @if (isset($prop->org->parent->parent))
+            <a href={{"/org/".$prop->org->parent->parent->id}}>{{$prop->org->parent->parent->title}}</a> /
+        @endif
+        @if (isset($prop->org->parent))
+            <a href={{"/org/".$prop->org->parent->id}}>{{$prop->org->parent->title}}</a>
+        @endif
+        <a href={{"/org/".$prop->org->id}}>{{$prop->org->title}}</a>
+    </nav>
+    <div class="flex items-center">
+        <h1 class="text-3xl font-bold text-gray-400">{{$prop->title}}</h1>
+        <a class="mt-2 ml-12 rounded-full text-black bg-gray-300 py-2 px-4" href="{{$prop->url}}">Visit Site</a>
     </div>
-    <h1 class="prop-page__title">{{$prop->title}}</h1>
     <a href="{{$prop->url}}" class="prop-page__link">{{$prop->url}}</a>
     <div class="charts">
         <div class="charts__entry">
