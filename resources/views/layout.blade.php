@@ -29,12 +29,9 @@
         <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
     <body class="bg-gray-900 font-body props-body">
-        <div class="nav bg-gray-800">
-            <div>
-                Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
-            </div>
+        <div class="nav bg-gray-800 py-12 px-8">
             <div class="nav__icons">
-                <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
+                <a class="text-2xl font-bold" href="/">NUprops</a>
                 <div class="nav__handle">
                     <!-- TODO: ADD SEARCH ICON -->
                     <svg class="nav__burger " width="21" height="15" viewBox="0 0 21 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,39 +44,42 @@
             <nav id="navigation" data-navigation-handle=".nav__handle" role="navigation">
                 <form action="/search" method="POST" role="search">
                     @csrf
-                    <input class="nav__search bg-black" name="search_title" type="text" placeholder="Search Properties"
+                    <input class="my-16" name="search_title" type="text" placeholder="Search Properties"
                     value="{{$q}}">
 
                     <div class="nav__filters mb-8">
-                        <label class="nav__option">Uptime</label>
-
-                        <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="monitor" type="radio" value="up" {{$monitor_up != 'false' ? "checked" : ''}}>Up</label>
-                            <label><input name="monitor" type="radio" value="down" {{$monitor_down != 'false' ? "checked": ''}}>Down</label>
+                        <div class="mb-6">
+                            <h2 class="text-white">Uptime</h2>
+                            <label class="block"><input name="monitor" type="radio" value="up" {{$monitor_up != 'false' ? "checked" : ''}}>Up</label>
+                            <label class="block"><input name="monitor" type="radio" value="down" {{$monitor_down != 'false' ? "checked": ''}}>Down</label>
                         </div>
-                        <label class="nav__option">Accessibility</label>
-                        <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="a11y" type="radio" value="green" {{$a11y_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="a11y" type="radio" value="yellow" {{$a11y_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="a11y" type="radio" value="red" {{$a11y_red != 'false' ? "checked" : ''}}>0-49</label>
-                        </div>
-
-                        <label class="nav__option">SEO</label>
-                        <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="seo" type="radio" value="green" {{$seo_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="seo" type="radio" value="yellow" {{$seo_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="seo" type="radio" value="red" {{$seo_red != 'false' ? "checked" : ''}}>0-49</label>
+                        <div class="mb-6">
+                            <h2 class="text-white">Accessibility</h2>
+                            <label class="block"><input name="a11y" type="radio" value="green" {{$a11y_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label class="block"><input name="a11y" type="radio" value="yellow" {{$a11y_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label class="block"><input name="a11y" type="radio" value="red" {{$a11y_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
 
-                        <label class="nav__option">Performance</label>
-                        <div class="form__check nav__filter-group d-flex flex-col">
-                            <label><input name="perf" type="radio" value="green" {{$perf_green != 'false' ? "checked" : ''}}>90-100</label>
-                            <label><input name="perf" type="radio" value="yellow" {{$perf_yellow != 'false' ? "checked" : ''}}>50-89</label>
-                            <label><input name="perf" type="radio" value="red" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
+                        <div class="mb-6">
+                            <h2 class="text-white">SEO</h2>
+                            <label class="block"><input name="seo" type="radio" value="green" {{$seo_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label class="block"><input name="seo" type="radio" value="yellow" {{$seo_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label class="block"><input name="seo" type="radio" value="red" {{$seo_red != 'false' ? "checked" : ''}}>0-49</label>
+                        </div>
+
+                        <div class="mb-6">
+                            <h2 class="text-white">Performance</h2>
+                            <label class="block"><input name="perf" type="radio" value="green" {{$perf_green != 'false' ? "checked" : ''}}>90-100</label>
+                            <label class="block"><input name="perf" type="radio" value="yellow" {{$perf_yellow != 'false' ? "checked" : ''}}>50-89</label>
+                            <label class="block"><input name="perf" type="radio" value="red" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
                     </div>
                     <button class="block w-full px-4 py-3 bg-gray-900 hover:bg-gray-700 text-white" type="submit">Filter</button>
                 </form>
+
+                <div class="pt-12">
+                    Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
+                </div>
             </nav>
         </div>
 
