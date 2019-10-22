@@ -107,49 +107,13 @@
 
     @if (count($childrenOrgs) > 0)
         <p class="mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Organizations</p>
-        <ul class="flex flex-wrap justify-between">
+        <div class="flex">
             @foreach ($childrenOrgs as $childOrg)
-                <a href="/org/{{$childOrg->id}}">
-                    <li class="flex flex-col w-56 pt-6 pb-6 pl-4 pr-4 mb-8 bg-gray-800">
-                        <h1 class="h-8">{{$childOrg->title}}</h1>
-                        <div class="h-24">
-                            @if ($childOrg->getUptimeCount($childOrg) > 0)
-                            <div class="mt-4 flex items-center">
-                                @include('svgs.check')
-                                <p class="ml-2 text-sm font-light"><span class="text-lg font-bold">{{$childOrg->getUptimeCount($childOrg)}} </span> Properties</p>
-                            </div>
-                            @endif
-                            @if ($childOrg->hasDownProps($childOrg))
-                                <div class="mt-4 flex items-center">
-                                    @include('svgs.warning')
-                                    <p class="ml-2 text-sm font-light"><span class="text-lg font-bold">{{$childOrg->getPropCount($childOrg) - $childOrg->getUptimeCount($childOrg)}} </span> Properties</p>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="mt-auto flex flex-col text-gray-400">
-                            <div>
-                                <p class="mb1">Accessibility</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getA11yScore()}}%"></span>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <p class="mb1">SEO</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getSeoScore()}}%"></span>
-                                </div>
-                            </div>
-                            <div class="mt-4">
-                                <p class="mb1">Performance</p>
-                                <div class="audit_bar mt-2 h-1 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$childOrg->getPerfScore()}}%"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </a>
+                <div class="w-1/4">
+                    @include('org.card')
+                </div>
             @endforeach
-        </ul>
+        </div>
     @endif
     {{-- <ul class="prop-list">
         @foreach ($childrenProps as $prop)
