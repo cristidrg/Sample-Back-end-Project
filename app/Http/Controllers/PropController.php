@@ -38,7 +38,7 @@ class PropController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * 
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -49,7 +49,7 @@ class PropController extends Controller
             'url' => 'required',
             'parent_org' => 'required'
         ]);
-        
+
         if (Prop::where('url', $request->get('url'))->first() != null) {
             return redirect('/prop/create')->with('popup', 'Error: There is a prop with that url already.');
         }
@@ -60,12 +60,12 @@ class PropController extends Controller
         $env_urls = $request->get('env_urls');
 
         if ($env_types && count($env_types) > 0) {
-            foreach($env_types as $index=>$env_type) {
+            foreach ($env_types as $index => $env_type) {
                 $env_entry = [];
                 $env_entry['type'] = $env_type;
                 $env_entry['server'] = $env_servers[$index];
                 $env_entry['url'] = $env_urls[$index];
-                
+
                 $environments[$index] = $env_entry;
             }
         }
@@ -75,7 +75,7 @@ class PropController extends Controller
             'url' => $request->get('url'),
             'environments' => json_encode(array_values($environments))
         ]);
-        
+
         $monitor = Monitor::create(['url' => $request->get('url')]);
         $prop->monitor()->save($monitor);
 
@@ -124,7 +124,7 @@ class PropController extends Controller
     {
         $prop = Prop::find($id);
         $propEnvs = json_decode($prop->environments);
-        error_log($propEnvs);
+        // error_log($propEnvs);
         return view('prop/edit', [
             'prop' => $prop,
             'propEnvs' => $propEnvs ? $propEnvs : [],
@@ -132,7 +132,6 @@ class PropController extends Controller
             'orgs' => Org::all(),
             'technologies' => Technology::all()
         ]);
-
     }
 
     /**
@@ -145,9 +144,9 @@ class PropController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title'=>'required',
-            'url'=>'required',
-            'parent' =>'required'
+            'title' => 'required',
+            'url' => 'required',
+            'parent' => 'required'
         ]);
 
         $prop = Prop::find($id);
@@ -160,21 +159,21 @@ class PropController extends Controller
         $env_urls = $request->get('env_urls');
 
         if ($env_types && count($env_types) > 0) {
-            foreach($env_types as $index=>$env_type) {
+            foreach ($env_types as $index => $env_type) {
                 $env_entry = [];
                 $env_entry['type'] = $env_type;
                 $env_entry['server'] = $env_servers[$index];
                 $env_entry['url'] = $env_urls[$index];
-                
+
                 $environments[$index] = $env_entry;
             }
         }
         $prop->environments = json_encode($environments);
-        
+
         $technologies = $request->get('technologies');
         if ($technologies && count($technologies) > 0) {
             $prop->technologies()->detach();
-            
+
             foreach ($technologies as $technology) {
                 $technologyModel = Technology::where('name', $technology)->first();
                 $prop->technologies()->attach($technologyModel);
@@ -202,6 +201,6 @@ class PropController extends Controller
         $prop = Prop::find($id);
         $prop->delete();
 
-        return redirect('/prop')->with('popup', 'Prop with id ' . $id .' has been deleted');
+        return redirect('/prop')->with('popup', 'Prop with id ' . $id . ' has been deleted');
     }
 }
