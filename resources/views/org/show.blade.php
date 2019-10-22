@@ -107,7 +107,7 @@
 
     @if (count($childrenOrgs) > 0)
         <p class="mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Organizations</p>
-        <div class="flex">
+        <div class="flex flex-wrap">
             @foreach ($childrenOrgs as $childOrg)
                 <div class="w-1/4">
                     @include('org.card')

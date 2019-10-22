@@ -35,13 +35,13 @@
                 </li>
             </a>
         @endforeach
-
-        <div class="flex">
-            @foreach ($topLevelOrgs as $childOrg)
-                <div class="w-1/4">
-                    @include('org.card')
-                </div>
-            @endforeach
-        </div>
     </ul>
+
+    <div class="flex flex-wrap">
+        @foreach ($topLevelOrgs as $childOrg)
+            <div class="w-1/4">
+                @include('org.card')
+            </div>
+        @endforeach
+    </div>
 @stop

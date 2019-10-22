@@ -1,5 +1,5 @@
 <article>
-    <a class="block py-6 px-3 bg-gray-800" href="/org/{{$childOrg->id}}">
+    <a class="block py-6 px-3 mb-3 bg-gray-800" href="/org/{{$childOrg->id}}">
         <header>
             <h1 class="">{{$childOrg->title}}</h1>
         </header>

@@ -49,26 +49,26 @@
 
                     <div class="nav__filters mb-8">
                         <div class="mb-6">
-                            <h2 class="text-white">Uptime</h2>
+                            <h2 class="text-white font-medium">Uptime</h2>
                             <label class="block"><input name="monitor" type="radio" value="up" {{$monitor_up != 'false' ? "checked" : ''}}>Up</label>
                             <label class="block"><input name="monitor" type="radio" value="down" {{$monitor_down != 'false' ? "checked": ''}}>Down</label>
                         </div>
                         <div class="mb-6">
-                            <h2 class="text-white">Accessibility</h2>
+                            <h2 class="text-white font-medium">Accessibility</h2>
                             <label class="block"><input name="a11y" type="radio" value="green" {{$a11y_green != 'false' ? "checked" : ''}}>90-100</label>
                             <label class="block"><input name="a11y" type="radio" value="yellow" {{$a11y_yellow != 'false' ? "checked" : ''}}>50-89</label>
                             <label class="block"><input name="a11y" type="radio" value="red" {{$a11y_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
 
                         <div class="mb-6">
-                            <h2 class="text-white">SEO</h2>
+                            <h2 class="text-white font-medium">SEO</h2>
                             <label class="block"><input name="seo" type="radio" value="green" {{$seo_green != 'false' ? "checked" : ''}}>90-100</label>
                             <label class="block"><input name="seo" type="radio" value="yellow" {{$seo_yellow != 'false' ? "checked" : ''}}>50-89</label>
                             <label class="block"><input name="seo" type="radio" value="red" {{$seo_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
 
                         <div class="mb-6">
-                            <h2 class="text-white">Performance</h2>
+                            <h2 class="text-white font-medium">Performance</h2>
                             <label class="block"><input name="perf" type="radio" value="green" {{$perf_green != 'false' ? "checked" : ''}}>90-100</label>
                             <label class="block"><input name="perf" type="radio" value="yellow" {{$perf_yellow != 'false' ? "checked" : ''}}>50-89</label>
                             <label class="block"><input name="perf" type="radio" value="red" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
