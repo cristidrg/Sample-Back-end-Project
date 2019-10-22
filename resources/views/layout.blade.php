@@ -23,15 +23,15 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700&display=swap" rel="stylesheet">
-        
+
         <!-- Styles -->
         <link rel="stylesheet" href="/css/app.css" }}>
         <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
     <body class="bg-gray-900 font-body props-body">
-        <div class="nav">
+        <div class="nav bg-gray-800">
             <div>
-            Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
+                Dev Links: <a href="/prop">props</a> <a href="/org">orgs</a> <a href="/technology">techs</a> <a href="/user">users</a>
             </div>
             <div class="nav__icons">
                 <a class="nav__home fs-d3 fw-300 tc-gray-100" href="/">NUProps</a>
@@ -50,7 +50,7 @@
                     <input class="nav__search bg-black" name="search_title" type="text" placeholder="Search Properties"
                     value="{{$q}}">
 
-                    <div class="nav__filters">
+                    <div class="nav__filters mb-8">
                         <label class="nav__option">Uptime</label>
 
                         <div class="form__check nav__filter-group d-flex flex-col">
@@ -78,7 +78,7 @@
                             <label><input name="perf" type="radio" value="red" {{$perf_red != 'false' ? "checked" : ''}}>0-49</label>
                         </div>
                     </div>
-                    <button class="nav__form-submit btn bg-red" type="submit">Filter</button>
+                    <button class="block w-full px-4 py-3 bg-gray-900 hover:bg-gray-700 text-white" type="submit">Filter</button>
                 </form>
             </nav>
         </div>

@@ -8,7 +8,7 @@
             <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a> /
         @endif
         @if (isset($org->parent->parent))
-            <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a> / 
+            <a href={{"/org/".$org->parent->parent->id}}>{{$org->parent->parent->title}}</a> /
         @endif
         @if (isset($org->parent))
             <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
@@ -65,8 +65,8 @@
         <p class="mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
         <ul>
             @foreach ($childrenProps as $prop)
-                <a href="/prop/{{$prop->id}}">
-                    <li class="flex pt-4 pb-4 border-b border-solid border-gray-700">
+                <a class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800" href="/prop/{{$prop->id}}">
+                    <li class="flex pt-4 pb-4">
                         <div class="flex flex-col justify-center">
                             <p class="text-base font-medium text-gray-200 mb-1">{{$prop->title}}</p>
                             <p class="text-sm text-gray-700">{{$prop->url}}</p>
@@ -163,7 +163,7 @@
         @foreach ($childrenOrgs as $childOrg)
             <a class="prop-list__entry {{$childOrg->hasDownProps($childOrg) ? 'prop-list__down-org': ''}}" href="/org/{{$childOrg->id}}">
                 <li class="prop-list__wrapper">
-                    {{$childOrg->title}} 
+                    {{$childOrg->title}}
                     <span class="prop-list__count">{{$childOrg->getPropCount($childOrg)}}</span>
                 </li>
             </a>
