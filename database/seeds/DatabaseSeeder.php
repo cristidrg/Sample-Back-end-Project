@@ -152,7 +152,6 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Advancement',
                 'title' => 'University Advancement',
                 'url' => 'https://advancement.northeastern.edu/',
-                'technologies' => ['Wodrpress', 'PHP']
             ],
             [
                 'org' => 'Advancement',
@@ -168,44 +167,52 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Provost',
                 'title' => 'Office of the Provost',
                 'url' => 'https://provost.northeastern.edu/',
+                'technologies' => ['WordPress', 'WordPress Multisite'],
             ],
             [
                 'org' => 'Provost',
                 'title' => 'Academic Honors',
+                'description' => 'Pulling in font from typekit.',
                 'url' => 'http://provost.northeastern.edu/academic-honors',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Provost',
                 'title' => 'International Travel',
                 'url' => 'http://provost.northeastern.edu/international-travel',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Provost',
                 'title' => 'NCH',
-                'url' => 'http://provost.northeastern.edu/nch',
                 'description' => 'Temporary site welcoming NCH (London campus) graduates and alumni',
+                'url' => 'http://provost.northeastern.edu/nch',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Provost',
                 'title' => 'Chancellor reorg feedback',
-                'url' => 'https://provost.northeastern.edu/chancellor',
                 'description' => 'Temporary reorganization feedback site',
+                'url' => 'https://provost.northeastern.edu/chancellor',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Provost',
                 'title' => 'Meet the University',
-                'url' => 'http://provost.northeastern.edu/meet-the-university',
                 'description' => 'A monthly speaker series designed to help staff bridge the gap between their daily contributions and the bigger picture goals of Northeastern 2025.',
+                'url' => 'http://provost.northeastern.edu/meet-the-university',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Provost',
+                'description' => 'Temporary Provost candidate search site',
                 'title' => 'Provost Candidate Search',
                 'url' => 'http://provost.northeastern.edu/candidate-search',
-                'description' => 'Temporary Provost candidate search site',
             ],
             [
                 'org' => 'Provost',
                 'title' => 'Broken Property',
+                'description' => 'an example fake, broken property',
                 'url' => 'https://broken.northeastern.edu/',
             ],
             [
@@ -267,76 +274,92 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Law',
                 'title' => 'School of Law',
                 'url' => 'https://www.northeastern.edu/law',
+                'technologies' => ['Cascade'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'ADVANCE: Office of Faculty Development',
                 'url' => 'https://faculty.northeastern.edu/advance',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'University Ombuds',
                 'url' => 'https://provost.northeastern.edu/ombuds',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'New Faculty Orientation',
                 'url' => 'https://faculty.northeastern.edu/orientation',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'Faculty Senate',
                 'url' => 'https://faculty.northeastern.edu/senate/',
+                'technologies' => ['WordPress', 'Doric'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'Faculty Handbook',
                 'url' => 'https://faculty.northeastern.edu/handbook/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Academic Affairs',
                 'title' => 'Northeast Faculty Leadership Program',
+                'description' => 'A consortium with custom logo',
                 'url' => 'https://web.northeastern.edu/nflp/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Budget, Planning, and Administration',
                 'title' => 'Academic Fiscal Affairs',
                 'url' => 'https://provost.northeastern.edu/budget',
+                'technologies' => ['WordPress', 'Doric'],
             ],
             [
                 'org' => 'Budget, Planning, and Administration',
                 'title' => 'University Registrar',
                 'url' => 'https://registrar.northeastern.edu/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'UDS',
                 'title' => 'University Decision Support',
                 'url' => 'https://provost.northeastern.edu/uds',
+                'technologies' => ['WordPress', 'Doric'],
             ],
             [
                 'org' => 'UDS',
                 'title' => 'Career Outcomes',
                 'url' => 'https://dev-graduateoutcomes.northeastern.edu/',
+                'technologies' => ['Vue', 'NUXT'],
             ],
             [
                 'org' => 'UDS',
                 'title' => 'Facts and Figures',
                 'url' => 'https://facts.northeastern.edu/',
+                'technologies' => ['Jigsaw'],
             ],
             [
                 'org' => 'Curriculum and Programs',
                 'title' => 'Undergraduate Education',
                 'url' => 'https://undergraduate.northeastern.edu/',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Curriculum and Programs',
                 'title' => 'Explore Program',
                 'url' => 'http://undergraduate.northeastern.edu/explore',
+                'technologies' => ['WordPress', 'Doric'],
             ],
             [
                 'org' => 'Curriculum and Programs',
                 'title' => 'NUpath',
                 'url' => 'https://www.northeastern.edu/core',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Curriculum and Programs',
@@ -347,46 +370,55 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Institutional Diversity and Inclusion',
                 'title' => 'Office of Institutional Diversity and Inclusion',
                 'url' => 'https://provost.northeastern.edu/oidi',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Institutional Diversity and Inclusion',
                 'title' => 'Diversity at  Northeastern',
                 'url' => 'https://www.northeastern.edu/diversity',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Institutional Diversity and Inclusion',
                 'title' => 'Women of Color in the Academy Conference',
                 'url' => 'http://web.northeastern.edu/woc',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Information Technology Services',
                 'url' => 'https://its.northeastern.edu/',
+                'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Chief Information Officer',
                 'url' => 'https://cio.northeastern.edu/',
+                'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Academic Technology Services',
                 'url' => 'https://www.northeastern.edu/ats',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Office of Information Security',
                 'url' => 'https://www.northeastern.edu/securenu',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Digital Accessibility',
                 'url' => 'https://digital-accessibility.northeastern.edu/',
+                'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'ITS',
                 'title' => 'Connect to Tech',
                 'url' => 'https://connect-to-tech.northeastern.edu/',
+                'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'Library',
@@ -412,31 +444,37 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Entrepreneurship',
                 'title' => 'Center for Research Innovation',
                 'url' => 'https://www.northeastern.edu/cri',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Research',
                 'title' => 'Division of Research',
                 'url' => 'https://research.northeastern.edu/',
+                'technologies' => ['WordPress', 'WordPress Multisite', 'kernl(theme)'],
             ],
             [
                 'org' => 'Research',
                 'title' => 'Office of Research Development',
                 'url' => 'https://www.northeastern.edu/resdev',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Research',
                 'title' => 'Research Enterprise Services (NU-RES)',
                 'url' => 'https://research.northeastern.edu/nu-res',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Research',
                 'title' => 'Human Subjects Research Protection (HRSP)',
                 'url' => 'https://research.northeastern.edu/hsrp',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Research',
                 'title' => 'Animal Care (DLAM)',
                 'url' => 'https://research.northeastern.edu/animalcare',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Institutes',
@@ -452,6 +490,7 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Institutes',
                 'title' => 'Global Resilience Institute',
                 'url' => 'https://globalresilience.northeastern.edu/',
+                'technologies' => ['WordPress', 'Doric'],
             ],
             [
                 'org' => 'Institutes',
@@ -482,16 +521,19 @@ class DatabaseSeeder extends Seeder
                 'org' => 'Chancellor',
                 'title' => 'Office of the Chancellor',
                 'url' => 'https://chancellor.northeastern.edu/',
+                'technologies' => ['Jigsaw'],
             ],
             [
                 'org' => 'Undergraduate Affairs',
                 'title' => 'Self-Authored Integrated Learning (SAIL)',
                 'url' => 'https://sail.northeastern.edu/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Digital and Mobile Learning',
                 'title' => 'Global Experience Office (GEO)',
                 'url' => 'https://www.northeastern.edu/geo',
+                'technologies' => ['WordPress'],
             ],
         ];
 
@@ -510,7 +552,7 @@ class DatabaseSeeder extends Seeder
             if (isset($prop['technologies'])) {
                 foreach ($prop['technologies'] as $technology) {
                     $technologyModel = Technology::where('name', $prop['url'])->first();
-                    
+
                     if ($technologyModel == null) {
                         $technologyModel = Technology::create(['name' => $technology]);
                     }
