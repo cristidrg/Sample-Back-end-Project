@@ -551,7 +551,7 @@ class DatabaseSeeder extends Seeder
 
             if (isset($prop['technologies'])) {
                 foreach ($prop['technologies'] as $technology) {
-                    $technologyModel = Technology::where('name', $prop['url'])->first();
+                    $technologyModel = Technology::where('name', $technology)->first();
 
                     if ($technologyModel == null) {
                         $technologyModel = Technology::create(['name' => $technology]);
