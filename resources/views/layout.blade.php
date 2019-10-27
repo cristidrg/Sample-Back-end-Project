@@ -29,7 +29,7 @@
         <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
     <body class="bg-gray-900 font-body props-body">
-        <div class="nav bg-gray-800 py-12 px-8">
+        <div class="nav bg-gray-800 py-6 lg:py-12 px-2 lg:px-8">
             <div class="nav__icons">
                 <a class="text-2xl font-bold" href="/">NUprops</a>
                 <div class="nav__handle">
@@ -83,7 +83,7 @@
             </nav>
         </div>
 
-        <main class="w-full ml-10 mt-12 mr-16">
+        <main class="w-full pl-2 lg:pl-10 pt-12 pr-2 lg:pr-16 relative pb-6">
             @yield('content')
         </main>
     </body>

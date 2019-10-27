@@ -19,6 +19,11 @@
     overflow: hidden;
 }
 
+.prop_status > svg {
+    border-radius: 9999px;
+    border: 1px solid white;
+}
+
 .hidden-visi {
     visibility: hidden;
 }

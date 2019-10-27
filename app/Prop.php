@@ -13,6 +13,22 @@ class Prop extends Model
         'environments' => '[]'
     ];
 
+    // Invariant: This assumes that our root org has ID of 1
+    public function getContact(Prop $prop)
+    {
+        $org = $prop->org;
+        
+        do {
+            if (isset($org->contact)) {
+                return $org->contact;
+            }
+            
+            $org = $org->parent;
+        } while($org->id != 1);
+
+        return $org->contact;
+    }
+
     public function monitor()
     {
         return $this->hasOne('Spatie\UptimeMonitor\Models\Monitor', 'url', 'url');

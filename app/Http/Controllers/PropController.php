@@ -110,7 +110,8 @@ class PropController extends Controller
         return view('prop/show', [
             'prop' => $prop,
             'isPropUp' => $isPropUp,
-            'utils' => new Utils
+            'utils' => new Utils,
+            'contact' => $prop->getContact($prop)
         ]);
     }
 
@@ -124,7 +125,6 @@ class PropController extends Controller
     {
         $prop = Prop::find($id);
         $propEnvs = json_decode($prop->environments);
-        error_log($propEnvs);
         return view('prop/edit', [
             'prop' => $prop,
             'propEnvs' => $propEnvs ? $propEnvs : [],
@@ -182,8 +182,9 @@ class PropController extends Controller
         }
 
         $parentOrg = Org::where('title', $request->get('parent'))->first();
-        $prop->org()->dissociate();
-        $parentOrg->props()->dissociate($prop);
+        // TODO: Look into dissociating props and orgs
+        // $prop->org()->dissociate();
+        // $parentOrg->props()->dissociate($prop);
         $parentOrg->props()->save($prop);
 
         $prop->save();
