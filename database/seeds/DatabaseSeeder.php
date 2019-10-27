@@ -168,6 +168,18 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Office of the Provost',
                 'url' => 'https://provost.northeastern.edu/',
                 'technologies' => ['WordPress', 'WordPress Multisite'],
+                'environments' => [
+                    [
+                        'type' => 'Production',
+                        'server' => 'nuweb83.neu.edu',
+                        'url' => 'https://provost.northeastern.edu',
+                    ],
+                    [
+                        'type' => 'Development',
+                        'server' => 'nuweb84.neu.edu',
+                        'url' => 'https://dev.provost.northeastern.edu',
+                    ],
+                ],
             ],
             [
                 'org' => 'Provost',
@@ -522,12 +534,36 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Office of the Chancellor',
                 'url' => 'https://chancellor.northeastern.edu/',
                 'technologies' => ['Jigsaw'],
+                'environments' => [
+                    [
+                        'type' => 'Production',
+                        'server' => 'nuweb83.neu.edu',
+                        'url' => 'https://chancellor.northeastern.edu',
+                    ],
+                    [
+                        'type' => 'Development',
+                        'server' => 'nuweb84.neu.edu',
+                        'url' => 'https://dev.chancellor.northeastern.edu',
+                    ],
+                ],
             ],
             [
                 'org' => 'Undergraduate Affairs',
                 'title' => 'Self-Authored Integrated Learning (SAIL)',
                 'url' => 'https://sail.northeastern.edu/',
                 'technologies' => ['WordPress', 'kernl(theme)'],
+                'environments' => [
+                    [
+                        'type' => 'Production',
+                        'server' => 'nuweb83.neu.edu',
+                        'url' => 'https://sail.northeastern.edu',
+                    ],
+                    [
+                        'type' => 'Development',
+                        'server' => 'nuweb84.neu.edu',
+                        'url' => 'https://dev.sail.northeastern.edu',
+                    ],
+                ],
             ],
             [
                 'org' => 'Digital and Mobile Learning',
@@ -538,9 +574,11 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($props as $prop) {
+            // @dump($prop['environments']);
             DB::table('props')->insert([
                 'title' => $prop['title'],
                 'url' => $prop['url'],
+                'environments' => (isset($prop['environments']) ? json_encode($prop['environments']) : ''),
             ]);
 
             DB::table('monitors')->insert([
