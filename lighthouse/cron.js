@@ -1,23 +1,21 @@
 require('dotenv').config({ path: '../.env' });
 
-const lighthouse = require('lighthouse');
 const chromeLauncher = require('chrome-launcher');
+const urlMetadata = require('url-metadata');
+const lighthouse = require('lighthouse');
 const cron = require("node-cron");
 const mysql = require('mysql');
 const fs = require('fs');
 
-async function launchChromeAndRunLighthouse(url, opts, config = null) {
-  return chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
-    opts.port = chrome.port;
-    return lighthouse(url, opts, config).then(results => {
-      // use results.lhr for the JS-consumeable output
-      // https://github.com/GoogleChrome/lighthouse/blob/master/types/lhr.d.ts
-      // use results.report for the HTML/JSON/CSV output as a string
-      // use results.artifacts for the trace/screenshots/other specific case you need (rarer)
-      return chrome.kill().then(() => results)
-    }).catch(error => console.log(error));;
-  }).catch(error => console.log(error));
-}
+const launchChromeAndRunLighthouse = (url, opts, config = null) => new Promise((resolve, reject) => {
+    chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
+        opts.port = chrome.port;
+
+        lighthouse(url, opts, config).then(results => {
+            chrome.kill().then(() => resolve(results))
+        }).catch(error => reject(error));
+    }).catch(error => reject(error));
+});
 
 const opts = {
   chromeFlags: ['--headless', '--no-sandbox'],
@@ -27,7 +25,6 @@ const opts = {
 };
 
 cron.schedule("* * * * *", function() {
-    // SETUP: Database Connection Data
     const connection = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USERNAME,
@@ -43,33 +40,35 @@ cron.schedule("* * * * *", function() {
     `, async (error, results) => {
         if (error) throw error;
 
-        console.log("Select Query succesfull");
-
-        const mapEntryToFunc = entry => new Promise((resolve, reject) => {
-            console.log("Launching Lighthouse Test for " + entry.url);
-            launchChromeAndRunLighthouse(entry.url, opts)
-                .then(res => resolve(saveResult(res, entry.title, entry.id, connection)))
-                .catch(error => reject(error));
-        })
-
-        for (let result of results.map(x => () => mapEntryToFunc(x))) {
-            await result()
+        for ({url, id, title} of results) {
+            try {
+                console.log("Launching lighthouse and metadata grabber for " + url);
+                const report = await launchChromeAndRunLighthouse(url, opts);
+                const metaData = await urlMetadata(url);
+                
+                await saveResult(report, title, id, metaData.title, metaData.description, connection);
+            } catch (err) {
+                console.log('Error at ' + url + ': ');
+                console.log(err);
+            }
         }
+
+        return;
     });
 });
 
-const saveResult = async (result, title, id, connection) => {
+const saveResult = (result, title, id, metaTitle, metaDesc, connection) => new Promise((resolve, reject) => {
     if (result == undefined) {
         console.log('Lighthouse test failed to run for ' + title);
-        return;
+        reject();
     }
 
     try {
         fs.writeFileSync(`../public/audits/${id}.html`, result.report);
-        console.log('Successfully wrote html audit for ' + title);
     } catch (err) {
-        console.log('Error writing file for ' + title, err);
-        return;
+        console.log('Error writing file for ' + title + ': ');
+        console.log(err);
+        reject();
     }
 
     const resultJson = result.lhr;
@@ -79,17 +78,24 @@ const saveResult = async (result, title, id, connection) => {
     const seoScore = resultJson.categories.seo.score;
     
     if (perfScore != null && a11yScore != null && seoScore != null) {
-        await connection.query(`
+        connection.query(`
             UPDATE props
             SET
                 perfScore = '${perfScore}',
                 a11yScore = '${a11yScore}',
                 seoScore = '${seoScore}',
-                fetchTime = '${fetchTime}'
+                fetchTime = '${fetchTime}',
+                metaTitle = ${connection.escape(metaTitle)},
+                metaDesc = ${connection.escape(metaDesc)}
             WHERE url = '${requestedUrl}';
         `, (error) => {
-            if (error) throw error;
-            console.log('Updated DB Succesfully for ' + title);
+            if (error) {
+                console.log("Error writing to db for " + url + ": ");
+                console.log(error);
+                reject();
+            }
+            console.log(url + " has been succesfully updated \n");
+            resolve();
         });
     }
-};
+});

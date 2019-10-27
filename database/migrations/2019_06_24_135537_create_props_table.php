@@ -28,6 +28,9 @@ class CreatePropsTable extends Migration
             $table->float('seoScore')->default('0');
             $table->string('fetchTime')->default('0');
 
+            $table->longText('metaTitle')->nullable();
+            $table->longText('metaDesc')->nullable();
+
             $table->integer('org_id')->unsigned()->index()->nullable();
             $table->foreign('org_id')->references('id')->on('orgs')->onDelete('cascade');
         });
