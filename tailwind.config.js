@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       spacing: {
         '72': '18rem',
+        'container': 'calc(25% + 2.5rem)'
       }
     }
   },
