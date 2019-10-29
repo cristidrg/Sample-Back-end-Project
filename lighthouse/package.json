@@ -13,6 +13,7 @@
     "chrome-launcher": "^0.10.7",
     "dotenv": "^8.1.0",
     "lighthouse": "^5.1.0",
+    "lighthouse-cli": "^0.1.2",
     "mysql": "^2.17.1",
     "node-cron": "^2.0.3",
     "url-metadata": "^2.4.0"

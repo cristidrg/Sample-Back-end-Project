@@ -24,7 +24,7 @@ const opts = {
   port: process.env.LIGHTHOUSE_PORT
 };
 
-cron.schedule("* * * * *", function() {
+// cron.schedule("* * * * *", function() {
     const connection = mysql.createConnection({
         host: process.env.DB_HOST,
         user: process.env.DB_USERNAME,
@@ -55,7 +55,7 @@ cron.schedule("* * * * *", function() {
 
         return;
     });
-});
+// });
 
 const saveResult = (result, title, id, metaTitle, metaDesc, connection) => new Promise((resolve, reject) => {
     if (result == undefined) {
