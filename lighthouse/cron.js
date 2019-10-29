@@ -8,7 +8,7 @@ const mysql = require('mysql');
 const fs = require('fs');
 
 const launchChromeAndRunLighthouse = (url, opts, config = null) => new Promise((resolve, reject) => {
-    chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
+    chromeLauncher.launch({chromeFlags: opts.chromeFlags, chromePath: process.env.CANARY_PATH }).then(chrome => {
         opts.port = chrome.port;
 
         lighthouse(url, opts, config).then(results => {

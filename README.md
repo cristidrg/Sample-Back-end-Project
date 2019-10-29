@@ -29,7 +29,9 @@ cd lighthouse/
 node cron
 ```
 
-
+## If on MacOS Catalina
+Have Google Canary installed and add this line to your .env:
+CANARY_PATH = "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary"
 
 ## Installing on a server
 Install Node
