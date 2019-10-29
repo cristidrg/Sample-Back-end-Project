@@ -7,8 +7,10 @@ const cron = require("node-cron");
 const mysql = require('mysql');
 const fs = require('fs');
 
+let chromePathValue = process.env.CANARY_PATH == "default" ? undefined : process.env.CANARY_PATH;
+
 const launchChromeAndRunLighthouse = (url, opts, config = null) => new Promise((resolve, reject) => {
-    chromeLauncher.launch({chromeFlags: opts.chromeFlags, chromePath: process.env.CANARY_PATH }).then(chrome => {
+    chromeLauncher.launch({chromeFlags: opts.chromeFlags, chromePath: chromePathValue }).then(chrome => {
         opts.port = chrome.port;
 
         lighthouse(url, opts, config).then(results => {
