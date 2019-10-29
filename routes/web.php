@@ -30,14 +30,11 @@ Route::any('/search',function() {
     $a11y = Input::get('a11y');
     $perf = Input::get('perf');
     $seo = Input::get('seo');
-    error_log($seo);
 
     $propResults = collect([]);;
-    $orgResults = collect([]);;
 
     if ($q != "") {
         $propResults = Prop::where('title', 'LIKE', '%'.$q.'%')->get();
-        $orgResults = Org::where('title', 'LIKE', '%'.$q.'%')->get();
     }
 
     if ($a11y != null) {
@@ -82,7 +79,6 @@ Route::any('/search',function() {
 
     return view('search', [
         'propResults' => $propResults,
-        'orgResults' => $orgResults,
         'monitor' => $monitor,
         'perf' => $perf,
         'a11y' => $a11y,

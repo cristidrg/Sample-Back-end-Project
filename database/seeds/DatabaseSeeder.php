@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Prop;
 use App\Org;
+use App\Prop;
+use App\User;
 use App\Technology;
 
 use Spatie\UptimeMonitor\Models\Monitor;
@@ -612,6 +613,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'mailbox@address.com',
             'title' => 'developer'
         ]);
+
+        Org::where('title', 'Northeastern')->first()->contact()->save(User::where('first_name', 'Tim')->first());
     }
 
     /*

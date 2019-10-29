@@ -69,11 +69,13 @@
         </div>
         <div class="flex flex-col w-full lg:w-3/12 lg:ml-8 mt-12">
             <p class="text-lg text-gray-200 font-bold uppercase">Contact</p>
-            <div class="mt-6 flex-grow bg-blue-900 h-full py-8 pl-10 pr-8">
-                <p>{{$contact->first_name}} {{$contact->last_name}}</p>
-                <p class="text-m font-light">{{$contact->title}}</p>
-                <p class="mt-3 text-m font-light text-gray-500">{{$contact->email}}</p>
-            </div>
+            @if(isset($contact))
+                <div class="mt-6 flex-grow bg-blue-900 h-full py-8 pl-10 pr-8">
+                    <p>{{$contact->first_name}} {{$contact->last_name}}</p>
+                    <p class="text-m font-light">{{$contact->title}}</p>
+                    <p class="mt-3 text-m font-light text-gray-500">{{$contact->email}}</p>
+                </div>
+            @endif
         </div>
         <div class="flex-grow w-full lg:w-7/12 flex flex-col mt-12">
             <p class="text-lg text-gray-200 font-bold uppercase">Environment</p>
