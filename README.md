@@ -30,6 +30,7 @@ node cron
 ```
 
 
+
 ## Installing on a server
 Install Node
 Install PHP and Laravel

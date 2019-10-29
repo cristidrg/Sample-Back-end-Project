@@ -1,5 +1,6 @@
 require('dotenv').config({ path: '../.env' });
 
+const findChrome = require('chrome-finder');
 const chromeLauncher = require('chrome-launcher');
 const urlMetadata = require('url-metadata');
 const lighthouse = require('lighthouse');
@@ -8,7 +9,7 @@ const mysql = require('mysql');
 const fs = require('fs');
 
 const launchChromeAndRunLighthouse = (url, opts, config = null) => new Promise((resolve, reject) => {
-    chromeLauncher.launch({chromeFlags: opts.chromeFlags}).then(chrome => {
+    chromeLauncher.launch({chromeFlags: opts.chromeFlags, chromePath: findChrome()}).then(chrome => {
         opts.port = chrome.port;
 
         lighthouse(url, opts, config).then(results => {

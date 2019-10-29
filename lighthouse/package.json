@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chrome-finder": "^1.0.6",
     "chrome-launcher": "^0.10.7",
     "dotenv": "^8.1.0",
     "lighthouse": "^5.1.0",
