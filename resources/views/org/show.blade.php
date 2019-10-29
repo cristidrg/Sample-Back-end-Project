@@ -75,19 +75,19 @@
                             <div class="flex-1">
                                 <p class="mb1">Accessibility</p>
                                 <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$prop->$a11yScore}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->a11yScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p class="mb1">SEO</p>
                                 <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$prop->$seoScore}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->seoScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p class="mb1">Performance</p>
                                 <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
-                                    <span class="bg-blue-400" style="width: {{$prop->$perfScore}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->perfScore * 100}}%"></span>
                                 </div>
                             </div>
                         </div>

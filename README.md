@@ -21,6 +21,14 @@ php artisan serve
 npm run watch - in another terminal
 ```
 
+## When you pull from master run
+```
+php artisan migrate:refresh --seed
+php artisan monitor:check-uptime
+cd lighthouse/
+node cron
+```
+
 
 ## Installing on a server
 Install Node
