@@ -218,9 +218,24 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'Provost',
+                'title' => 'Provost Candidate Search',
+                'description' => '',
+                'url' => 'https://provost.northeastern.edu/candidate-search/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
+            ],
+            [
+                'org' => 'Provost',
                 'description' => 'Temporary Provost candidate search site',
                 'title' => 'Provost Candidate Search',
                 'url' => 'http://provost.northeastern.edu/candidate-search',
+                'technologies' => ['WordPress', 'kernl(theme)'],
+            ],
+            [
+                'org' => 'Provost',
+                'description' => '',
+                'title' => 'Academic Plan',
+                'url' => 'https://www.northeastern.edu/academic-plan/',
+                'technologies' => ['WordPress', 'kernl(theme)'],
             ],
             [
                 'org' => 'Provost',
@@ -235,7 +250,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'CAMD',
-                'title' => 'College of Arts, Media and Design',
+                'title' => 'College of Arts, Media and Design (CAMD)',
                 'url' => 'https://camd.northeastern.edu/',
             ],
             [
@@ -245,7 +260,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'COE',
-                'title' => 'College of Engineering',
+                'title' => 'College of Engineering (COE)',
                 'url' => 'https://coe.northeastern.edu/',
             ],
             [
@@ -255,12 +270,12 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'CPS',
-                'title' => 'College of Professional Studies',
+                'title' => 'College of Professional Studies (CPS)',
                 'url' => 'https://cps.northeastern.edu/',
             ],
             [
                 'org' => 'COS',
-                'title' => 'College of Science',
+                'title' => 'College of Science (COS)',
                 'url' => 'https://cos.northeastern.edu/',
             ],
             [
@@ -270,7 +285,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'CSSH',
-                'title' => 'College of Social Sciences and Humanities',
+                'title' => 'College of Social Sciences and Humanities (CSSH)',
                 'url' => 'https://cssh.northeastern.edu/',
             ],
             [
@@ -280,7 +295,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'DMSB',
-                'title' => 'D’Amore-McKim School of Business',
+                'title' => 'D’Amore-McKim School of Business (DMSB)',
                 'url' => 'https://damore-mckim.northeastern.edu/',
             ],
             [
@@ -318,6 +333,12 @@ class DatabaseSeeder extends Seeder
                 'title' => 'Faculty Handbook',
                 'url' => 'https://faculty.northeastern.edu/handbook/',
                 'technologies' => ['WordPress', 'kernl(theme)'],
+            ],
+            [
+                'org' => 'Academic Affairs',
+                'title' => 'NECHE (formerly NEASC) Self-Study',
+                'url' => 'https://neche.northeastern.edu/',
+                'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'Academic Affairs',
