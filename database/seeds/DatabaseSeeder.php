@@ -218,13 +218,6 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'Provost',
-                'title' => 'Provost Candidate Search',
-                'description' => '',
-                'url' => 'https://provost.northeastern.edu/candidate-search/',
-                'technologies' => ['WordPress', 'kernl(theme)'],
-            ],
-            [
-                'org' => 'Provost',
                 'description' => 'Temporary Provost candidate search site',
                 'title' => 'Provost Candidate Search',
                 'url' => 'http://provost.northeastern.edu/candidate-search',
@@ -420,25 +413,25 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'org' => 'ITS',
-                'title' => 'Information Technology Services',
+                'title' => 'Information Technology Services (ITS)',
                 'url' => 'https://its.northeastern.edu/',
                 'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'ITS',
-                'title' => 'Chief Information Officer',
+                'title' => 'Chief Information Officer (CIO)',
                 'url' => 'https://cio.northeastern.edu/',
                 'technologies' => ['WordPress', 'Divi'],
             ],
             [
                 'org' => 'ITS',
-                'title' => 'Academic Technology Services',
+                'title' => 'Academic Technology Services (ATS)',
                 'url' => 'https://www.northeastern.edu/ats',
                 'technologies' => ['WordPress'],
             ],
             [
                 'org' => 'ITS',
-                'title' => 'Office of Information Security',
+                'title' => 'Office of Information Security (OIS)',
                 'url' => 'https://www.northeastern.edu/securenu',
                 'technologies' => ['WordPress'],
             ],
