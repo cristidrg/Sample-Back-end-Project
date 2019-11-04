@@ -45,7 +45,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'title' => 'required',
             'email' => 'required',
-            'maintains_org' => 'required'
+            'maintains_orgs' => 'required'
         ]);
 
         if (User::where('email', $request->get('email'))->first() != null) {
@@ -59,8 +59,13 @@ class UserController extends Controller
             'email' => $request->get('email')
         ]);
 
-        $orgToMaintain = Org::where('title', $request->get('maintains_org'))->first();
-        $orgToMaintain->contact()->save($user);
+        $orgs = $request->get('maintains_orgs');
+        if ($orgs && count($orgs) > 0) {
+            foreach ($orgs as $org) {
+                $orgModel = Org::where('title', $org)->first();
+                $user->orgs()->save($orgModel);
+            }
+        }
 
         $user->save();
 
@@ -109,7 +114,7 @@ class UserController extends Controller
             'last_name' => 'required',
             'title' => 'required',
             'email' => 'required',
-            'maintaining_org' => 'required'
+            'maintaining_orgs' => 'required'
         ]);
 
         $user = User::find($id);
@@ -117,11 +122,17 @@ class UserController extends Controller
         $user->last_name = $request->get('last_name');
         $user->email = $request->get('email');
         $user->title = $request->get('title');
-
-        $orgToMaintain = Org::where('title', $request->get('maintaining_org'))->first();
-        $user->org()->dissociate();
-        $orgToMaintain->contact()->save($user);
         
+        $orgs = $request->get('maintaining_orgs');
+        if ($orgs && count($orgs) > 0) {
+            $user->orgs()->detach();
+
+            foreach ($orgs as $org) {
+                $orgModel = Org::where('title', $org)->first();
+                $user->orgs()->attach($orgModel);
+            }
+        }
+
         $user->save();
         
         return redirect('/user')->with('popup', 'user updated!');

@@ -29,8 +29,8 @@
                 <input required type="text" class="form-control" name="title" />
             </div>
             <div>
-                <label for="maintains_org">Maintaining Org:</label>
-                <select name="maintains_org"  class="text-black">
+                <label for="maintains_orgs[]">Maintaining Orgs:</label>
+                <select name="maintains_orgs[]" multiple class="text-black">
                     @foreach ($orgs as $org)
                         <option>{{$org->title}}</option>
                     @endforeach

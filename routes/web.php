@@ -2,7 +2,7 @@
 
 use App\Prop;
 use App\Org;
-
+use App\Http\Controllers\OrgController;
 use Illuminate\Support\Facades\Input;
 
 /*
@@ -16,8 +16,8 @@ use Illuminate\Support\Facades\Input;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/org/1');
+Route::get('/', function() {
+    return OrgController::show(1);
 });
 Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');

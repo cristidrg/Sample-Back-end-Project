@@ -16,7 +16,7 @@
                     <td>Last Name</td>
                     <td>Email</td>
                     <td>Title</td>
-                    <td>Org</td>
+                    <td>Orgs</td>
                     <td colspan = 2>Actions</td>
                 </tr>
             </thead>
@@ -28,7 +28,11 @@
                     <td>{{$user->last_name}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->title}}</td>
-                    <td>{{$user->org_id}}</td>
+                    <td> 
+                        @foreach ($user->orgs as $org)
+                            {{$org->id}} 
+                        @endforeach
+                    </td>
                     <td>
                         <a href="{{ route('user.edit',$user->id)}}"  class="text-xl">Edit</a>
                     </td>

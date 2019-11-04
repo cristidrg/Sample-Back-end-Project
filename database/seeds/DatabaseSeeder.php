@@ -636,7 +636,7 @@ class DatabaseSeeder extends Seeder
             'title' => 'developer'
         ]);
 
-        Org::where('title', 'Northeastern')->first()->contact()->save(User::where('first_name', 'Tim')->first());
+        Org::where('title', 'Northeastern')->first()->users()->save(User::where('first_name', 'Tim')->first());
     }
 
     /*

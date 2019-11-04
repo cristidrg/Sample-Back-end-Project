@@ -20,9 +20,9 @@ class Org extends Model
         return $this->hasMany('App\Prop');
     }
 
-    public function contact()
+    public function users()
     {
-        return $this->hasOne('App\User');
+        return $this->belongsToMany('App\User', 'orgs_users', 'org_id', 'user_id');
     }
 
     public function getPropCount(Org $org) {

@@ -15,8 +15,8 @@ class User extends Model
     ];
 
 
-    public function org()
+    public function orgs()
     {
-        return $this->belongsTo('App\Org');
+        return $this->belongsToMany('App\Org', 'orgs_users', 'user_id', 'org_id');
     }
 }

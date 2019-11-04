@@ -28,10 +28,10 @@
             </div>
             <div>
                 @csrf
-                <label for="maintaining_org">Maintaining Org</label>
-                <select name="maintaining_org" value="{{$maintaining_org}}" class="text-black">
+                <label for="maintaining_orgs[]">Maintaining Orgs:</label>
+                <select name="maintaining_orgs[]" multiple class="text-black">
                     @foreach ($orgs as $org)
-                        @if ($org->title == $maintaining_org)
+                        @if (in_array($org->title, array_column(json_decode($user->orgs), 'title')))
                             <option selected>{{$org->title}}</option>
                         @else
                             <option>{{$org->title}}</option>

@@ -111,7 +111,7 @@ class PropController extends Controller
             'prop' => $prop,
             'isPropUp' => $isPropUp,
             'utils' => new Utils,
-            'contact' => $prop->getContact($prop)
+            'contacts' => $prop->getContacts($prop)
         ]);
     }
 

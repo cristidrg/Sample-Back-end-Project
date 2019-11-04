@@ -14,19 +14,19 @@ class Prop extends Model
     ];
 
     // Invariant: This assumes that our root org has ID of 1
-    public function getContact(Prop $prop)
+    public function getContacts(Prop $prop)
     {
         $org = $prop->org;
         
         do {
-            if (isset($org->contact)) {
-                return $org->contact;
+            if (isset($org->users) && count($org->users) > 0) {
+                return $org->users;
             }
             
             $org = $org->parent;
         } while($org->id != 1);
 
-        return $org->contact;
+        return $org->users;
     }
 
     public function monitor()
