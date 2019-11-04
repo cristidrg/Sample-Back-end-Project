@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use App\Org;
 use App\Prop;
 use App\User;
+use App\Utils;
 use App\Technology;
 
 use Spatie\UptimeMonitor\Models\Monitor;
@@ -17,6 +18,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        Utils::delete_directory(dirname(__DIR__, 2) . '/public/audits');
+
+        if (!is_dir(dirname(__DIR__, 2) . '/public/audits')) {
+            mkdir(dirname(__DIR__, 2) . '/public/audits');
+            touch(dirname(__DIR__, 2) . '/public/audits/empty.empty' );
+        }
+
         Org::create([
             'title' => 'Northeastern',
             'description' => 'root',

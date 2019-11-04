@@ -4,3 +4,4 @@ feather.replace()
 
 require('./jqueryMenus');
 require('./dynamicInput');
+require('./navFormClear');

@@ -30,7 +30,7 @@
                 </div>
             </div>
             <nav id="navigation" class="h-full flex flex-col" data-navigation-handle=".nav__handle" role="navigation">
-                <form action="/search" class="bg-gray-800 flex py-8 flex-col" method="POST" role="search">
+                <form id="nav_form" action="/search" class="bg-gray-800 flex py-8 flex-col" method="POST" role="search">
                     @csrf
                     <input class="mb-8 w-full bg-transparent py-2 px-1 border border-gray-400" name="search_title" type="text" placeholder="Search Properties"
                     value="{{$q}}">
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                     <button class="block w-full px-4 py-2 bg-gray-900 hover:bg-gray-700 text-white" type="submit">Filter</button>
-                    <button class="block w-full mt-2 py-2 bg-gray-700 hover:bg-gray-700 text-white" type="submit">Clear</button>
+                    <button id="nav_clear" class="block w-full mt-2 py-2 bg-gray-700 hover:bg-gray-700 text-white" type="button">Clear</button>
                 </form>
                 <div class="mt-auto mb-4 flex flex-col text-xs text-blue-300">
                     <div class="flex items-center">
