@@ -17,7 +17,7 @@
     <h1 class="text-3xl font-bold text-gray-100">{{$org->title}}</h1>
 
     <p class="mt-12 lg:mt-24 text-lg text-gray-200 font-bold uppercase">Audits</p>
-    <div class="bg-gray-800 mt-6 pt-10 px-3 lg:pl-10 lg:pr-8 pb-8">
+    <div class="bg-gray-800 mt-6 pt-10 px-4 lg:pl-10 lg:pr-8 pb-8">
         <div class="flex">
              @if ($org->getUptimeCount($org) > 0)
                 <div class="flex items-center">
@@ -34,7 +34,7 @@
         </div>
         <div class="flex flex-col mt-8">
             <p class="text-gray-300">Accessibility</p>
-            <div class="flex mt-1">
+            <div class="flex items-center">
                 <div class="flex-1 audit_bar h-3 bg-gray-700">
                     <span class="bg-blue-400" style="width: {{$a11yScore * 100}}%"></span>
                 </div>
@@ -43,7 +43,7 @@
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">SEO</p>
-            <div class="flex mt-1">
+            <div class="flex items-center">
                 <div class="flex-1 audit_bar h-3 bg-gray-700">
                     <span class="bg-blue-400" style="width: {{$seoScore * 100}}%"></span>
                 </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">Performance</p>
-            <div class="flex mt-1">
+            <div class="flex items-center">
                 <div class="flex-1 audit_bar h-3 bg-gray-700">
                     <span class="bg-blue-400" style="width: {{$perfScore * 100}}%"></span>
                 </div>
@@ -65,34 +65,34 @@
         <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
         <ul>
             @foreach ($childrenProps as $prop)
-                <li class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800 ">
+                <li class="block lg:px-2 border-b border-solid border-gray-800 hover:bg-gray-800 ">
                     <a class="flex flex-col lg:flex-row pt-4 pb-4 relative" href="/prop/{{$prop->id}}">
                         <div class="flex flex-col justify-center">
-                            <p class="text-base font-medium text-gray-200 mb-1">{{$prop->title}}</p>
-                            <p class="text-sm text-gray-700">{{$prop->url}}</p>
+                            <p class="text-base font-medium text-gray-200">{{$prop->title}}</p>
+                            <p class="text-sm text-gray-600">{{$prop->url}}</p>
                         </div>
-                        <div class="flex items-center text-gray-500 mt-6 lg:mt-0 lg:ml-auto">
+                        <div class="flex items-center text-gray-500 mt-6 lg:mt-0 lg:ml-auto text-sm mb-4">
                             <div class="flex-1">
-                                <p class="mb1">Accessibility</p>
-                                <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
+                                <p>Accessibility</p>
+                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
                                     <span class="bg-blue-400" style="width: {{$prop->a11yScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
-                                <p class="mb1">SEO</p>
-                                <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
+                                <p>SEO</p>
+                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
                                     <span class="bg-blue-400" style="width: {{$prop->seoScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
-                                <p class="mb1">Performance</p>
-                                <div class="audit_bar mt-4 h-2 w-full lg:w-32 bg-gray-700">
+                                <p>Performance</p>
+                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
                                     <span class="bg-blue-400" style="width: {{$prop->perfScore * 100}}%"></span>
                                 </div>
                             </div>
                         </div>
                         <div class="ml-12 flex flex-col items-center absolute lg:static top-1 lg:top-auto right-0">
-                            <p class="mb-1 text-gray-500">Uptime</p>
+                            <p class="mb-1 text-sm text-gray-600">Uptime</p>
                             @if($prop->monitor->uptime_status == 'down')
                                 @include('svgs.warning')
                             @else

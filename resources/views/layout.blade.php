@@ -24,7 +24,7 @@
     <body class="bg-gray-900 font-body flex flex-col lg:flex-row text-gray-200">
         <div class="w-full lg:fixed z-10 lg:w-3/12 lg:h-full bg-gray-800 py-6 lg:py-10 px-3 lg:px-8">
             <div class="flex items-center w-full">
-                <a class="text-2xl font-bold" href="/">NUprops</a>
+                <a class="text-2xl font-bold text-gray-100" href="/">NUprops</a>
                 <div class="nav__handle ml-auto lg:hidden">
                     @include('svgs/menu')
                 </div>
@@ -79,7 +79,7 @@
             </nav>
         </div>
 
-        <main class="w-full px-3 lg:pl-container pt-12 lg:pr-16 relative pb-6">
+        <main class="w-full px-4 lg:pl-container pt-12 lg:pr-16 relative pb-6">
             @yield('content')
         </main>
     </body>
