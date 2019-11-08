@@ -64,7 +64,7 @@
     @if (count($org->props) > 0)
         <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
         <ul>
-            @foreach ($childrenProps as $prop)
+            @foreach ($org->props as $prop)
                 <li class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800">
                     <a class="flex flex-col lg:flex-row pt-4 pb-4 relative" href="/prop/{{$prop->id}}">
                         <div class="flex flex-col justify-center">

@@ -123,12 +123,6 @@ class PropController extends Controller
         return redirect('/prop')->with('success', 'prop updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Prop $prop)
     {
         $prop->delete();
