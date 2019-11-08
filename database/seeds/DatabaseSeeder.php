@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
 
         Org::create([
             'title' => 'Northeastern',
-            'description' => 'root',
             'children' => [
                 [
                     'title' => 'Advancement',

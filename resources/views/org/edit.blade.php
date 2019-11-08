@@ -13,11 +13,6 @@
                 <input required type="text" class="form-control" name="title" value="{{ $org->title }}" />
             </div>
             <div>
-                @csrf
-                <label for="description">Org Description:</label>
-                <input required type="text" class="form-control" name="description" value="{{ $org->description }}" />
-            </div>
-            <div>
                 <label for="parent">Org Parent:</label>
                 <select name="parent" value="{{$parent_title}}" class="text-black">
                     @foreach ($orgs as $org)

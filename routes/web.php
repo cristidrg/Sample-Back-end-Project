@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Input;
 */
 
 Route::get('/', function() {
-    return OrgController::show(1);
+    return OrgController::show(Org::find('1'));
 });
 Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
