@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
 
         Org::create([
             'title' => 'Northeastern',
-            'description' => 'root',
             'children' => [
                 [
                     'title' => 'Advancement',
@@ -596,12 +595,26 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
+        $defaultEnvironment = [
+            [
+                'type' => 'Production',
+                'server' => 'huskyprod.neu.edu',
+                'url' => 'https://provost.northeastern.edu',
+            ],
+            [
+                'type' => 'Development',
+                'server' => 'huskydev.neu.edu',
+                'url' => 'https://dev.provost.northeastern.edu',
+            ],
+        ];
+
+        $defaultTechnologies = ['WordPress', 'WordPress Multisite', 'HTML', 'CSS'];
+
         foreach ($props as $prop) {
-            // @dump($prop['environments']);
             DB::table('props')->insert([
                 'title' => $prop['title'],
                 'url' => $prop['url'],
-                'environments' => (isset($prop['environments']) ? json_encode($prop['environments']) : ''),
+                'environments' => (isset($prop['environments']) ? json_encode($prop['environments']) : json_encode($defaultEnvironment)),
             ]);
 
             DB::table('monitors')->insert([
@@ -610,16 +623,18 @@ class DatabaseSeeder extends Seeder
 
             $this->createOrgPropMonitorRelationship($prop['org'], $prop['url']);
 
-            if (isset($prop['technologies'])) {
-                foreach ($prop['technologies'] as $technology) {
-                    $technologyModel = Technology::where('name', $technology)->first();
+            if (!isset($prop['technologies'])) {
+                $prop['technologies'] = $defaultTechnologies;
+            }
+            
+            foreach ($prop['technologies'] as $technology) {
+                $technologyModel = Technology::where('name', $technology)->first();
 
-                    if ($technologyModel == null) {
-                        $technologyModel = Technology::create(['name' => $technology]);
-                    }
-
-                    Prop::where('url', $prop['url'])->first()->technologies()->save($technologyModel);
+                if ($technologyModel == null) {
+                    $technologyModel = Technology::create(['name' => $technology]);
                 }
+
+                Prop::where('url', $prop['url'])->first()->technologies()->save($technologyModel);
             }
         }
 

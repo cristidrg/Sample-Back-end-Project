@@ -4,6 +4,13 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <form method="post" action={{ route('org.update', $org->id) }}>
             @method('PATCH') 
             @csrf
@@ -11,11 +18,6 @@
                 @csrf
                 <label for="title">Org Title:</label>
                 <input required type="text" class="form-control" name="title" value="{{ $org->title }}" />
-            </div>
-            <div>
-                @csrf
-                <label for="description">Org Description:</label>
-                <input required type="text" class="form-control" name="description" value="{{ $org->description }}" />
             </div>
             <div>
                 <label for="parent">Org Parent:</label>

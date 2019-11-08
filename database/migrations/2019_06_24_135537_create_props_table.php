@@ -21,7 +21,7 @@ class CreatePropsTable extends Migration
 
             $table->string('title');
             $table->string('url')->unique();
-            $table->text('environments')->nullable();
+            $table->longText('environments')->nullable();
 
             $table->float('perfScore')->default('0');
             $table->float('a11yScore')->default('0');

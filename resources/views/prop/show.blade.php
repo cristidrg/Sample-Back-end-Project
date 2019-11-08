@@ -82,21 +82,19 @@
         <div class="flex-grow w-full lg:w-7/12 flex flex-col mt-12">
             <p class="text-lg text-gray-200 font-bold uppercase">Environment</p>
             <div class="mt-6 bg-gray-800 h-full py-8 pl-10 pr-8 flex text-xs font-light">
-                @if($prop->environments)
-                    @foreach (json_decode($prop->environments) as $index=>$environment)
-                        @if ($index == 0)
-                            <div>
-                        @else
-                            <div class="ml-8">
-                        @endif
-                                <p class="text-base font-medium">{{$environment->type}}</p>
-                                <p class="mt-2 uppercase">Server:</p>
-                                <a class="text-blue-300" href="{{$environment->server}}">{{$environment->server}}</a>
-                                <p class="mt-2">URL:</p> 
-                                <a class="text-blue-300" href="{{$environment->url}}">{{$environment->url}}</a>
-                            </div>
-                    @endforeach
-                @endif
+                @foreach ($prop->environments as $index=>$environment)
+                    @if ($index == 0)
+                        <div>
+                    @else
+                        <div class="ml-8">
+                    @endif
+                            <p class="text-base font-medium">{{$environment['type']}}</p>
+                            <p class="mt-2 uppercase">Server:</p>
+                            <a class="text-blue-300" href="{{$environment['server']}}">{{$environment['server']}}</a>
+                            <p class="mt-2">URL:</p> 
+                            <a class="text-blue-300" href="{{$environment['url']}}">{{$environment['url']}}</a>
+                        </div>
+                @endforeach
             </div>
         </div>
         <div class="flex flex-col w-full lg:w-3/12 mt-12 lg:ml-8">

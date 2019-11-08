@@ -61,11 +61,11 @@
         </div>
     </div>
 
-    @if (count($childrenProps) > 0)
+    @if (count($org->props) > 0)
         <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
         <ul>
             @foreach ($childrenProps as $prop)
-                <li class="block lg:px-2 border-b border-solid border-gray-800 hover:bg-gray-800 ">
+                <li class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800">
                     <a class="flex flex-col lg:flex-row pt-4 pb-4 relative" href="/prop/{{$prop->id}}">
                         <div class="flex flex-col justify-center">
                             <p class="text-base font-medium text-gray-200">{{$prop->title}}</p>
@@ -105,10 +105,10 @@
         </ul>
     @endif
 
-    @if (count($childrenOrgs) > 0)
+    @if (count($org->children) > 0)
         <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Organizations</p>
         <div class="flex flex-wrap justify-between">
-            @foreach ($childrenOrgs as $childOrg)
+            @foreach ($org->children as $childOrg)
                 @include('org.card')
             @endforeach
         </div>

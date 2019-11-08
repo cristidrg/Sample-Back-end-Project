@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Prop extends Model
 { 
+    protected $casts = ['environments' => 'array'];
     protected $fillable = ['title', 'url', 'environments'];
     protected $attributes = [
         'title' => '',

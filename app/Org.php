@@ -12,7 +12,6 @@ class Org extends Model
     protected $fillable = ['title'];
     protected $attributes = [
         'title' => '',
-        'description' => '',
     ];
 
     public function props()
@@ -155,5 +154,3 @@ class Org extends Model
         return $this->getUptimeCount($this) / $propCount;
     }
 }
-
-Org::fixTree();

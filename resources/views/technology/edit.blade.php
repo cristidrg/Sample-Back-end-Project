@@ -4,6 +4,13 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <form method="post" action={{ route('technology.update', $technology->id) }}>
             @method('PATCH') 
             @csrf

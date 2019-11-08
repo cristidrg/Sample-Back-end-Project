@@ -22,7 +22,6 @@ class CreateOrgsTable extends Migration
             $table->timestamps();
 
             $table->string('title');
-            $table->string('description')->default('')->nullable();
         });
     }
 

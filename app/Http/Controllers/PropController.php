@@ -7,15 +7,11 @@ use App\Prop;
 use App\Utils;
 use App\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Spatie\UptimeMonitor\Models\Monitor;
 
 class PropController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $props = Prop::all();
@@ -23,11 +19,6 @@ class PropController extends Controller
         return view('prop/index', compact('props'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('prop/create', [
@@ -36,157 +27,98 @@ class PropController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
+        request()->validate([
             'title' => 'required',
-            'url' => 'required',
-            'parent_org' => 'required'
+            'url' => 'required|unique:props',
+            'parent_org' => 'required|exists:orgs,title',
+            'technologies' => 'required|array',
+            'technologies.*' => 'required|exists:technologies,name',
+            'env_types' => 'required|array',
+            'env_servers' => 'required|array',
+            'env_urls' => 'required|array',
         ]);
 
-        if (Prop::where('url', $request->get('url'))->first() != null) {
-            return redirect('/prop/create')->with('popup', 'Error: There is a prop with that url already.');
-        }
-
         $environments = array();
-        $env_types = $request->get('env_types');
-        $env_servers = $request->get('env_servers');
-        $env_urls = $request->get('env_urls');
-
-        if ($env_types && count($env_types) > 0) {
-            foreach ($env_types as $index => $env_type) {
-                $env_entry = [];
-                $env_entry['type'] = $env_type;
-                $env_entry['server'] = $env_servers[$index];
-                $env_entry['url'] = $env_urls[$index];
-
-                $environments[$index] = $env_entry;
-            }
+        foreach (request('env_types') as $index => $env_type) {
+            $environments[$index] = [
+                'type' => $env_type,
+                'server' => request('env_servers')[$index],
+                'url' => request('env_servers')[$index]
+            ];
         }
 
         $prop = Prop::create([
-            'title' => $request->get('title'),
-            'url' => $request->get('url'),
-            'environments' => json_encode(array_values($environments))
+            'title' => request('title'),
+            'url' => request('url'),
+            'environments' => $environments
         ]);
 
-        $monitor = Monitor::create(['url' => $request->get('url')]);
-        $prop->monitor()->save($monitor);
-
-        $parentOrg = Org::where('title', $request->get('parent_org'))->first();
-        $parentOrg->props()->save($prop);
-
-        $technologies = $request->get('technologies');
-        if ($technologies && count($technologies) > 0) {
-            foreach ($technologies as $technology) {
-                $technologyModel = Technology::where('name', $technology)->first();
-                $prop->technologies()->save($technologyModel);
-            }
+        $prop->monitor()->save(Monitor::create(['url' => request('url')]));
+        Org::where('title', request('parent_org'))->first()->props()->save($prop);
+        
+        foreach (request('technologies') as $technology) {
+            $prop->technologies()->save(Technology::where('name', $technology)->first());
         }
 
-        $prop->save();
-
-        return redirect('prop/')->with('popup', 'Prop ' . $request->get('title') . ' has been created!');
+        return redirect('prop/')->with('popup', 'Prop ' . request('title') . ' has been created!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Prop $prop)
     {
-        $prop = Prop::find($id);
-
-        $isPropUp = $prop->monitor->uptime_status == 'up' ? '1' : '0';
-
         return view('prop/show', [
             'prop' => $prop,
-            'isPropUp' => $isPropUp,
+            'isPropUp' => $prop->monitor->uptime_status == 'up' ? '1' : '0',
             'utils' => new Utils,
             'contacts' => $prop->getContacts($prop)
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Prop $prop)
     {
-        $prop = Prop::find($id);
-        $propEnvs = json_decode($prop->environments);
         return view('prop/edit', [
             'prop' => $prop,
-            'propEnvs' => $propEnvs ? $propEnvs : [],
             'parent_title' => $prop->org->title,
             'orgs' => Org::all(),
             'technologies' => Technology::all()
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Prop $prop)
     {
-        $request->validate([
+        request()->validate([
             'title' => 'required',
-            'url' => 'required',
-            'parent' => 'required'
+            'url' => ['required', Rule::unique('props')->ignore($prop->id)],
+            'parent_org' => 'required|exists:orgs,title',
+            'technologies' => 'required|array',
+            'technologies.*' => 'required|exists:technologies,name',
+            'env_types' => 'required|array',
+            'env_servers' => 'required|array',
+            'env_urls' => 'required|array',
         ]);
 
-        $prop = Prop::find($id);
-        $prop->title =  $request->get('title');
-        $prop->url = $request->get('url');
 
         $environments = array();
-        $env_types = $request->get('env_types');
-        $env_servers = $request->get('env_servers');
-        $env_urls = $request->get('env_urls');
-
-        if ($env_types && count($env_types) > 0) {
-            foreach ($env_types as $index => $env_type) {
-                $env_entry = [];
-                $env_entry['type'] = $env_type;
-                $env_entry['server'] = $env_servers[$index];
-                $env_entry['url'] = $env_urls[$index];
-
-                $environments[$index] = $env_entry;
-            }
-        }
-        $prop->environments = json_encode($environments);
-
-        $technologies = $request->get('technologies');
-        if ($technologies && count($technologies) > 0) {
-            $prop->technologies()->detach();
-
-            foreach ($technologies as $technology) {
-                $technologyModel = Technology::where('name', $technology)->first();
-                $prop->technologies()->attach($technologyModel);
-            }
+        foreach (request('env_types') as $index => $env_type) {
+            $environments[$index] = [
+                'type' => $env_type,
+                'server' => request('env_servers')[$index],
+                'url' => request('env_servers')[$index]
+            ];
         }
 
-        $parentOrg = Org::where('title', $request->get('parent'))->first();
-        // TODO: Look into dissociating props and orgs
-        // $prop->org()->dissociate();
-        // $parentOrg->props()->dissociate($prop);
-        $parentOrg->props()->save($prop);
+        $prop->update(array_merge(request(['title','url'])),[
+            'environments' => $environments
+        ]);
 
-        $prop->save();
+        $prop->technologies()->detach();
+        foreach (request('technologies') as $technology) {
+            $prop->technologies()->attach(Technology::where('name', $technology)->first());
+        }
+
+        //TODO: Idk why I can't do prop->org->detach or dissociate. It needs to be done to prevent errors in editing.
+        Org::where('title', request('parent_org'))->first()->props()->save($prop);
 
         return redirect('/prop')->with('success', 'prop updated!');
     }
@@ -197,11 +129,10 @@ class PropController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Prop $prop)
     {
-        $prop = Prop::find($id);
         $prop->delete();
 
-        return redirect('/prop')->with('popup', 'Prop with id ' . $id . ' has been deleted');
+        return redirect('/prop')->with('popup', 'Prop has been deleted');
     }
 }

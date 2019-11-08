@@ -13,7 +13,6 @@
                 <tr>
                     <td>ID</td>
                     <td>Title</td>
-                    <td>Description</td>
                     <td>Parent ID</td>
                     <td>Contact email</td>
                     <td colspan = 2>Actions</td>
@@ -24,7 +23,6 @@
                 <tr>
                     <td>{{$org->id}}</td>
                     <td>{{$org->title}}</td>
-                    <td>{{$org->description}}</td>
                     <td>{{$org->parent_id}}</td>
                     <td>{{$org->contact ? $org->contact->email : ''}}</td>
                     <td>

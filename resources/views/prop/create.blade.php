@@ -4,8 +4,12 @@
 
 @section('content')
     <div>
-        @if(session()->get('popup'))
-            {{ session()->get('popup') }}  
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         @endif
         <form method="post" action={{ route('prop.store') }}>
             @csrf

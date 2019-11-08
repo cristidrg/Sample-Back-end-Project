@@ -4,6 +4,13 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <form method="post" action={{ route('user.update', $user->id) }}>
             @method('PATCH') 
             @csrf
@@ -28,8 +35,8 @@
             </div>
             <div>
                 @csrf
-                <label for="maintaining_orgs[]">Maintaining Orgs:</label>
-                <select name="maintaining_orgs[]" multiple class="text-black">
+                <label for="maintains_orgs[]">Maintaining Orgs:</label>
+                <select name="maintains_orgs[]" multiple class="text-black">
                     @foreach ($orgs as $org)
                         @if (in_array($org->title, array_column(json_decode($user->orgs), 'title')))
                             <option selected>{{$org->title}}</option>

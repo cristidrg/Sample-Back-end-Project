@@ -4,103 +4,54 @@ namespace App\Http\Controllers;
 
 use App\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class TechnologyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $technologies = Technology::all();
-
-        return view('technology/index', compact('technologies'));
+        return view('technology/index', [
+            'technologies' => Technology::all()
+        ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('technology/create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
-            'name' => 'required'
+        request()->validate([
+            'name' => 'required|unique:technologies'
         ]);
 
-        if (Technology::where('name', $request->get('name'))->first() != null) {
-            return redirect('/technology/create')->with('popup', 'Error: There is a technology with this name');
-        }
+        Technology::create(['name' => request('name')]);
 
-        $technology = Technology::create(['name' => $request->get('name')]);
-
-        return redirect('technology/')->with('popup', 'Technology ' . $request->get('title') . ' has been created!');
+        return redirect('technology/')->with('popup', 'Technology ' . request('title') . ' has been created!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id) {}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function edit(Technology $technology)
     {
-        $technology = Technology::find($id);
-        return view('technology/edit', [
-            'technology' => $technology
-        ]);
+        return view('technology/edit', ['technology' => $technology]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Technology $technology)
     {
-        $request->validate([
-            'name' => 'required'
+        request()->validate([
+            'name' => ['required', Rule::unique('technologies')->ignore($technology->id)]
         ]);
 
-        $technology = Technology::find($id);
-        $technology->name = $request->get('name');
+        $technology->name = request('name');
         $technology->save();
 
         return redirect('/technology')->with('popup', 'technology updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Technology $technology)
     {
-        $technology = Technology::find($id);
         $technology->delete();
 
         return redirect('/technology')->with('popup', 'technology has been deleted');
