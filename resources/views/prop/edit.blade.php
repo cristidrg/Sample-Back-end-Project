@@ -4,12 +4,17 @@
 
 @section('content')
     <div>
+        @if ($errors->any())
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
         <form method="post" action={{ route('prop.update', $prop->id) }}>
             @method('PATCH') 
             @csrf
-            @php
-                error_log($prop->title)
-            @endphp
+
             <div>
                 <label for="title">Prop Title:</label>
                 <input required type="text" class="form-control" name="title" value="{{ $prop->title }}" />
@@ -19,8 +24,8 @@
                 <input required type="text" class="form-control" name="url" value="{{ $prop->url }}" />
             </div>
             <div>
-                <label for="parent">Parent org:</label>
-                <select name="parent" value="{{$parent_title}}" class="text-black">
+                <label for="parent_org">Parent org:</label>
+                <select name="parent_org" value="{{$parent_title}}" class="text-black">
                     @foreach ($orgs as $org)
                         @if ($org->title == $parent_title)
                             <option selected>{{$org->title}}</option>
@@ -45,19 +50,18 @@
              <div>
                 <label>Environments:</label>
                 <div class="prop-environment-form">
-                    @foreach ($propEnvs as $index=>$environment)
-                        @php
-                            $index = $index +1;
-                        @endphp
+                    @foreach ($prop->environments as $index=>$environment)
+                        @php $index = $index +1; @endphp
+
                         <p>Environment {{$index}}</p>
                         <label>Type:</label>
-                        <input type="text" name="{{'env_types['.$index.']'}}" value="{{$environment->type}}"/>
+                        <input type="text" name="{{'env_types['.$index.']'}}" value="{{$environment['type']}}"/>
 
                         <label>Server:</label>
-                        <input type="text" name="{{'env_servers['.$index.']'}}" value="{{$environment->server}}"/>
+                        <input type="text" name="{{'env_servers['.$index.']'}}" value="{{$environment['server']}}"/>
 
                         <label>URL:</label>
-                        <input type="text" name="{{'env_urls['.$index.']'}}" value="{{$environment->url}}"/>
+                        <input type="text" name="{{'env_urls['.$index.']'}}" value="{{$environment['url']}}"/>
                     @endforeach
                 </div>
                 <button class="prop-environment-form__add">Add environment</button>
