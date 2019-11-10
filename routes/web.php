@@ -19,6 +19,11 @@ use Illuminate\Support\Facades\Input;
 Route::get('/', function() {
     return OrgController::show(Org::find('1'));
 });
+
+Route::get('/org/1', function() {
+    return redirect('/');
+});
+
 Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
 Route::resource('prop', 'PropController');

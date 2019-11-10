@@ -14,7 +14,13 @@
             <a href={{"/org/".$org->parent->id}}>{{$org->parent->title}}</a>
         @endif
     </nav>
-    <h1 class="text-3xl font-bold text-gray-100">{{$org->title}}</h1>
+    <h1 class="text-3xl font-bold text-gray-100">
+        @if($org->id == 1)
+            Overall Status of Northeastern's web ecosystem
+        @else
+            {{$org->title}}
+        @endif
+    </h1>
 
     <p class="mt-12 lg:mt-24 text-lg text-gray-200 font-bold uppercase">Audits</p>
     <div class="bg-gray-800 mt-6 pt-10 px-4 lg:pl-10 lg:pr-8 pb-8">
