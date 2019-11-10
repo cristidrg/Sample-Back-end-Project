@@ -35,16 +35,48 @@ Route::resource('technology', 'TechnologyController');
 Route::get('/api/props', function() {
     $propResults = Prop::all();
     $seo = Input::get('seo');
+    $a11y = Input::get('a11y');
+    $perf = Input::get('perf');
+    $uptime = Input::get('uptime');
+    $org = Input::get('org');
 
     if ($seo != null) {
         $values = explode('-', trim($seo));
+
+        $propResults = $propResults->filter(function ($prop) use (&$values){
+            return ($prop->seoScore >= $values['0'] && $prop->seoScore <= $values['1']);
+        });
+    }
+
+    if ($a11y != null) {
+        $values = explode('-', trim($a11y));
+
+        $propResults = $propResults->filter(function ($prop) use (&$values){
+            return ($prop->a11yScore >= $values['0'] && $prop->a11yScore <= $values['1']);
+        });
+    }
+
+    if ($perf != null) {
+        $values = explode('-', trim($perf));
 
         $propResults = $propResults->filter(function ($prop) use (&$values){
             return ($prop->perfScore >= $values['0'] && $prop->perfSCore <= $values['1']);
         });
     }
 
-    return PropResource::collection($propResults);
+    if ($uptime != null) {
+        $propResults = $propResults->filter(function ($prop) use (&$uptime){
+            return $prop->monitor->uptime_status == $uptime;
+        });
+    }
+
+    if ($org != null) {
+        $propResults = $propResults->filter(function ($prop) use (&$org){
+            return $prop->org_id == $org;
+        });
+    }
+
+    return PropResource::collection($propResults); //pagination via ->forPage(0, 15)
 });
 Route::get('/api/props/{id}', function($id) {
     return new PropResource(Prop::where('id', $id)->first());
