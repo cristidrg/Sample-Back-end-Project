@@ -2,6 +2,9 @@
 
 use App\Prop;
 use App\Org;
+use App\Http\Resources\PropResource;
+use App\Http\Resources\OrgResource;
+use App\Http\Controllers\PropController;
 use App\Http\Controllers\OrgController;
 use Illuminate\Support\Facades\Input;
 
@@ -28,6 +31,33 @@ Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
 Route::resource('prop', 'PropController');
 Route::resource('technology', 'TechnologyController');
+
+Route::get('/api/props', function() {
+    $propResults = Prop::all();
+    $seo = Input::get('seo');
+
+    if ($seo != null) {
+        $values = explode('-', trim($seo));
+
+        $propResults = $propResults->filter(function ($prop) use (&$values){
+            return ($prop->perfScore >= $values['0'] && $prop->perfSCore <= $values['1']);
+        });
+    }
+
+    return PropResource::collection($propResults);
+});
+Route::get('/api/props/{id}', function($id) {
+    return new PropResource(Prop::where('id', $id)->first());
+});
+
+
+Route::get('/api/orgs/', function() {
+    return OrgResource::collection(Org::all());
+});
+
+Route::get('/api/orgs/{id}', function($id) {
+    return new OrgResource(Org::where('id', $id)->first());
+});
 
 Route::any('/search',function() {
     $q = Input::get( 'search_title' );

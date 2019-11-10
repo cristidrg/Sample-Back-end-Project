@@ -20,9 +20,6 @@ class CreateMonitorsTable extends Migration
             $table->increments('id');
             $table->string('url')->unique();
 
-            $table->integer('prop_id')->unsigned()->index()->nullable();
-            $table->foreign('prop_id')->references('id')->on('props')->onDelete('cascade');
-
             $table->boolean('uptime_check_enabled')->default(true);
             $table->string('look_for_string')->default('');
             $table->string('uptime_check_interval_in_minutes')->default(5);
