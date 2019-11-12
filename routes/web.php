@@ -60,7 +60,7 @@ Route::get('/api/props', function() {
         $values = explode('-', trim($perf));
 
         $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->perfScore >= $values['0'] && $prop->perfSCore <= $values['1']);
+            return ($prop->perfScore >= $values['0'] && $prop->perfScore <= $values['1']);
         });
     }
 
@@ -84,7 +84,36 @@ Route::get('/api/props/{id}', function($id) {
 
 
 Route::get('/api/orgs/', function() {
-    return OrgResource::collection(Org::all());
+    $orgResults = Org::all();
+    $seo = Input::get('seo');
+    $a11y = Input::get('a11y');
+    $perf = Input::get('perf');
+
+    if ($seo != null) {
+        $values = explode('-', trim($seo));
+
+        $orgResults = $orgResults->filter(function ($org) use (&$values){
+            return ($org->getSeoScore() * 100 >= $values['0'] && $org->getSeoScore() * 100 <= $values['1']);
+        });
+    }
+
+    if ($a11y != null) {
+        $values = explode('-', trim($a11y));
+
+        $orgResults = $orgResults->filter(function ($org) use (&$values){
+            return ($org->getA11yScore() * 100 >= $values['0'] && $org->getA11yScore() * 100 <= $values['1']);
+        });
+    }
+
+    if ($perf != null) {
+        $values = explode('-', trim($perf));
+
+        $orgResults = $orgResults->filter(function ($org) use (&$values){
+            return ($org->getPerfScore() * 100 >= $values['0'] && $org->getPerfScore() * 100 <= $values['1']);
+        });
+    }
+
+    return OrgResource::collection($orgResults);
 });
 
 Route::get('/api/orgs/{id}', function($id) {
