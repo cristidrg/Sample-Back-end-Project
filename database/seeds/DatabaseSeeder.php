@@ -615,6 +615,7 @@ class DatabaseSeeder extends Seeder
                 'title' => $prop['title'],
                 'url' => $prop['url'],
                 'environments' => (isset($prop['environments']) ? json_encode($prop['environments']) : json_encode($defaultEnvironment)),
+                'securityScore' => rand(0, 100) / 100.0
             ]);
 
             DB::table('monitors')->insert([

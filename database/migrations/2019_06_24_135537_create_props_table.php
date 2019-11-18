@@ -26,6 +26,7 @@ class CreatePropsTable extends Migration
             $table->float('perfScore')->default('0');
             $table->float('a11yScore')->default('0');
             $table->float('seoScore')->default('0');
+            $table->float('securityScore')->default('0');
             $table->string('fetchTime')->default('0');
 
             $table->longText('metaTitle')->nullable();

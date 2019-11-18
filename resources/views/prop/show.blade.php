@@ -50,6 +50,15 @@
                         <p class="ml-6 text-large font-bold text-gray-200">{{$prop->perfScore * 100}}</p>
                     </div>
                 </div>
+                <div class="flex flex-col mt-4">
+                    <p class="text-gray-300">Security</p>
+                    <div class="flex mt-1">
+                        <div class="flex-1 audit_bar h-5 bg-gray-700">
+                            <span class="bg-blue-400" style="width: {{$prop->securityScore * 100}}%"></span>
+                        </div>
+                        <p class="ml-6 text-large font-bold text-gray-200">{{$prop->securityScore * 100}}</p>
+                    </div>
+                </div>
                 <div class="mt-8 flex items-center">
                     @if($prop->monitor->uptime_status == 'down')
                         <div class="prop_status flex py-1 px-2 rounded-full bg-red-500 items-center text-xs text-gray-100">

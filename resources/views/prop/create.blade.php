@@ -30,6 +30,10 @@
                 </select>
             </div>
             <div>
+                <label for="securityScore">Security Score:</label>
+                <input required type="text" class="form-control" name="securityScore" value="{{ $prop->securityScore }}" />
+            </div>
+            <div>
                 <label for="technologies">Technologies:</label>
                 <select name="technologies[]" multiple class="text-black">
                     @foreach ($technologies as $technology)

@@ -36,8 +36,12 @@ class PropController extends Controller
             'technologies' => 'required|array',
             'technologies.*' => 'required|exists:technologies,name',
             'env_types' => 'required|array',
+            'env_types.*' => 'required|string',
             'env_servers' => 'required|array',
+            'env_servers.*' => 'required|string',
             'env_urls' => 'required|array',
+            'env_urls.*' => 'required|string',
+            'securityScore'=> 'required|numeric|between:0,1'
         ]);
 
         $environments = array();
@@ -52,7 +56,8 @@ class PropController extends Controller
         $prop = Prop::create([
             'title' => request('title'),
             'url' => request('url'),
-            'environments' => $environments
+            'environments' => $environments,
+            'securityScore' => request('securityScore')
         ]);
 
         $prop->monitor()->save(Monitor::create(['url' => request('url')]));
@@ -94,8 +99,12 @@ class PropController extends Controller
             'technologies' => 'required|array',
             'technologies.*' => 'required|exists:technologies,name',
             'env_types' => 'required|array',
+            'env_types.*' => 'required|string',
             'env_servers' => 'required|array',
+            'env_servers.*' => 'required|string',
             'env_urls' => 'required|array',
+            'env_urls.*' => 'required|string',
+            'securityScore'=> 'required|numeric|between:0,1'
         ]);
 
 
@@ -108,7 +117,7 @@ class PropController extends Controller
             ];
         }
 
-        $prop->update(array_merge(request(['title','url'])),[
+        $prop->update(array_merge(request(['title','url', 'securityScore'])),[
             'environments' => $environments
         ]);
 
