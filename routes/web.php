@@ -39,12 +39,13 @@ Route::get('/api/props', function() {
     $perf = Input::get('perf');
     $uptime = Input::get('uptime');
     $org = Input::get('org');
+    $security = Input::get('security');
 
     if ($seo != null) {
         $values = explode('-', trim($seo));
 
         $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->seoScore >= $values['0'] && $prop->seoScore <= $values['1']);
+            return ($prop->seoScore * 100 >= $values['0'] && $prop->seoScore * 100 <= $values['1']);
         });
     }
 
@@ -52,7 +53,7 @@ Route::get('/api/props', function() {
         $values = explode('-', trim($a11y));
 
         $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->a11yScore >= $values['0'] && $prop->a11yScore <= $values['1']);
+            return ($prop->a11yScore * 100 >= $values['0'] && $prop->a11yScore * 100 <= $values['1']);
         });
     }
 
@@ -60,7 +61,15 @@ Route::get('/api/props', function() {
         $values = explode('-', trim($perf));
 
         $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->perfScore >= $values['0'] && $prop->perfScore <= $values['1']);
+            return ($prop->perfScore * 100 >= $values['0'] && $prop->perfScore * 100 <= $values['1']);
+        });
+    }
+
+    if ($security != null) {
+        $values = explode('-', trim($security));
+
+        $propResults = $propResults->filter(function ($prop) use (&$values){
+            return ($prop->securityScore * 100 >= $values['0'] && $prop->securityScore * 100 <= $values['1']);
         });
     }
 
