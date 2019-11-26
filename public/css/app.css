@@ -791,10 +791,16 @@ video {
   border-color: #000;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  max-width: 20em;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  max-width: 14em;
+}
+
+@media screen and (min-width: 1350px) {
+  .props-table > tbody td {
+    max-width: 20em;
+  }
 }
 
 .props-table > tbody td:first-child {

@@ -51,10 +51,14 @@
         @apply pl-2;
         @apply pr-2;
 
-        max-width: 20em;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        max-width: 14em;
+
+        @media screen and (min-width: 1350px) {
+            max-width: 20em;
+        }
     }
 
     td:first-child {

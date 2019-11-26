@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts/default')
 
 @section('title', 'Create Technology')
 

@@ -1,27 +1,3 @@
-@php
-    isset($q) ? '' : $q = '';
-    isset($seo) ? '' : $seo = 'false';
-    isset($a11y) ? '' : $a11y = 'false';
-    isset($perf) ? '' : $perf = 'false';
-    isset($monitor) ? '' : $monitor = 'false';
-@endphp
-
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>NU PROPS - @yield('title')</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Barlow:300,400,500,700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="/css/app.css" }}>
-        <link rel="stylesheet" href="/tailwind/app.css" }}>
-    </head>
-    <body class="flex flex-col text-gray-200 bg-gray-900 font-body lg:flex-row">
         <div class="z-10 w-full px-3 py-6 bg-gray-800 lg:fixed lg:w-2/12 lg:h-full lg:py-10 lg:px-8">
             <div class="flex items-center w-full">
                 <a class="text-2xl font-bold text-gray-100" href="/">NUprops</a>
@@ -78,11 +54,3 @@
                 </div>
             </nav>
         </div>
-
-        <main class="relative w-full px-4 pt-10 pb-6 lg:pl-container lg:pr-16">
-            @yield('content')
-        </main>
-    </body>
-
-    <script type="text/javascript" src="/js/app.js"></script>
-</html>
