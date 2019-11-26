@@ -773,6 +773,11 @@ video {
   min-width: 6em;
 }
 
+.props-table > tbody tr {
+  overflow: auto;
+  max-width: 100vw;
+}
+
 .props-table > tbody tr:nth-child(odd) {
   background-color: #2d3748;
 }

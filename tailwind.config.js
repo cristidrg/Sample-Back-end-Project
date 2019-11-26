@@ -13,9 +13,14 @@ module.exports = {
       spacing: {
         '72': '18rem',
         'container': 'calc(16.66% + 2.5rem)'
+      },
+      screens: {
+        'mobile-only': {'max': '1024px'},
       }
-    }
+    },
   },
-  variants: {},
+  variants: {
+    tableLayout: ['responsive', 'hover', 'focus'],
+  },
   plugins: []
 }

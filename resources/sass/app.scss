@@ -33,6 +33,11 @@
 }
 
 .props-table > tbody {
+    tr {
+        overflow: auto;
+        max-width: 100vw;
+    }
+
     tr:nth-child(odd) {
         @apply bg-gray-800;
     }
