@@ -9,8 +9,8 @@
                 {{ session()->get('popup') }}  
             @endif
         </div>
-        <h1 class="text-2xl mb-4 font-bold">Create new property</h1>
-        <form class="props-form__create text-base" method="post" action={{ route('prop.store') }}>
+        <h1 class="mb-4 text-2xl font-bold">Create new property</h1>
+        <form class="text-base props-form__create" method="post" action={{ route('prop.store') }}>
             @csrf
             <div class="props-form__inputs">
                 <div>
@@ -35,14 +35,14 @@
                 </div>
                 <div>
                     <label for="technologies">Technologies</label>
-                    <select name="technologies[]" multiple class="text-black h-40">
+                    <select name="technologies[]" multiple class="h-40 text-black">
                         @foreach ($technologies as $technology)
                             <option>{{$technology->name}}</option>
                         @endforeach
                     </select>
                 </div>
                 <label class="text-base font-bold">Environments</label>
-                <div class="prop-environment-form mt-2">
+                <div class="mt-2 prop-environment-form">
                     <div id="prop-environmnet-form__entry-1">
                         <p>Environment 1</p>
                         <label>Type</label>
@@ -55,9 +55,9 @@
                         <input type="text" name="env_urls[1]"/>
                     </div>
                 </div>
-                <button class="prop-environment-form__add px-2 mr-2 hover:bg-blue-600 bg-blue-500 text-xs rounded-full">Add Environment</button>
-                <button class="prop-environment-form__remove px-2 hover:bg-red-600 bg-red-500 text-xs rounded-full">Delete Last Environment</button>
-                <button type="submit" class="block px-2 lg:px-4 mt-4 py-1 bg-green-500 hover:bg-green-600 rounded-full text lg:text-sm">Create Prop</button>
+                <button class="px-2 mr-2 text-xs bg-blue-500 rounded-full prop-environment-form__add hover:bg-blue-600">Add Environment</button>
+                <button class="px-2 text-xs bg-red-500 rounded-full prop-environment-form__remove hover:bg-red-600">Delete Last Environment</button>
+                <button type="submit" class="block px-2 py-1 mt-4 bg-green-500 rounded-full lg:px-4 hover:bg-green-600 text lg:text-sm">Create Prop</button>
             </div>
         </form>
     </div>

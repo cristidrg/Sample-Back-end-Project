@@ -11,8 +11,8 @@
                 @endforeach
             </ul>
         @endif
-        <h1 class="text-2xl mb-4 font-bold">Edit User {{$user->email}}</h1>
-        <form class="props-form__create text-base" method="post" action={{ route('user.update', $user->id) }}>
+        <h1 class="mb-4 text-2xl font-bold">Edit User {{$user->email}}</h1>
+        <form class="text-base props-form__create" method="post" action={{ route('user.update', $user->id) }}>
             @method('PATCH') 
             @csrf
             <div class="props-form__inputs">
@@ -39,7 +39,7 @@
                 <div>
                     @csrf
                     <label for="maintains_orgs[]">Maintaining Orgs:</label>
-                    <select name="maintains_orgs[]" multiple class="text-black h-40">
+                    <select name="maintains_orgs[]" multiple class="h-40 text-black">
                         @foreach ($orgs as $org)
                             @if (in_array($org->title, array_column(json_decode($user->orgs), 'title')))
                                 <option selected>{{$org->title}}</option>
@@ -49,7 +49,7 @@
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="block px-2 lg:px-4 mt-4 py-1 bg-green-500 hover:bg-green-600 rounded-full text lg:text-sm">Save changes</button>
+                <button type="submit" class="block px-2 py-1 mt-4 bg-green-500 rounded-full lg:px-4 hover:bg-green-600 text lg:text-sm">Save changes</button>
             </div>
         </form>
     </div>

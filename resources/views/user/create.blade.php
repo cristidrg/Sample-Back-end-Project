@@ -4,8 +4,8 @@
 
 @section('content')
     <div>
-        <h1 class="text-2xl mb-4 font-bold">Create new user</h1>
-        <form class="props-form__create text-base" method="post" action={{ route('user.store') }}>
+        <h1 class="mb-4 text-2xl font-bold">Create new user</h1>
+        <form class="text-base props-form__create" method="post" action={{ route('user.store') }}>
             @csrf
             <div class="props-form__inputs">
                 <div>
@@ -29,13 +29,13 @@
                 </div>
                 <div>
                     <label for="maintains_orgs[]">Maintaining Orgs:</label>
-                    <select name="maintains_orgs[]" multiple class="text-black h-40">
+                    <select name="maintains_orgs[]" multiple class="h-40 text-black">
                         @foreach ($orgs as $org)
                             <option>{{$org->title}}</option>
                         @endforeach
                     </select>
                 </div>
-                <button type="submit" class="block px-2 lg:px-4 mt-4 py-1 bg-green-500 hover:bg-green-600 rounded-full text lg:text-sm">Add</button>
+                <button type="submit" class="block px-2 py-1 mt-4 bg-green-500 rounded-full lg:px-4 hover:bg-green-600 text lg:text-sm">Add</button>
             </div>
         </form>
     </div>

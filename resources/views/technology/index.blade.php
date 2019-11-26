@@ -8,13 +8,13 @@
             {{ session()->get('popup') }}  
         @endif
     </div>
-    <div class="flex lg:inline-flex flex-col flex-wrap">
-        <div class="flex items-center mb-2 w-full lg:pr-2">
-            <h1 class="text-lg lg:text-3xl font-bold">Technologies</h1>
-            <a class="px-2 lg:px-4 py-1 ml-5 bg-green-500 rounded-full text-xs hover:bg-green-600 lg:text-sm" href="{{ route('technology.create') }}"">Create New Technology</a>
+    <div class="flex flex-col flex-wrap lg:inline-flex">
+        <div class="flex items-center w-full mb-2 lg:pr-2">
+            <h1 class="text-lg font-bold lg:text-3xl">Technologies</h1>
+            <a class="px-2 py-1 ml-5 text-xs bg-green-500 rounded-full lg:px-4 hover:bg-green-600 lg:text-sm" href="{{ route('technology.create') }}"">Create New Technology</a>
         </div>
-        <div class="mobile-only:overflow-auto mobile-only:w-full pr-2">
-            <table class="table table-auto table-striped table-responsive text-sm props-table">
+        <div class="pr-2 mobile-only:overflow-auto mobile-only:w-full">
+            <table class="table text-sm table-auto table-striped table-responsive props-table">
                 <thead>
                 <tr>
                     <td>ID</td>
@@ -27,12 +27,12 @@
                 <tr>
                     <td>{{$technology->id}}</td>
                     <td>{{$technology->name}}</td>
-                    <td class="flex py-1 text-sm justify-around">
-                        <a href="{{ route('technology.edit',$technology->id)}}" class="px-2 mr-2 hover:bg-blue-600 bg-blue-500 rounded-full">Edit</a>
+                    <td class="flex justify-around py-1 text-sm">
+                        <a href="{{ route('technology.edit',$technology->id)}}" class="px-2 mr-2 bg-blue-500 rounded-full hover:bg-blue-600">Edit</a>
                         <form action="{{ route('technology.destroy', $technology->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button class="px-2 hover:bg-red-600 bg-red-500 rounded-full" type="submit">Delete</button>
+                            <button class="px-2 bg-red-500 rounded-full hover:bg-red-600" type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
