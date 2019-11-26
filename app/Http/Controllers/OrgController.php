@@ -64,7 +64,7 @@ class OrgController extends Controller
             'parent' => 'required|exists:orgs,title',
         ]);
 
-        $org->update(request(['title']));      
+        $org->update(request(['title']));
         $org->parent_id = Org::where('title', request('parent'))->first()->id;
         $org->save();
         

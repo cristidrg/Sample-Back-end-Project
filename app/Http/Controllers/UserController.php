@@ -42,7 +42,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect('user/')->with('popup', 'user ' . $request('first_name') . ' has been created!');
+        return redirect('user/')->with('popup', 'user ' . request('first_name') . ' has been created!');
     }
 
     public function show($id)

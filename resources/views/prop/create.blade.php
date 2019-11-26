@@ -4,13 +4,11 @@
 
 @section('content')
     <div>
-        @if ($errors->any())
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
+        <div>
+            @if(session()->get('popup'))
+                {{ session()->get('popup') }}  
+            @endif
+        </div>
         <h1 class="text-2xl mb-4 font-bold">Create new property</h1>
         <form class="props-form__create text-base" method="post" action={{ route('prop.store') }}>
             @csrf

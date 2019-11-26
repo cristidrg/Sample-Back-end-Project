@@ -3,9 +3,11 @@
 @section('title', 'Technology List')
 
 @section('content')
-    @if(session()->get('popup'))
-        {{ session()->get('popup') }}  
-    @endif
+    <div>
+        @if(session()->get('popup'))
+            {{ session()->get('popup') }}  
+        @endif
+    </div>
     <div class="flex lg:inline-flex flex-col flex-wrap">
         <div class="flex items-center mb-2 w-full lg:pr-2">
             <h1 class="text-lg lg:text-3xl font-bold">Technologies</h1>
