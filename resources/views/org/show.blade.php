@@ -3,7 +3,7 @@
 @section('title', $org->title)
 
 @section('content')
-    <nav class="text-base font-regular text-gray-500 mb-1">
+    <nav class="mb-1 text-base text-gray-500 font-regular">
         @if (isset($org->parent->parent->parent))
             <a href={{"/org/".$org->parent->parent->parent->id}}>{{$org->parent->parent->parent->title}}</a> /
         @endif
@@ -22,8 +22,8 @@
         @endif
     </h1>
 
-    <p class="mt-12 lg:mt-24 text-lg text-gray-200 font-bold uppercase">Audits</p>
-    <div class="bg-gray-800 mt-6 pt-10 px-4 lg:pl-10 lg:pr-8 pb-8">
+    <p class="mt-12 text-lg font-bold text-gray-200 uppercase lg:mt-24">Audits</p>
+    <div class="px-4 pt-10 pb-8 mt-6 bg-gray-800 lg:pl-10 lg:pr-8">
         <div class="flex">
              @if ($org->getUptimeCount($org) > 0)
                 <div class="flex items-center">
@@ -41,63 +41,63 @@
         <div class="flex flex-col mt-8">
             <p class="text-gray-300">Accessibility</p>
             <div class="flex items-center">
-                <div class="flex-1 audit_bar h-3 bg-gray-700">
+                <div class="flex-1 h-3 bg-gray-700 audit_bar">
                     <span class="bg-blue-400" style="width: {{$a11yScore * 100}}%"></span>
                 </div>
-                <p class="ml-3 text-large font-bold text-gray-200">{{$a11yScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$a11yScore * 100}}</p>
             </div>
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">SEO</p>
             <div class="flex items-center">
-                <div class="flex-1 audit_bar h-3 bg-gray-700">
+                <div class="flex-1 h-3 bg-gray-700 audit_bar">
                     <span class="bg-blue-400" style="width: {{$seoScore * 100}}%"></span>
                 </div>
-                <p class="ml-3 text-large font-bold text-gray-200">{{$seoScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$seoScore * 100}}</p>
             </div>
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">Performance</p>
             <div class="flex items-center">
-                <div class="flex-1 audit_bar h-3 bg-gray-700">
+                <div class="flex-1 h-3 bg-gray-700 audit_bar">
                     <span class="bg-blue-400" style="width: {{$perfScore * 100}}%"></span>
                 </div>
-                <p class="ml-3 text-large font-bold text-gray-200">{{$perfScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$perfScore * 100}}</p>
             </div>
         </div>
     </div>
 
     @if (count($org->props) > 0)
-        <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Properties</p>
+        <p class="mt-12 mb-6 text-lg font-bold text-gray-200 uppercase lg:mt-24">{{$org->title}} Properties</p>
         <ul>
             @foreach ($org->props as $prop)
-                <li class="block px-2 border-b border-solid border-gray-800 hover:bg-gray-800">
-                    <a class="flex flex-col lg:flex-row pt-4 pb-4 relative" href="/prop/{{$prop->id}}">
+                <li class="block px-2 border-b border-gray-800 border-solid hover:bg-gray-800">
+                    <a class="relative flex flex-col pt-4 pb-4 lg:flex-row" href="/prop/{{$prop->id}}">
                         <div class="flex flex-col justify-center">
                             <p class="text-base font-medium text-gray-200">{{$prop->title}}</p>
                             <p class="text-sm text-gray-600">{{$prop->url}}</p>
                         </div>
-                        <div class="flex items-center text-gray-500 mt-6 lg:mt-0 lg:ml-auto text-sm mb-4">
+                        <div class="flex items-center mt-6 mb-4 text-sm text-gray-500 lg:mt-0 lg:ml-auto">
                             <div class="flex-1">
                                 <p>Accessibility</p>
-                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
+                                <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
                                     <span class="bg-blue-400" style="width: {{$prop->a11yScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p>SEO</p>
-                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
+                                <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
                                     <span class="bg-blue-400" style="width: {{$prop->seoScore * 100}}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p>Performance</p>
-                                <div class="audit_bar mt-1 lg:mt-4 h-1 lg:h-2 w-full lg:w-32 bg-gray-700">
+                                <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
                                     <span class="bg-blue-400" style="width: {{$prop->perfScore * 100}}%"></span>
                                 </div>
                             </div>
                         </div>
-                        <div class="ml-12 flex flex-col items-center absolute lg:static top-1 lg:top-auto right-0">
+                        <div class="absolute right-0 flex flex-col items-center ml-12 lg:static top-1 lg:top-auto">
                             <p class="mb-1 text-sm text-gray-600">Uptime</p>
                             @if($prop->monitor->uptime_status == 'down')
                                 @include('svgs.warning')
@@ -112,7 +112,7 @@
     @endif
 
     @if (count($org->children) > 0)
-        <p class="mt-12 lg:mt-24 mb-6 text-lg text-gray-200 font-bold uppercase">{{$org->title}} Organizations</p>
+        <p class="mt-12 mb-6 text-lg font-bold text-gray-200 uppercase lg:mt-24">{{$org->title}} Organizations</p>
         <div class="flex flex-wrap justify-between">
             @foreach ($org->children as $childOrg)
                 @include('org.card')
