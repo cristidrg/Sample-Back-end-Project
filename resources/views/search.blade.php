@@ -1,4 +1,4 @@
-@extends('layout', [
+@extends('layouts/default', [
     'a11y' => $a11y,
     'seo' => $seo,
     'perf' => $perf,
