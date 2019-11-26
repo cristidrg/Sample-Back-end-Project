@@ -6,6 +6,37 @@
 @import 'variables';
 @tailwind base;
 
+form input {
+    @apply text-black;
+}
+
+.props-form__create {
+    @apply flex;
+}
+
+.props-form__inputs > div {
+    @apply flex;
+    @apply flex-col;
+    @apply flex-wrap;
+    @apply mb-2;
+}
+
+.prop-environment-form > div {
+    @apply flex;
+    @apply flex-col;
+    @apply flex-wrap;
+    @apply mb-4;
+}
+
+.prop-environment-form > div:not(:first-child) {
+    @apply pt-2;
+    @apply border-t-2;
+    @apply border-white;
+}
+.prop-environment-form > div > input:not(:last-child) {
+    @apply mb-2;
+}
+
 .props-table > thead {
     tr {
         @apply bg-blue-900;

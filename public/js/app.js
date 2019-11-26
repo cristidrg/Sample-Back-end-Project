@@ -15255,7 +15255,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  var propEnvironmentCount = 1;
+  var propEnvironmentCount = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.prop-environment-form > div').length;
 
   if (!jquery__WEBPACK_IMPORTED_MODULE_0___default()('.prop-environment-form')) {
     return;
@@ -15295,6 +15295,8 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
     }));
   });
   jquery__WEBPACK_IMPORTED_MODULE_0___default()(".prop-environment-form__remove").on("click", "", function (e) {
+    e.preventDefault();
+
     if (propEnvironmentCount == 1) {
       return;
     }

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
 $(document).ready(function () {
-    var propEnvironmentCount = 1;
+    var propEnvironmentCount = $('.prop-environment-form > div').length;
 
     if (!$('.prop-environment-form')) {
         return;
@@ -44,6 +44,8 @@ $(document).ready(function () {
     })
 
     $(".prop-environment-form__remove").on("click", "", function (e) {
+        e.preventDefault();
+
         if (propEnvironmentCount == 1) { 
             return;
         }

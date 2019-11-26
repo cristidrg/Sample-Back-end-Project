@@ -749,6 +749,38 @@ video {
   height: auto;
 }
 
+form input {
+  color: #000;
+}
+
+.props-form__create {
+  display: flex;
+}
+
+.props-form__inputs > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.prop-environment-form > div {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
+.prop-environment-form > div:not(:first-child) {
+  padding-top: 0.5rem;
+  border-top-width: 2px;
+  border-color: #fff;
+}
+
+.prop-environment-form > div > input:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
 .props-table > thead tr {
   background-color: #2a4365;
 }
