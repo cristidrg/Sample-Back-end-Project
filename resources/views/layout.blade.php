@@ -22,7 +22,7 @@
         <link rel="stylesheet" href="/tailwind/app.css" }}>
     </head>
     <body class="flex flex-col text-gray-200 bg-gray-900 font-body lg:flex-row">
-        <div class="z-10 w-full px-3 py-6 bg-gray-800 lg:fixed lg:w-3/12 lg:h-full lg:py-10 lg:px-8">
+        <div class="z-10 w-full px-3 py-6 bg-gray-800 lg:fixed lg:w-2/12 lg:h-full lg:py-10 lg:px-8">
             <div class="flex items-center w-full">
                 <a class="text-2xl font-bold text-gray-100" href="/">NUprops</a>
                 <div class="ml-auto nav__handle lg:hidden">
@@ -79,7 +79,7 @@
             </nav>
         </div>
 
-        <main class="relative w-full px-4 pt-12 pb-6 lg:pl-container lg:pr-16">
+        <main class="relative w-full px-4 pt-10 pb-6 lg:pl-container lg:pr-16">
             @yield('content')
         </main>
     </body>

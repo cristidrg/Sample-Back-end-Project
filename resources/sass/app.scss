@@ -4,6 +4,65 @@
 
 // Variables
 @import 'variables';
+@tailwind base;
+
+.props-table > thead {
+    tr {
+        @apply bg-blue-900;
+    }
+    td {
+        @apply border-r-2;
+        @apply border-black;
+        @apply pl-2;
+        @apply font-bold;
+
+        min-width: 8em;
+    }
+    td:first-child, td:last-child {
+        @apply pl-0;
+        @apply text-center;
+
+        min-width: 2em;
+    }
+    td.props-table_parent-id {
+        @apply pl-0;
+        @apply text-center;
+
+        min-width: 6em;
+    }
+}
+
+.props-table > tbody {
+    tr:nth-child(odd) {
+        @apply bg-gray-800;
+    }
+    tr:nth-child(even) {
+        @apply bg-gray-900;
+    }
+    
+    td {
+        @apply border-r-2;
+        @apply border-black;
+        @apply pl-2;
+        @apply pr-2;
+
+        max-width: 20em;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    td:first-child {
+        @apply pl-0;
+        @apply text-center;
+    }
+    td.props-table_parent-id {
+        @apply pl-0;
+        @apply text-center;
+    }
+}
+
+
 
 .audit_bar {
     height: 20px;

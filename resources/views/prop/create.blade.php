@@ -31,7 +31,7 @@
             </div>
             <div>
                 <label for="securityScore">Security Score:</label>
-                <input required type="text" class="form-control" name="securityScore" value="{{ $prop->securityScore }}" />
+                <input required type="text" class="form-control" name="securityScore" value="" />
             </div>
             <div>
                 <label for="technologies">Technologies:</label>

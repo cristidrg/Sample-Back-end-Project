@@ -6,17 +6,20 @@
     @if(session()->get('popup'))
         {{ session()->get('popup') }}  
     @endif
-    <div>
-        <a href="{{ route('prop.create') }}"  class="text-xl">Create</a>
-        <table class="table table-striped">
+    <div class="flex flex-col flex-wrap">
+        <div class="flex items-center">
+            <h1 class="mb-5 text-3xl font-bold">Northeastern Properties</h1>
+            <a class="px-4 py-1 ml-auto bg-green-500 rounded-full text-md" href="{{ route('prop.create') }}"">Create New Property</a>
+        </div>
+        <table class="table table-auto table-striped props-table">
             <thead>
                 <tr>
                     <td>ID</td>
                     <td>Title</td>
                     <td>URL</td>
-                    <td>Parent Org Id</td>
                     <td>Technologies</td>
-                    <td colspan = 2>Actions</td>
+                    <td class="props-table_parent-id">Parent Id</td>
+                    <td>Actions</td>
                 </tr>
             </thead>
             <tbody>
@@ -24,23 +27,16 @@
                 <tr>
                     <td>{{$prop->id}}</td>
                     <td>{{$prop->title}}</td>
-                    <td>{{$prop->url}}</td>
-                    <td>{{$prop->org_id}}</td>
-                    <td>
-                        @foreach($prop->technologies as $technology)
-                            {{$technology->name}} 
-                        @endforeach
-                    </td>
-                    <td>
-                        <a href="{{ route('prop.edit',$prop->id)}}"  class="text-xl">Edit</a>
-                    </td>
-                    <td>
+                    <td><a class="text-blue-300" href="{{$prop->url}}" target="_blank">{{$prop->url}}</a></td>
+                    <td>@foreach($prop->technologies as $index=>$technology){{$index > 0 ? ',' : ''}} {{$technology->name}}@endforeach</td>
+                    <td class="props-table_parent-id">{{$prop->org_id}}</td>
+                    <td class="flex py-1 text-sm">
+                        <a href="{{ route('prop.edit',$prop->id)}}" class="px-2 mr-2 bg-blue-500 rounded-full">Edit</a>
                         <form action="{{ route('prop.destroy', $prop->id)}}" method="post">
                             @csrf
                             @method('DELETE')
-                            <button  class="text-xl" type="submit">Delete</button>
+                            <button class="px-2 bg-red-500 rounded-full" type="submit">Delete</button>
                         </form>
-                    </td>
                 </tr>
                 @endforeach
             </tbody>
