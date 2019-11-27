@@ -8,14 +8,14 @@
             <nav id="navigation" class="flex flex-col h-full" data-navigation-handle=".nav__handle" role="navigation">
                 <form id="nav_form" action="/search" class="flex flex-col py-8 bg-gray-800" method="POST" role="search">
                     @csrf
-                    <input class="w-full px-1 py-2 mb-8 bg-transparent border border-gray-400 text-xs text-white" name="search_title" type="text" placeholder="Search props by title"
+                    <input class="w-full px-1 py-2 mb-8 text-xs text-white bg-transparent border border-gray-400" name="search_title" type="text" placeholder="Search props by title"
                     value="{{$q}}">
 
                     <p class="text-lg font-extrabold">Jump to props with</p>
                     <div class="text-sm text-gray-600 nav__filters 4">
                         <div class="navigation_group">
                             <div class="flex items-center justify-between">
-                                <p class="text-base font-medium text-white mt-1 relative">Uptime Status</p>
+                                <p class="relative mt-1 text-base font-medium text-white">Uptime Status</p>
                                 <a class="{{(request('uptime') == 'up') ? 'active' : ''}}" href="/props/?uptime=up">Up</a>
                                 <a class="{{(request('uptime') == 'down') ? 'active' : ''}}" href="/props/?uptime=down">Down</a>
                             </div>
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="navigation_group">
-                            <p class="text-base font-medium text-white flex-wrap">Performance Score</p>
+                            <p class="flex-wrap text-base font-medium text-white">Performance Score</p>
                             <div class="flex justify-between">
                                 <a class="{{(request('perf') == '90-100') ? 'active' : ''}}" href="/props/?perf=90-100">90-100</a>
                                 <a class="{{(request('perf') == '50-89') ? 'active' : ''}}" href="/props/?perf=50-89">50-89</a>
