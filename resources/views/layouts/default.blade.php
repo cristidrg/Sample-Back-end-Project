@@ -16,5 +16,5 @@
         </main>
     </body>
 
-    @include('layouts/scripts');
+    @include('layouts/scripts')
 </html>

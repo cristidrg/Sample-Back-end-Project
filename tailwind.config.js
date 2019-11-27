@@ -12,7 +12,8 @@ module.exports = {
     extend: {
       spacing: {
         '72': '18rem',
-        'container': 'calc(16.66% + 2.5rem)'
+        'nav': '18.888%',
+        'container': 'calc(18.888% + 2.5rem)'
       },
       screens: {
         'mobile-only': {'max': '1024px'},

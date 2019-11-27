@@ -1,14 +1,12 @@
-@extends('layouts/default', [
-    'a11y' => $a11y,
-    'seo' => $seo,
-    'perf' => $perf,
-    'monitor' => $monitor,
-])
+@extends('layouts/default')
 
 @section('title', 'Home')
 
 @section('content')
-    <h1 class="text-3xl font-bold">Search Results</h1>
+    <div class="flex items-center">
+        <h1 class="text-3xl font-bold">Search Results</h1>
+        <a class="ml-auto text-blue-300" href="/">⤾ Go back home</a>
+    </div>
     <p class="mt-3 text-xl">{{count($propResults)}} Results Found</p>
     <ul class="mt-12 prop-list">
        @foreach ($propResults as $prop)

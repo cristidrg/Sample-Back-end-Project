@@ -749,6 +749,42 @@ video {
   height: auto;
 }
 
+.navigation_group {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.navigation_group:first-child {
+  margin-top: 0.5rem;
+}
+
+.navigation_group > p {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.navigation_group a {
+  display: inline-block;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  background-color: #4299e1;
+  color: #fff;
+  font-size: 0.75rem;
+  border-radius: 9999px;
+  margin-top: 0.25rem;
+}
+
+.navigation_group a:hover {
+  background-color: #3182ce;
+}
+
+.navigation_group a.active {
+  background-color: #2b6cb0;
+}
+
 form input {
   color: #000;
 }

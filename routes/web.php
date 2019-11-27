@@ -31,62 +31,8 @@ Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
 Route::resource('prop', 'PropController');
 Route::resource('technology', 'TechnologyController');
-
-Route::get('/api/props', function() {
-    $propResults = Prop::all();
-    $seo = Input::get('seo');
-    $a11y = Input::get('a11y');
-    $perf = Input::get('perf');
-    $uptime = Input::get('uptime');
-    $org = Input::get('org');
-    $security = Input::get('security');
-
-    if ($seo != null) {
-        $values = explode('-', trim($seo));
-
-        $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->seoScore * 100 >= $values['0'] && $prop->seoScore * 100 <= $values['1']);
-        });
-    }
-
-    if ($a11y != null) {
-        $values = explode('-', trim($a11y));
-
-        $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->a11yScore * 100 >= $values['0'] && $prop->a11yScore * 100 <= $values['1']);
-        });
-    }
-
-    if ($perf != null) {
-        $values = explode('-', trim($perf));
-
-        $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->perfScore * 100 >= $values['0'] && $prop->perfScore * 100 <= $values['1']);
-        });
-    }
-
-    if ($security != null) {
-        $values = explode('-', trim($security));
-
-        $propResults = $propResults->filter(function ($prop) use (&$values){
-            return ($prop->securityScore * 100 >= $values['0'] && $prop->securityScore * 100 <= $values['1']);
-        });
-    }
-
-    if ($uptime != null) {
-        $propResults = $propResults->filter(function ($prop) use (&$uptime){
-            return $prop->monitor->uptime_status == $uptime;
-        });
-    }
-
-    if ($org != null) {
-        $propResults = $propResults->filter(function ($prop) use (&$org){
-            return $prop->org_id == $org;
-        });
-    }
-
-    return PropResource::collection($propResults); //pagination via ->forPage(0, 15)
-});
+Route::get('/props', 'PropController@filterByParams');
+Route::get('/api/props', 'PropController@apiFilterByParams');
 Route::get('/api/props/{id}', function($id) {
     return new PropResource(Prop::where('id', $id)->first());
 });

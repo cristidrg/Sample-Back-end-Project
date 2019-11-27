@@ -6,6 +6,42 @@
 @import 'variables';
 @tailwind base;
 
+.navigation_group {
+    @apply my-3;
+}
+
+.navigation_group:first-child {
+    @apply mt-2;
+}
+
+.navigation_group > p{
+    @apply text-base;
+    @apply font-medium;
+    @apply text-white;
+}
+
+.navigation_group a {
+    @apply inline-block;
+    @apply px-4;
+    @apply py-1;
+    @apply bg-blue-500;
+    @apply text-white;
+    @apply text-xs;
+    @apply rounded-full;
+    @apply mt-1;
+
+    &:hover {
+        @apply bg-blue-600;
+    }
+
+    &.active {
+        @apply bg-blue-700;
+    }
+}
+
+
+
+
 form input {
     @apply text-black;
 }
@@ -102,7 +138,6 @@ form input {
         @apply text-center;
     }
 }
-
 
 
 .audit_bar {
