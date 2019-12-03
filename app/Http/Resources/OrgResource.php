@@ -11,7 +11,7 @@ class OrgResource extends JsonResource
         return [
             'id' => $this->id,
             'title' => $this->title,
-            'props' => array_column($this->props->toArray(), 'id'),
+            'props' => array_column($this->props->toArray(), 'id2'),
             'a11yScore' => $this->getA11yScore(),
             'perfScore' => $this->getPerfScore(),
             'seoScore' => $this->getSeoScore()  
