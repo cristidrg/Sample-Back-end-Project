@@ -16,9 +16,9 @@ class Utils {
 
     public function getDigitClass($score)
     {
-        if ($score * 100 >= 100) {
+        if ($score  >= 100) {
             return 'digits-3';
-        } else if ($score * 100 > 10) {
+        } else if ($score  > 10) {
             return 'digits-2';
         } else {
             return 'digit-1';

@@ -83,9 +83,9 @@ const saveResult = (result, title, id, metaTitle, metaDesc, connection) => new P
         connection.query(`
             UPDATE props
             SET
-                perfScore = '${perfScore}',
-                a11yScore = '${a11yScore}',
-                seoScore = '${seoScore}',
+                perfScore = '${perfScore * 100}',
+                a11yScore = '${a11yScore * 100}',
+                seoScore = '${seoScore * 100}',
                 fetchTime = '${fetchTime}',
                 metaTitle = ${connection.escape(metaTitle)},
                 metaDesc = ${connection.escape(metaDesc)}

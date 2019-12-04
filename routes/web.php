@@ -49,7 +49,7 @@ Route::get('/api/orgs/', function() {
         $values = explode('-', trim($seo));
 
         $orgResults = $orgResults->filter(function ($org) use (&$values){
-            return ($org->getSeoScore() * 100 >= $values['0'] && $org->getSeoScore() * 100 <= $values['1']);
+            return ($org->getSeoScore()  >= $values['0'] && $org->getSeoScore()  <= $values['1']);
         });
     }
 
@@ -57,7 +57,7 @@ Route::get('/api/orgs/', function() {
         $values = explode('-', trim($a11y));
 
         $orgResults = $orgResults->filter(function ($org) use (&$values){
-            return ($org->getA11yScore() * 100 >= $values['0'] && $org->getA11yScore() * 100 <= $values['1']);
+            return ($org->getA11yScore()  >= $values['0'] && $org->getA11yScore()  <= $values['1']);
         });
     }
 
@@ -65,7 +65,7 @@ Route::get('/api/orgs/', function() {
         $values = explode('-', trim($perf));
 
         $orgResults = $orgResults->filter(function ($org) use (&$values){
-            return ($org->getPerfScore() * 100 >= $values['0'] && $org->getPerfScore() * 100 <= $values['1']);
+            return ($org->getPerfScore()  >= $values['0'] && $org->getPerfScore()  <= $values['1']);
         });
     }
 

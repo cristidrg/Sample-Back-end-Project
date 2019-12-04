@@ -21,19 +21,19 @@
             <div class="flex-1">
                 <p class="mb-0">Accessibility</p>
                 <div class="h-1 mt-1 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{ $childOrg->getA11yScore() * 100 }}%"></span>
+                    <span class="bg-blue-400" style="width: {{ $childOrg->getA11yScore()  }}%"></span>
                 </div>
             </div>
             <div class="flex-1 mt-4">
                 <p class="mb-0">SEO</p>
                 <div class="h-1 mt-1 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{ $childOrg->getSeoScore() * 100 }}%"></span>
+                    <span class="bg-blue-400" style="width: {{ $childOrg->getSeoScore()  }}%"></span>
                 </div>
             </div>
             <div class="flex-1 mt-4">
                 <p class="mb-0">Performance</p>
                 <div class="h-1 mt-1 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{ $childOrg->getPerfScore() * 100 }}%"></span>
+                    <span class="bg-blue-400" style="width: {{ $childOrg->getPerfScore()  }}%"></span>
                 </div>
             </div>
         </div>

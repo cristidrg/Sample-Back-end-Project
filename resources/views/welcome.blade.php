@@ -20,7 +20,7 @@
         <div class="charts__entry">
             <div class="charts__canvas-container">
                 <canvas id="accessibility" data-score="{{$a11yScore}}"></canvas>
-                <span class="charts__score {{$utils->getDigitClass($a11yScore)}} {{$utils->getColorClass($a11yScore)}}">{{$a11yScore * 100}}</span>
+                <span class="charts__score {{$utils->getDigitClass($a11yScore)}} {{$utils->getColorClass($a11yScore)}}">{{$a11yScore }}</span>
             </div>
             <label class="charts__label">Accessibility</label>
         </div>

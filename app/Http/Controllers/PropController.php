@@ -156,7 +156,7 @@ class PropController extends Controller
             $values = explode('-', trim($seo));
     
             $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->seoScore * 100 >= $values['0'] && $prop->seoScore * 100 <= $values['1']);
+                return ($prop->seoScore  >= $values['0'] && $prop->seoScore  <= $values['1']);
             });
         }
     
@@ -164,7 +164,7 @@ class PropController extends Controller
             $values = explode('-', trim($a11y));
     
             $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->a11yScore * 100 >= $values['0'] && $prop->a11yScore * 100 <= $values['1']);
+                return ($prop->a11yScore  >= $values['0'] && $prop->a11yScore  <= $values['1']);
             });
         }
     
@@ -172,7 +172,7 @@ class PropController extends Controller
             $values = explode('-', trim($perf));
     
             $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->perfScore * 100 >= $values['0'] && $prop->perfScore * 100 <= $values['1']);
+                return ($prop->perfScore  >= $values['0'] && $prop->perfScore  <= $values['1']);
             });
         }
     
@@ -180,7 +180,7 @@ class PropController extends Controller
             $values = explode('-', trim($security));
     
             $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->securityScore * 100 >= $values['0'] && $prop->securityScore * 100 <= $values['1']);
+                return ($prop->securityScore  >= $values['0'] && $prop->securityScore  <= $values['1']);
             });
         }
     

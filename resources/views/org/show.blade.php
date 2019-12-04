@@ -42,27 +42,27 @@
             <p class="text-gray-300">Accessibility</p>
             <div class="flex items-center">
                 <div class="flex-1 h-3 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{$a11yScore * 100}}%"></span>
+                    <span class="bg-blue-400" style="width: {{$a11yScore }}%"></span>
                 </div>
-                <p class="ml-3 font-bold text-gray-200 text-large">{{$a11yScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$a11yScore }}</p>
             </div>
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">SEO</p>
             <div class="flex items-center">
                 <div class="flex-1 h-3 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{$seoScore * 100}}%"></span>
+                    <span class="bg-blue-400" style="width: {{$seoScore }}%"></span>
                 </div>
-                <p class="ml-3 font-bold text-gray-200 text-large">{{$seoScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$seoScore }}</p>
             </div>
         </div>
         <div class="flex flex-col mt-3">
             <p class="text-gray-300">Performance</p>
             <div class="flex items-center">
                 <div class="flex-1 h-3 bg-gray-700 audit_bar">
-                    <span class="bg-blue-400" style="width: {{$perfScore * 100}}%"></span>
+                    <span class="bg-blue-400" style="width: {{$perfScore }}%"></span>
                 </div>
-                <p class="ml-3 font-bold text-gray-200 text-large">{{$perfScore * 100}}</p>
+                <p class="ml-3 font-bold text-gray-200 text-large">{{$perfScore }}</p>
             </div>
         </div>
     </div>
@@ -81,19 +81,19 @@
                             <div class="flex-1">
                                 <p>Accessibility</p>
                                 <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
-                                    <span class="bg-blue-400" style="width: {{$prop->a11yScore * 100}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->a11yScore }}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p>SEO</p>
                                 <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
-                                    <span class="bg-blue-400" style="width: {{$prop->seoScore * 100}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->seoScore }}%"></span>
                                 </div>
                             </div>
                             <div class="flex-1 ml-6">
                                 <p>Performance</p>
                                 <div class="w-full h-1 mt-1 bg-gray-700 audit_bar lg:mt-4 lg:h-2 lg:w-32">
-                                    <span class="bg-blue-400" style="width: {{$prop->perfScore * 100}}%"></span>
+                                    <span class="bg-blue-400" style="width: {{$prop->perfScore }}%"></span>
                                 </div>
                             </div>
                         </div>

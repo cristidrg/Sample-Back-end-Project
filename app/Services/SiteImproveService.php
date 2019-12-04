@@ -67,7 +67,7 @@ class SiteImproveService
     
         $responses = [];
         
-        while(count($requests) > 250) {
+        while(count($requests) > 0) {
 
             // Create batch 50 requests every 10 seconds to respect Site Improves API's rate limiter
             foreach (Pool::batch($this->httpClient, array_splice($requests, 0, 49), array('concurrency' => 50)) as $response) {

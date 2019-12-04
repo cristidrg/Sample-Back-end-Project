@@ -27,36 +27,36 @@
                     <p class="text-gray-300">Accessibility</p>
                     <div class="flex mt-1">
                         <div class="flex-1 h-5 bg-gray-700 audit_bar">
-                            <span class="bg-blue-400" style="width: {{$prop->a11yScore * 100}}%"></span>
+                            <span class="bg-blue-400" style="width: {{$prop->a11yScore }}%"></span>
                         </div>
-                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->a11yScore * 100}}</p>
+                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->a11yScore }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <p class="text-gray-300">SEO</p>
                     <div class="flex mt-1">
                         <div class="flex-1 h-5 bg-gray-700 audit_bar">
-                            <span class="bg-blue-400" style="width: {{$prop->seoScore * 100}}%"></span>
+                            <span class="bg-blue-400" style="width: {{$prop->seoScore }}%"></span>
                         </div>
-                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->seoScore * 100}}</p>
+                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->seoScore }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <p class="text-gray-300">Performance</p>
                     <div class="flex mt-1">
                         <div class="flex-1 h-5 bg-gray-700 audit_bar">
-                            <span class="bg-blue-400" style="width: {{$prop->perfScore * 100}}%"></span>
+                            <span class="bg-blue-400" style="width: {{$prop->perfScore }}%"></span>
                         </div>
-                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->perfScore * 100}}</p>
+                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->perfScore }}</p>
                     </div>
                 </div>
                 <div class="flex flex-col mt-4">
                     <p class="text-gray-300">Security</p>
                     <div class="flex mt-1">
                         <div class="flex-1 h-5 bg-gray-700 audit_bar">
-                            <span class="bg-blue-400" style="width: {{$prop->securityScore * 100}}%"></span>
+                            <span class="bg-blue-400" style="width: {{$prop->securityScore }}%"></span>
                         </div>
-                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->securityScore * 100}}</p>
+                        <p class="ml-6 font-bold text-gray-200 text-large">{{$prop->securityScore }}</p>
                     </div>
                 </div>
                 <div class="flex items-center mt-8">
