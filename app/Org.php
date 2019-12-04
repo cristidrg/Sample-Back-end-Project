@@ -75,7 +75,7 @@ class Org extends Model
             return 1;
         }
 
-        return intval($this->getA11yScoreHelper($this) / $propCount ) / 100;
+        return intval($this->getA11yScoreHelper($this) / $propCount )  ;
     }
 
     public function getPerfScoreHelper(Org $org) {
@@ -99,7 +99,7 @@ class Org extends Model
             return 1;
         }
 
-        return intval($this->getPerfScoreHelper($this) / $propCount ) / 100;
+        return intval($this->getPerfScoreHelper($this) / $propCount )  ;
     }
 
     public function getSeoScoreHelper(Org $org) {
@@ -123,7 +123,7 @@ class Org extends Model
             return 1;
         }
 
-        return intval($this->getSeoScoreHelper($this) / $propCount ) / 100;
+        return intval($this->getSeoScoreHelper($this) / $propCount )  ;
     }
 
 
