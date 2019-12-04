@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Technology extends Model
 {
     protected $table = 'technologies';
-    protected $fillable = ['name'];
+    protected $guarded = ['id'];
     protected $attributes = [
         'name' => ''
     ];

@@ -9,7 +9,7 @@ class Org extends Model
 {
     use NodeTrait;
 
-    protected $fillable = ['title'];
+    protected $guarded = ['id'];
     protected $attributes = [
         'title' => '',
     ];

@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
                     'title' => 'Advancement',
                 ],
                 [
+                    'title' => 'Unorganized',
+                ],
+                [
                     'title' => 'Chancellor',
                     'children' => [
                         [
@@ -147,8 +150,10 @@ class DatabaseSeeder extends Seeder
 
 
         /*
+            NOTE: 
             In order for the lighthouse script to work,
-            root level domains need to end with '/'
+            and for the SiteImprove Provider to correctly
+            update props trailling slashes need to be provided
 
             Correct:
                 https://provost.northeastern.edu/
@@ -180,12 +185,12 @@ class DatabaseSeeder extends Seeder
                     [
                         'type' => 'Production',
                         'server' => 'nuweb83.neu.edu',
-                        'url' => 'https://provost.northeastern.edu',
+                        'url' => 'https://provost.northeastern.edu/',
                     ],
                     [
                         'type' => 'Development',
                         'server' => 'nuweb84.neu.edu',
-                        'url' => 'https://dev.provost.northeastern.edu',
+                        'url' => 'https://dev.provost.northeastern.edu/',
                     ],
                 ],
             ],
@@ -611,6 +616,8 @@ class DatabaseSeeder extends Seeder
         $defaultTechnologies = ['WordPress', 'WordPress Multisite', 'HTML', 'CSS'];
 
         foreach ($props as $prop) {
+            $prop['url'] .= (substr($prop['url'], -1) == '/' ? '' : '/'); //adds trailling slashes if missing
+
             DB::table('props')->insert([
                 'title' => $prop['title'],
                 'url' => $prop['url'],

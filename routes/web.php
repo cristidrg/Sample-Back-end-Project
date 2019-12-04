@@ -6,7 +6,6 @@ use App\Http\Resources\PropResource;
 use App\Http\Resources\OrgResource;
 use App\Http\Controllers\PropController;
 use App\Http\Controllers\OrgController;
-use App\Services\SiteImproveService;
 use Illuminate\Support\Facades\Input;
 
 /*
@@ -32,10 +31,7 @@ Route::resource('org', 'OrgController');
 Route::resource('user', 'UserController');
 Route::resource('prop', 'PropController');
 Route::resource('technology', 'TechnologyController');
-Route::get('/site-improve', function(SiteImproveService $service) {
-    $service->getSites();
-});
-
+Route::get('/site-improve', 'SiteImproveController@updateProps');
 Route::get('/props', 'PropController@filterByParams');
 Route::get('/api/props', 'PropController@apiFilterByParams');
 Route::get('/api/props/{id}', function($id) {
