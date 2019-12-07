@@ -785,7 +785,7 @@ video {
   background-color: #2b6cb0;
 }
 
-form input {
+form input, form textarea {
   color: #000;
 }
 

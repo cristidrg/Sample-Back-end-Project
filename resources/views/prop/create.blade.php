@@ -34,6 +34,14 @@
                     <input required type="text" class="form-control" name="securityScore" value="" />
                 </div>
                 <div>
+                    <label for="brandScore">Brand Score</label>
+                    <input required type="text" class="form-control" name="brandScore" value="" />
+                </div>
+                <div>
+                    <label for="perfScore">Peformance Score</label>
+                    <input required type="text" class="form-control" name="perfScore" value="" />
+                </div>
+                <div>
                     <label for="technologies">Technologies</label>
                     <select name="technologies[]" multiple class="h-40 text-black">
                         @foreach ($technologies as $technology)
@@ -54,6 +62,10 @@
                         <label>URL</label>
                         <input type="text" name="env_urls[1]"/>
                     </div>
+                </div>
+                <div>
+                    <label for="notes">Notes</label>
+                    <textarea required type="text" class="form-control" name="notes"></textarea>
                 </div>
                 <button class="px-2 mr-2 text-xs bg-blue-500 rounded-full prop-environment-form__add hover:bg-blue-600">Add Environment</button>
                 <button class="px-2 text-xs bg-red-500 rounded-full prop-environment-form__remove hover:bg-red-600">Delete Last Environment</button>

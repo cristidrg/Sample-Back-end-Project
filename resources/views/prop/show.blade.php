@@ -116,6 +116,14 @@
                 </ul>
             </div>
         </div>
+        @if (isset($prop->notes))
+            <div class="flex flex-col w-6/12 mt-12">
+                <p class="text-lg font-bold text-gray-200 uppercase">Notes</p>
+                <div class="h-full py-8 pl-10 pr-8 mt-6 bg-gray-800">
+                    <p>{{$prop->notes}}</p>
+                </div>
+            </div>
+        @endif
     </div>
 
     <a href={{"/prop"."/".$prop->id."/edit"}}>

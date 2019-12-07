@@ -41,6 +41,14 @@
                     <input required type="text" class="form-control" name="securityScore" value="{{ $prop->securityScore }}" />
                 </div>
                 <div>
+                    <label for="brandScore">Brand Score</label>
+                    <input required type="text" class="form-control" name="brandScore" value="{{ $prop->brandScore }}" />
+                </div>
+                <div>
+                    <label for="perfScore">Peformance Score</label>
+                    <input required type="text" class="form-control" name="perfScore" value="{{ $prop->perfScore }}" />
+                </div>
+                <div>
                     <label for="technologies[]">Technologies</label>
                     <select name="technologies[]" multiple class="h-40 text-black">
                         @foreach ($technologies as $technology)
@@ -69,6 +77,10 @@
                         </div>
 
                     @endforeach
+                </div>
+                <div>
+                    <label for="notes">Notes</label>
+                    <textarea required type="text" class="form-control" name="notes">{{ $prop->notes }}</textarea>
                 </div>
                 <button class="px-2 mr-2 text-xs bg-blue-500 rounded-full prop-environment-form__add hover:bg-blue-600">Add environment</button>
                 <button class="px-2 text-xs bg-red-500 rounded-full prop-environment-form__remove hover:bg-red-600">Remove last environment</button>

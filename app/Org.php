@@ -54,79 +54,6 @@ class Org extends Model
         return $downProps;
     }
 
-    public function getA11yScoreHelper(Org $org) {
-        $a11ySum = 0;
-
-        foreach ($org->props as $prop) {
-            $a11ySum = $a11ySum + $prop->a11yScore;
-        }
-
-        foreach ($org->children as $childOrg) {
-            $a11ySum = $a11ySum + $this->getA11yScoreHelper($childOrg);
-        }
-
-        return $a11ySum;
-    }
-
-    public function getA11yScore() {
-        $propCount = $this->getPropCount($this);
-
-        if ($propCount == 0) {
-            return 1;
-        }
-
-        return intval($this->getA11yScoreHelper($this) / $propCount )  ;
-    }
-
-    public function getPerfScoreHelper(Org $org) {
-        $perfSum = 0;
-
-        foreach ($org->props as $prop) {
-            $perfSum = $perfSum + $prop->perfScore;
-        }
-
-        foreach ($org->children as $childOrg) {
-            $perfSum = $perfSum + $this->getPerfScoreHelper($childOrg);
-        }
-
-        return $perfSum;
-    }
-
-    public function getPerfScore() {
-        $propCount = $this->getPropCount($this);
-
-        if ($propCount == 0) {
-            return 1;
-        }
-
-        return intval($this->getPerfScoreHelper($this) / $propCount )  ;
-    }
-
-    public function getSeoScoreHelper(Org $org) {
-        $seoSum = 0;
-
-        foreach ($org->props as $prop) {
-            $seoSum = $seoSum + $prop->seoScore;
-        }
-
-        foreach ($org->children as $childOrg) {
-            $seoSum = $seoSum + $this->getSeoScoreHelper($childOrg);
-        }
-
-        return $seoSum;
-    }
-
-    public function getSeoScore() {
-        $propCount = $this->getPropCount($this);
-
-        if ($propCount == 0) {
-            return 1;
-        }
-
-        return intval($this->getSeoScoreHelper($this) / $propCount )  ;
-    }
-
-
     public function getUptimeCount(Org $org) {
         $upCount = 0;
 
@@ -152,5 +79,33 @@ class Org extends Model
         }
 
         return $this->getUptimeCount($this) / $propCount;
+    }
+
+
+    private function getAveragedScoreHelper(Org $org, String $scoreName)
+    {
+        $sum = 0;
+
+        foreach ($org->props as $prop) {
+            $sum = $sum + $prop->getAttribute($scoreName);
+        }
+
+        foreach ($org->children as $childOrg) {
+            $sum = $sum + $this->getAveragedScoreHelper($childOrg, $scoreName);
+        }
+
+        return $sum;
+    }
+
+    // #Maintenance: You can get average scores for any number field by providing the fieldName on the prop
+    public function getScore(String $scoreName)
+    {
+        $propCount = $this->getPropCount($this);
+
+        if ($propCount == 0) {
+            return 100;
+        }
+
+        return intval($this->getAveragedScoreHelper($this, $scoreName) / $propCount );
     }
 }

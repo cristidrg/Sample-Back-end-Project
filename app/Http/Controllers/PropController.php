@@ -44,7 +44,10 @@ class PropController extends Controller
             'env_servers.*' => 'required|string',
             'env_urls' => 'required|array',
             'env_urls.*' => 'required|string',
-            'securityScore'=> 'required|numeric|between:0,1'
+            'securityScore'=> 'required|numeric|between:0,100',
+            'brandScore'=> 'required|numeric|between:0,100',
+            'perfScore'=> 'required|numeric|between:0,100',
+            'notes' => 'string'
         ]);
 
         $environments = array();
@@ -60,7 +63,9 @@ class PropController extends Controller
             'title' => request('title'),
             'url' => request('url'),
             'environments' => $environments,
-            'securityScore' => request('securityScore')
+            'securityScore' => request('securityScore'),
+            'brandScore' => request('brandScore'),
+            'perfScore' => request('perfScore')
         ]);
 
         $prop->monitor()->save(Monitor::create(['url' => request('url')]));
@@ -68,6 +73,11 @@ class PropController extends Controller
         
         foreach (request('technologies') as $technology) {
             $prop->technologies()->save(Technology::where('name', $technology)->first());
+        }
+
+        if (request('notes')) {
+            $prop->notes = request('notes');
+            $prop->save();
         }
 
         return redirect('prop/')->with('popup', 'Prop ' . request('title') . ' has been created!');
@@ -107,7 +117,10 @@ class PropController extends Controller
             'env_servers.*' => 'required|string',
             'env_urls' => 'required|array',
             'env_urls.*' => 'required|string',
-            'securityScore'=> 'required|numeric|between:0,1'
+            'securityScore'=> 'required|numeric|between:0,100',
+            'brandScore'=> 'required|numeric|between:0,100',
+            'perfScore'=> 'required|numeric|between:0,100',
+            'notes' => 'string'
         ]);
 
 
@@ -129,7 +142,15 @@ class PropController extends Controller
             $prop->technologies()->attach(Technology::where('name', $technology)->first());
         }
 
-        //TODO: Idk why I can't do prop->org->detach or dissociate. It needs to be done to prevent errors in editing.
+        if (request('notes')) {
+            $prop->notes = request('notes');
+            $prop->save();
+        }
+
+        //TODO: Idk why I can't do prop->org->detach() or dissociate().
+        //While we don't have a use case were props change orgs,
+        //doing this currently might result in some faulty saves as
+        // we can't unbind the orgs from the props
         Org::where('title', request('parent_org'))->first()->props()->save($prop);
 
         return redirect('/prop')->with('success', 'prop updated!');
@@ -142,54 +163,32 @@ class PropController extends Controller
         return redirect('/prop')->with('popup', 'Prop has been deleted');
     }
 
+    //TODO: Check for invalid values/formatting issues on query params
     private function filter()
     {
         $propResults = Prop::all();
-        $seo = Input::get('seo');
-        $a11y = Input::get('a11y');
-        $perf = Input::get('perf');
+
+        // #Maintenance: To add a new score to filter by in the api, put it in this array 
+        $filterableScores = ['seo', 'a11y', 'perf', 'security', 'brand', 'qa'];
+
+        foreach ($filterableScores as $scoreType) {
+            if (Input::get($scoreType) != null) {
+                $values = explode('-', trim(Input::get($scoreType)));
+
+                $propResults = $propResults->filter(function ($prop) use (&$values, &$scoreType){
+                    return ($prop->getAttribute($scoreType . 'Score')  >= $values['0'] && $prop->getAttribute($scoreType . 'Score')  <= $values['1']);
+                });
+            }   
+        }
+
         $uptime = Input::get('uptime');
-        $org = Input::get('org');
-        $security = Input::get('security');
-    
-        if ($seo != null) {
-            $values = explode('-', trim($seo));
-    
-            $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->seoScore  >= $values['0'] && $prop->seoScore  <= $values['1']);
-            });
-        }
-    
-        if ($a11y != null) {
-            $values = explode('-', trim($a11y));
-    
-            $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->a11yScore  >= $values['0'] && $prop->a11yScore  <= $values['1']);
-            });
-        }
-    
-        if ($perf != null) {
-            $values = explode('-', trim($perf));
-    
-            $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->perfScore  >= $values['0'] && $prop->perfScore  <= $values['1']);
-            });
-        }
-    
-        if ($security != null) {
-            $values = explode('-', trim($security));
-    
-            $propResults = $propResults->filter(function ($prop) use (&$values){
-                return ($prop->securityScore  >= $values['0'] && $prop->securityScore  <= $values['1']);
-            });
-        }
-    
         if ($uptime != null) {
             $propResults = $propResults->filter(function ($prop) use (&$uptime){
                 return $prop->monitor->uptime_status == $uptime;
             });
         }
     
+        $org = Input::get('org');
         if ($org != null) {
             $propResults = $propResults->filter(function ($prop) use (&$org){
                 return $prop->org_id == $org;
@@ -208,6 +207,7 @@ class PropController extends Controller
 
     public function apiFilterByParams()
     {
-        return PropResource::collection($this->filter()); //pagination done with appending ->forPage(0, 15)        
+        // #Maintenance: To add pagination append ->forPage(0, 15) below    
+        return PropResource::collection($this->filter());    
     }
 }

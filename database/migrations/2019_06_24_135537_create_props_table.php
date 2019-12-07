@@ -24,11 +24,14 @@ class CreatePropsTable extends Migration
             $table->longText('environments')->nullable();
             $table->string('siteImproveId')->unique()->nullable();
 
+            $table->longText('notes')->nullable();
+
             $table->float('perfScore')->default('0');
             $table->float('a11yScore')->default('0');
             $table->float('seoScore')->default('0');
             $table->float('qaScore')->default('0');
             $table->float('securityScore')->default('0');
+            $table->float('brandScore')->default('0');
             $table->string('fetchTime')->default('0');
 
             $table->longText('metaTitle')->nullable();

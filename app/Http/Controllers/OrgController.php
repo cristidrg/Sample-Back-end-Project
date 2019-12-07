@@ -41,10 +41,7 @@ class OrgController extends Controller
     public static function show(Org $org)
     {
         return view('org/show', [
-            'org' => $org,
-            'a11yScore' => $org->getA11yScore(),
-            'perfScore' => $org->getPerfScore(),
-            'seoScore' => $org->getSeoScore(),
+            'org' => $org
         ]);
     }
 

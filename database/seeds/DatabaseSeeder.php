@@ -618,11 +618,14 @@ class DatabaseSeeder extends Seeder
         foreach ($props as $prop) {
             $prop['url'] .= (substr($prop['url'], -1) == '/' ? '' : '/'); //adds trailling slashes if missing
 
+            // TODO: Remove random generator for seeding scores at some point
             DB::table('props')->insert([
                 'title' => $prop['title'],
                 'url' => $prop['url'],
                 'environments' => (isset($prop['environments']) ? json_encode($prop['environments']) : json_encode($defaultEnvironment)),
-                'securityScore' => rand(0, 100)
+                'securityScore' => rand(0, 100),
+                'perfScore' => rand(0, 100),
+                'brandScore' => rand(0, 100),
             ]);
 
             DB::table('monitors')->insert([

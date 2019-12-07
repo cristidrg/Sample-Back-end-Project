@@ -12,9 +12,9 @@ class OrgResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'props' => array_column($this->props->toArray(), 'id'),
-            'a11yScore' => $this->getA11yScore(),
-            'perfScore' => $this->getPerfScore(),
-            'seoScore' => $this->getSeoScore()  
+            'a11yScore' => $this->getScore('a11yScore'),
+            'perfScore' => $this->getScore('perfScore'),
+            'seoScore' => $this->getScore('seoScore')  
         ];
     }
 }
