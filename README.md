@@ -13,23 +13,23 @@ has a number of websites (props), on which audits are being run.
 
 There are 3 types of checks being ran against every prop to achieve 2) and more info:
 
-    1) Uptime Monitoring 
-    
-        - makes use Laravel's Event Scheduler to check for uptime
-        
-        - uses Laravel's Notification system to send emails or Slack messages if problems occur
-        
-    2) Lighthouse Auditing
-    
-        - Creates .html reports with the lighthouse test results and updates the scores
-        
-        - runs with Lighthouse's Node.js API via a CRON job and writes the results on the project's database
-        
-    3) SiteImprove.com Auditing
-    
-        - The university already ran some tests through SiteImprove and I pulled the scores in this app using the URL as a unique key.
-        
-        - Currently, the update is being done when the /site-improve route is being hit.
+1) Uptime Monitoring 
+
+    - makes use Laravel's Event Scheduler to check for uptime
+
+    - uses Laravel's Notification system to send emails or Slack messages if problems occur
+
+2) Lighthouse Auditing
+
+    - Creates .html reports with the lighthouse test results and updates the scores
+
+    - runs with Lighthouse's Node.js API via a CRON job and writes the results on the project's database
+
+3) SiteImprove.com Auditing
+
+    - The university already ran some tests through SiteImprove and I pulled the scores in this app using the URL as a unique key.
+
+    - Currently, the update is being done when the /site-improve route is being hit.
 
 To make this tool further accessible to other developers at the university, there is also an API
 through which you can pull all of the data available in the app and also filter sites by scores.
